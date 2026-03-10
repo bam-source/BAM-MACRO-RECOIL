@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAM MACRO RECOIL - Official Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --bg-dark: #07080a;
+            --accent: #fbbf24;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(16px);
+            background: rgba(7, 8, 10, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-grid-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .product-grid-card:hover {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+        }
+
+        .product-image-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #0f172a;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-grid-card:hover .product-image-container img {
+            transform: scale(1.1);
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 10;
+            font-size: 8px;
+            letter-spacing: 0.1em;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(7, 8, 10, 0.8);
+            backdrop-filter: blur(4px);
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 900;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .video-thumbnail-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-thumbnail-container:hover img {
+            opacity: 0.8;
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-icon-bg {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .section-box {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 40px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-btn:hover {
+            background: rgba(251, 191, 36, 0.1);
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-contact-card {
+            background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.05), transparent);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+        }
+
+        .testi-card {
+            background: rgba(79, 70, 229, 0.05);
+            border: 1px dashed rgba(79, 70, 229, 0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .testi-card:hover {
+            background: rgba(79, 70, 229, 0.1);
+            border-style: solid;
+            border-color: #6366f1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigasi -->
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-amber-500 rounded flex items-center justify-center">
+                    <i class="fa-solid fa-gun text-black text-[10px]"></i>
+                </div>
+                <span class="font-extrabold uppercase tracking-tighter text-white text-sm">BAM<span class="text-amber-500">MACRO RECOIL</span></span>
+            </div>
+            <div class="flex gap-4 items-center">
+                <button onclick="openContact()" class="bg-white text-black px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-headset"></i> Kontak Admin
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="pt-32 pb-8 text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <h1 class="text-3xl font-black text-white uppercase italic tracking-tighter mb-2">Precision <span class="text-amber-500 text-glow">Macro Library</span></h1>
+            <p class="text-slate-500 text-xs uppercase tracking-widest font-bold">Optimasi kontrol senjata murni tingkat sistem dan hardware</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6">
+        
+        <!-- BAGIAN KEAMANAN -->
+        <section class="mb-12 section-box text-center">
+            <div class="max-w-4xl mx-auto">
+                <div class="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
+                    <span class="text-[10px] font-black text-amber-500 uppercase tracking-[0.3em]">Security Protocol</span>
+                </div>
+                <h2 class="text-xl font-black text-white uppercase italic tracking-tight mb-8 text-glow">PROTEKSI ANTI-DETEKSI</h2>
+
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div class="p-5 bg-white/5 rounded-2xl border border-white/5 flex gap-4 items-center">
+                        <div class="w-10 h-10 min-w-[40px] bg-amber-500 rounded-lg flex items-center justify-center text-black">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] font-black text-white uppercase mb-1 italic">System Level Safety</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Berjalan mandiri di luar direktori game. Tidak ada injeksi kode atau modifikasi file game yang berisiko.</p>
+                        </div>
+                    </div>
+                    <div class="p-5 bg-white/5 rounded-2xl border border-white/5 flex gap-4 items-center">
+                        <div class="w-10 h-10 min-w-[40px] bg-amber-500 rounded-lg flex items-center justify-center text-black">
+                            <i class="fa-solid fa-wave-square"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] font-black text-white uppercase mb-1 italic">Native Input Simulation</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Input macro diproses sebagai gerakan mouse resmi oleh sistem operasi, memastikan bypass proteksi game.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT GRID -->
+        <div class="mb-16">
+            <h2 class="text-xs font-black text-slate-500 uppercase tracking-[0.4em] mb-6 flex items-center gap-4">
+                <span class="h-px bg-slate-800 flex-grow"></span>
+                Katalog Produk
+                <span class="h-px bg-slate-800 flex-grow"></span>
+            </h2>
+            <div id="product-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Render via JS -->
+            </div>
+        </div>
+
+        <!-- BAGIAN TESTIMONI (SEKARANG DI BAWAH KATALOG) -->
+        <section class="mb-16 testi-card p-8 md:p-10 cursor-pointer" onclick="goTo('discord')">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-shrink-0">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-[0_0_30px_rgba(79,70,229,0.4)]">
+                        <i class="fa-brands fa-discord text-3xl"></i>
+                    </div>
+                </div>
+                <div class="text-center md:text-left flex-grow">
+                    <h2 class="text-lg font-black text-white uppercase italic tracking-tight mb-2">VERIFIKASI TESTIMONI PELANGGAN</h2>
+                    <p class="text-[11px] text-slate-400 leading-relaxed mb-4">Lihat bukti kualitas kami sebelum membeli. Bergabunglah dengan server Discord kami untuk melihat ratusan bukti transaksi dan review jujur dari pengguna BAM MACRO di kanal <span class="text-indigo-400 font-bold">#testimoni</span>.</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-[9px] font-black rounded-md uppercase tracking-widest border border-indigo-500/20">Real Reviews</span>
+                        <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-[9px] font-black rounded-md uppercase tracking-widest border border-indigo-500/20">Verified Buyers</span>
+                        <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-[9px] font-black rounded-md uppercase tracking-widest border border-indigo-500/20">Active Community</span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <div class="px-6 py-3 bg-indigo-600 hover:bg-white hover:text-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-tighter transition-all flex items-center gap-2">
+                        Cek Testi Sekarang <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER CONTACT SECTION -->
+        <section id="contact-section" class="mt-10 py-12 px-6 footer-contact-card">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8 text-center md:text-left">
+                    <div>
+                        <h2 class="text-xl font-black text-white uppercase italic tracking-tight mb-2">Siap untuk <span class="text-amber-500">Upgrade Skill?</span></h2>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Gabung komunitas & lihat testimoni di Discord</p>
+                    </div>
+                </div>
+                <div id="footer-social-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Rendered via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-white/5 text-center mt-10">
+        <p class="text-[8px] font-bold text-slate-700 tracking-[0.6em] uppercase">BAM MACRO RECOIL — NATIVE SYSTEM REPOSITORY</p>
+    </footer>
+
+    <!-- MODALS -->
+    <div id="contact-modal" class="fixed inset-0 z-[110] bg-black/95 hidden flex items-center justify-center p-6">
+        <div class="max-w-md w-full bg-[#0a0b0d] border border-white/10 rounded-3xl p-8 relative">
+            <button onclick="closeContact()" class="absolute top-6 right-6 text-slate-500"><i class="fa-solid fa-xmark"></i></button>
+            <h2 class="text-xl font-black text-white uppercase italic text-center mb-8">Hubungi Kami</h2>
+            <div id="social-links-container" class="space-y-3"></div>
+        </div>
+    </div>
+
+    <div id="detail-modal" class="fixed inset-0 z-[100] bg-black/95 hidden flex items-center justify-center p-6 overflow-y-auto">
+        <div class="max-w-4xl w-full bg-[#0a0b0d] border border-white/10 rounded-3xl overflow-hidden relative">
+            <button onclick="closeDetail()" class="absolute top-6 right-6 text-slate-500 z-10"><i class="fa-solid fa-xmark"></i></button>
+            <div class="grid md:grid-cols-2">
+                <div class="p-8 bg-slate-900/50 flex flex-col items-center justify-center">
+                    <div onclick="playCurrentVideo()" class="video-thumbnail-container group mb-4">
+                        <img id="modal-yt-thumbnail" src="" alt="Video Preview">
+                        <div class="play-overlay"><div class="play-icon-bg group-hover:scale-110 transition-transform"><i class="fa-solid fa-play text-black"></i></div></div>
+                    </div>
+                    <p class="text-[8px] uppercase font-bold text-slate-500">Klik untuk tonton demo</p>
+                </div>
+                <div class="p-8 md:p-12">
+                    <span id="modal-tag" class="category-tag relative top-0 right-0 mb-4 inline-block">TAG</span>
+                    <h2 id="modal-title" class="text-2xl font-black text-white uppercase italic mb-2">TITLE</h2>
+                    <p id="modal-price" class="text-amber-500 font-bold italic mb-6">PRICE</p>
+                    <div id="modal-features" class="space-y-4 mb-8"></div>
+                    <button onclick="openContact()" class="w-full bg-amber-500 text-black py-4 rounded-xl font-black uppercase text-xs tracking-widest hover:bg-white transition-all">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CONFIG = {
+            social: {
+                whatsapp: "https://api.whatsapp.com/send/?phone=6289697523717&text&type=phone_number&app_absent=0",
+                tiktok: "https://www.tiktok.com/@bampermana_",
+                youtube: "https://www.youtube.com/channel/UCKydA45oOtKMmzxML44aTbg",
+                discord: "https://discord.com/invite/zpuM9PRSdQ"
+            }
+        };
+
+        const PRODUCTS = [
+            {
+                id: "delta-v1-SW",
+                name: "Delta Force V1",
+                subtitle: "Versi Garena & Steam Ready!",
+                price: "Rp 50.000",
+                tag: "DeltaForce (Software)",
+                image: "https://assets-prd.ignimgs.com/2024/08/28/delta-force-button-replacement-1724855313566.jpg",
+                videoId: "RvrJzZ_K4lU",
+                features: [
+                    { title: "Pure Native Logic", desc: "Aman tanpa library luar." },
+                    { title: "Hardware Sync", desc: "Sinkronisasi mulus ke mouse." }
+                ]
+            },
+            {
+                id: "delta-v2-SW",
+                name: "Delta Force V2",
+                subtitle: "Versi Garena & Steam Ready!",
+                price: "Rp 100.000",
+                tag: "DeltaForce (Software)",
+                image: "https://assets-prd.ignimgs.com/2024/08/28/delta-force-button-replacement-1724855313566.jpg", 
+                videoId: "sRxl-gWVs_M",
+                features: [
+                    { title: "Pure Native Logic", desc: "Aman tanpa library luar." },
+                    { title: "Hardware Sync", desc: "Sinkronisasi mulus ke mouse." }
+                ]
+            },
+            {
+                id: "delta-v1-HW",
+                name: "Delta Force V1",
+                subtitle: "Versi Garena & Steam Ready!",
+                price: "Rp 150.000",
+                tag: "DeltaForce (UNIT-X)",
+                image: "https://tse4.mm.bing.net/th/id/OIP.U8CQhGEgx-neoeVKBQ2ooAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3",
+                videoId: "SsWBIzwcSsg",
+                features: [
+                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
+                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
+                ]
+            },
+            {
+                id: "delta-v2-HW",
+                name: "Delta Force V2",
+                subtitle: "Versi Garena & Steam Ready!",
+                price: "Rp 200.000",
+                tag: "DeltaForce (UNIT-X)",
+                image: "https://tse4.mm.bing.net/th/id/OIP.U8CQhGEgx-neoeVKBQ2ooAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3",
+                videoId: "SsWBIzwcSsg",
+                features: [
+                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
+                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
+                ]
+            },
+            {
+                id: "pubg-HW",
+                name: "PUBG",
+                subtitle: "Hardware Level & Steam Ready!",
+                price: "Rp 200.000",
+                tag: "PUBG (UNIT-X)",
+                image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/0406/d8836a7efd114c7302d116f5b1242ca8c50bf8f137f6a71d.png",
+                videoId: "gvTQ4MFALF4",
+                features: [
+                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
+                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
+                ]
+            },
+            {
+                id: "bloodstrike-SW",
+                name: "BLOODSTRIKE",
+                subtitle: "Versi Windows & Steam Ready!",
+                price: "Rp 100.000",
+                tag: "BloodStrike (Software)",
+                image: "https://cdna.artstation.com/p/assets/covers/images/085/755/392/large/aaa-aaa-111-1.jpg?1741590140",
+                videoId: "-ucNJ4KahjI",
+                features: [
+                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
+                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
+                ]
+            }
+        ];
+
+        let activeVideoId = '';
+
+        function renderProducts() {
+            const list = document.getElementById('product-list');
+            list.innerHTML = PRODUCTS.map(p => `
+                <div class="product-grid-card group cursor-pointer" onclick="openDetail('${p.id}')">
+                    <div class="product-image-container">
+                        <div class="category-tag">${p.tag}</div>
+                        <img src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x400/0f172a/fbbf24?text=${p.name.replace(/ /g, '+')}'">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-[10px] font-black text-white uppercase italic mb-1">${p.name}</h3>
+                        <p class="text-[8px] text-slate-500 mb-3">${p.subtitle}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-amber-500 font-bold text-[10px] italic">${p.price}</span>
+                            <div class="w-5 h-5 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
+                                <i class="fa-solid fa-chevron-right text-[7px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('') + `
+                <div class="product-grid-card border-dashed border-white/5 opacity-30 flex items-center justify-center min-h-[200px]">
+                    <span class="text-[8px] uppercase font-bold tracking-widest text-slate-600 italic">Coming Soon</span>
+                </div>
+            `;
+        }
+
+        function renderSocialLinks() {
+            const modalContainer = document.getElementById('social-links-container');
+            const footerContainer = document.getElementById('footer-social-container');
+            
+            const links = [
+                { id: 'whatsapp', icon: 'fa-whatsapp', color: 'green-500', label: 'WhatsApp', sub: 'Chat Admin' },
+                { id: 'discord', icon: 'fa-discord', color: 'indigo-500', label: 'Discord', sub: 'Testimoni' },
+                { id: 'tiktok', icon: 'fa-tiktok', color: 'white', label: 'TikTok', sub: 'Follow Us' },
+                { id: 'youtube', icon: 'fa-youtube', color: 'red-500', label: 'YouTube', sub: 'Demo Video' }
+            ];
+
+            modalContainer.innerHTML = links.map(l => `
+                <div onclick="goTo('${l.id}')" class="social-btn">
+                    <div class="w-10 h-10 bg-${l.color}/10 rounded-xl flex items-center justify-center text-${l.color}">
+                        <i class="fa-brands ${l.icon} text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-black text-white uppercase">${l.label}</h4>
+                        <p class="text-[9px] text-slate-500">${l.sub}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            footerContainer.innerHTML = links.map(l => `
+                <button onclick="goTo('${l.id}')" class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 hover:bg-amber-500/5 transition-all group">
+                    <i class="fa-brands ${l.icon} text-${l.color} text-xl mb-1"></i>
+                    <span class="text-[9px] font-black text-white uppercase tracking-widest">${l.label}</span>
+                </button>
+            `).join('');
+        }
+
+        function openDetail(productId) {
+            const p = PRODUCTS.find(item => item.id === productId);
+            if (!p) return;
+
+            activeVideoId = p.videoId;
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-price').innerText = p.price;
+            document.getElementById('modal-tag').innerText = p.tag;
+            document.getElementById('modal-yt-thumbnail').src = `https://img.youtube.com/vi/${p.videoId}/mqdefault.jpg`;
+            
+            document.getElementById('modal-features').innerHTML = p.features.map(f => `
+                <div class="flex gap-4 items-start">
+                    <i class="fa-solid fa-check text-amber-500 text-[10px] mt-1"></i>
+                    <div>
+                        <h4 class="text-[10px] font-bold text-white uppercase">${f.title}</h4>
+                        <p class="text-[9px] text-slate-500">${f.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('detail-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function goTo(p) { window.open(CONFIG.social[p], '_blank'); }
+        function playCurrentVideo() { if(activeVideoId) window.open(`https://youtube.com/watch?v=${activeVideoId}`, '_blank'); }
+        function closeDetail() { document.getElementById('detail-modal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
+        function openContact() { document.getElementById('contact-modal').classList.remove('hidden'); }
+        function closeContact() { document.getElementById('contact-modal').classList.add('hidden'); if(document.getElementById('detail-modal').classList.contains('hidden')) document.body.style.overflow = 'auto'; }
+
+        window.onclick = e => {
+            if(e.target.id === 'detail-modal') closeDetail();
+            if(e.target.id === 'contact-modal') closeContact();
+        }
+
+        window.onload = () => { renderProducts(); renderSocialLinks(); };
+    </script>
+</body>
+</html>
