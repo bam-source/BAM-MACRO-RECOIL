@@ -156,17 +156,79 @@
             border-radius: 24px;
         }
 
-        .testi-card {
-            background: rgba(79, 70, 229, 0.05);
-            border: 1px dashed rgba(79, 70, 229, 0.3);
-            border-radius: 20px;
-            transition: all 0.3s ease;
+        /* TESTIMONIALS SCROLL STYLES */
+        .gallery-scroll-container {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 10px 0 30px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
         }
-        
+
+        .gallery-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .gallery-scroll-container::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .testi-card {
+            min-width: 280px;
+            max-width: 280px;
+            height: 200px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: #0f172a;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
         .testi-card:hover {
-            background: rgba(79, 70, 229, 0.1);
-            border-style: solid;
-            border-color: #6366f1;
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
+
+        .testi-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* LIGHTBOX PREVIEW */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-overlay.active .lightbox-img {
+            transform: scale(1);
         }
     </style>
 </head>
@@ -199,14 +261,13 @@
 
     <main class="max-w-6xl mx-auto px-6">
         
-        <!-- BAGIAN KEAMANAN -->
+        <!-- KEAMANAN SECTION -->
         <section class="mb-12 section-box text-center">
             <div class="max-w-4xl mx-auto">
                 <div class="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
                     <span class="text-[10px] font-black text-amber-500 uppercase tracking-[0.3em]">Security Protocol</span>
                 </div>
                 <h2 class="text-xl font-black text-white uppercase italic tracking-tight mb-8 text-glow">PROTEKSI ANTI-DETEKSI</h2>
-
                 <div class="grid md:grid-cols-2 gap-6 text-left">
                     <div class="p-5 bg-white/5 rounded-2xl border border-white/5 flex gap-4 items-center">
                         <div class="w-10 h-10 min-w-[40px] bg-amber-500 rounded-lg flex items-center justify-center text-black">
@@ -214,7 +275,7 @@
                         </div>
                         <div>
                             <h3 class="text-[10px] font-black text-white uppercase mb-1 italic">System Level Safety</h3>
-                            <p class="text-[10px] text-slate-400 leading-relaxed">Berjalan mandiri di luar direktori game. Tidak ada injeksi kode atau modifikasi file game yang berisiko.</p>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Berjalan mandiri di luar direktori game tanpa injeksi kode.</p>
                         </div>
                     </div>
                     <div class="p-5 bg-white/5 rounded-2xl border border-white/5 flex gap-4 items-center">
@@ -223,7 +284,7 @@
                         </div>
                         <div>
                             <h3 class="text-[10px] font-black text-white uppercase mb-1 italic">Native Input Simulation</h3>
-                            <p class="text-[10px] text-slate-400 leading-relaxed">Input macro diproses sebagai gerakan mouse resmi oleh sistem operasi, memastikan bypass proteksi game.</p>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Input diproses sebagai gerakan mouse resmi oleh OS.</p>
                         </div>
                     </div>
                 </div>
@@ -237,48 +298,43 @@
                 Katalog Produk
                 <span class="h-px bg-slate-800 flex-grow"></span>
             </h2>
-            <div id="product-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                <!-- Render via JS -->
-            </div>
+            <div id="product-list" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
         </div>
 
-        <!-- BAGIAN TESTIMONI (SEKARANG DI BAWAH KATALOG) -->
-        <section class="mb-16 testi-card p-8 md:p-10 cursor-pointer" onclick="goTo('discord')">
-            <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
-                <div class="flex-shrink-0">
-                    <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-[0_0_30px_rgba(79,70,229,0.4)]">
-                        <i class="fa-brands fa-discord text-3xl"></i>
+        <!-- TESTIMONIALS SECTION -->
+        <section id="testimonials-section" class="mb-16 overflow-hidden">
+            <h2 class="text-xs font-black text-slate-500 uppercase tracking-[0.4em] mb-6 flex items-center gap-4">
+                <span class="h-px bg-slate-800 flex-grow"></span>
+                Bukti Transaksi & Testimoni
+                <span class="h-px bg-slate-800 flex-grow"></span>
+            </h2>
+
+            <div id="testi-scroll-container" class="gallery-scroll-container">
+                <!-- Gambar testimoni murni dari JS -->
+            </div>
+            
+            <div class="mt-4 p-6 bg-indigo-500/5 border border-indigo-500/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <i class="fa-brands fa-discord text-2xl text-indigo-500"></i>
+                    <div>
+                        <p class="text-[10px] font-black text-white uppercase italic">Ingin Melihat Lebih Banyak?</p>
+                        <p class="text-[9px] text-slate-500">Kunjungi kanal #testimoni di server Discord kami.</p>
                     </div>
                 </div>
-                <div class="text-center md:text-left flex-grow">
-                    <h2 class="text-lg font-black text-white uppercase italic tracking-tight mb-2">VERIFIKASI TESTIMONI PELANGGAN</h2>
-                    <p class="text-[11px] text-slate-400 leading-relaxed mb-4">Lihat bukti kualitas kami sebelum membeli. Bergabunglah dengan server Discord kami untuk melihat ratusan bukti transaksi dan review jujur dari pengguna BAM MACRO di kanal <span class="text-indigo-400 font-bold">#testimoni</span>.</p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-[9px] font-black rounded-md uppercase tracking-widest border border-indigo-500/20">Real Reviews</span>
-                        <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-[9px] font-black rounded-md uppercase tracking-widest border border-indigo-500/20">Verified Buyers</span>
-                        <span class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-[9px] font-black rounded-md uppercase tracking-widest border border-indigo-500/20">Active Community</span>
-                    </div>
-                </div>
-                <div class="flex-shrink-0">
-                    <div class="px-6 py-3 bg-indigo-600 hover:bg-white hover:text-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-tighter transition-all flex items-center gap-2">
-                        Cek Testi Sekarang <i class="fa-solid fa-arrow-right"></i>
-                    </div>
-                </div>
+                <button onclick="goTo('discord')" class="px-5 py-2 bg-indigo-600 text-white rounded-lg font-black text-[9px] uppercase tracking-widest hover:bg-white hover:text-indigo-600 transition-all">
+                    Gabung Discord
+                </button>
             </div>
         </section>
 
-        <!-- FOOTER CONTACT SECTION -->
+        <!-- CONTACT SECTION -->
         <section id="contact-section" class="mt-10 py-12 px-6 footer-contact-card">
             <div class="max-w-4xl mx-auto">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-8 text-center md:text-left">
-                    <div>
-                        <h2 class="text-xl font-black text-white uppercase italic tracking-tight mb-2">Siap untuk <span class="text-amber-500">Upgrade Skill?</span></h2>
-                        <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Gabung komunitas & lihat testimoni di Discord</p>
-                    </div>
+                <div class="text-center md:text-left mb-8">
+                    <h2 class="text-xl font-black text-white uppercase italic tracking-tight mb-2">Siap untuk <span class="text-amber-500">Upgrade Skill?</span></h2>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Hubungi admin untuk konsultasi & instalasi</p>
                 </div>
-                <div id="footer-social-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- Rendered via JS -->
-                </div>
+                <div id="footer-social-container" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
             </div>
         </section>
     </main>
@@ -289,6 +345,11 @@
     </footer>
 
     <!-- MODALS -->
+    <!-- Lightbox Preview untuk Gambar Testimoni -->
+    <div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Testimonial Preview">
+    </div>
+
     <div id="contact-modal" class="fixed inset-0 z-[110] bg-black/95 hidden flex items-center justify-center p-6">
         <div class="max-w-md w-full bg-[#0a0b0d] border border-white/10 rounded-3xl p-8 relative">
             <button onclick="closeContact()" class="absolute top-6 right-6 text-slate-500"><i class="fa-solid fa-xmark"></i></button>
@@ -322,95 +383,112 @@
     <script>
         const CONFIG = {
             social: {
-                whatsapp: "https://api.whatsapp.com/send/?phone=6289697523717&text&type=phone_number&app_absent=0",
+                whatsapp: "https://api.whatsapp.com/send/?phone=6289697523717",
                 tiktok: "https://www.tiktok.com/@bampermana_",
                 youtube: "https://www.youtube.com/channel/UCKydA45oOtKMmzxML44aTbg",
                 discord: "https://discord.com/invite/zpuM9PRSdQ"
             }
         };
 
+        // --- COPAS LINK GAMBAR DISINI ---
+        const TESTIMONIAL_IMAGES = [
+            "https://cdn.discordapp.com/attachments/1398773494724034580/1400143345304604842/WhatsApp_Image_2025-07-27_at_04.07.18_ecdc15a2.jpg?ex=69b18f1a&is=69b03d9a&hm=e874ea3b9b3e8055d8aaa0a6c7814a8bafaa5171046e5a5baaa3e1493756543e&",
+            "https://cdn.discordapp.com/attachments/1398773494724034580/1400520602758021251/IMG_5250.png?ex=69b0f434&is=69afa2b4&hm=bbe7ecfd83d23ebbb7bff957c7fad3f99de74283de29660a1292542efce327a0&",
+            "https://cdn.discordapp.com/attachments/1398773494724034580/1402673371690565662/WhatsApp_Image_2025-08-06_at_22.22.38.jpeg?ex=69b188e0&is=69b03760&hm=21071a95acc955006d54453716595ee9fc28893dba4706d8313b0cf77d377d0f&",
+            "https://cdn.discordapp.com/attachments/1398773494724034580/1404141201833066547/IMG_5289.JPG?ex=69b199e6&is=69b04866&hm=d8f6d95c5e5a284a70c50a15f33f3954fa339c41045f03d9074ffb0768af274d&",
+            "https://cdn.discordapp.com/attachments/1398773494724034580/1405016591594291220/IMG_5298.png?ex=69b17d6b&is=69b02beb&hm=00a7a222aad2bc8c2925055d215dd7dcb770ff344d4a0c0a430e145d6d62f5d2&",
+        ];
+
         const PRODUCTS = [
             {
-                id: "delta-v1-SW",
+                id: "delta-v1-sw",
                 name: "Delta Force V1",
                 subtitle: "Versi Garena & Steam Ready!",
                 price: "Rp 50.000",
                 tag: "DeltaForce (Software)",
                 image: "https://assets-prd.ignimgs.com/2024/08/28/delta-force-button-replacement-1724855313566.jpg",
                 videoId: "RvrJzZ_K4lU",
-                features: [
-                    { title: "Pure Native Logic", desc: "Aman tanpa library luar." },
-                    { title: "Hardware Sync", desc: "Sinkronisasi mulus ke mouse." }
-                ]
+                features: [{ title: "Pure Native Logic", desc: "Aman tanpa library luar." }]
             },
             {
-                id: "delta-v2-SW",
+                id: "delta-v2-sw",
                 name: "Delta Force V2",
                 subtitle: "Versi Garena & Steam Ready!",
                 price: "Rp 100.000",
                 tag: "DeltaForce (Software)",
                 image: "https://assets-prd.ignimgs.com/2024/08/28/delta-force-button-replacement-1724855313566.jpg", 
                 videoId: "sRxl-gWVs_M",
-                features: [
-                    { title: "Pure Native Logic", desc: "Aman tanpa library luar." },
-                    { title: "Hardware Sync", desc: "Sinkronisasi mulus ke mouse." }
-                ]
+                features: [{ title: "Advanced Control", desc: "Setting lebih presisi." }]
             },
             {
-                id: "delta-v1-HW",
+                id: "delta-v1-hw",
                 name: "Delta Force V1",
-                subtitle: "Versi Garena & Steam Ready!",
+                subtitle: "Hardware Unit-X Ready!",
                 price: "Rp 150.000",
                 tag: "DeltaForce (UNIT-X)",
-                image: "https://tse4.mm.bing.net/th/id/OIP.U8CQhGEgx-neoeVKBQ2ooAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://tse4.mm.bing.net/th/id/OIP.U8CQhGEgx-neoeVKBQ2ooAHaHa",
                 videoId: "SsWBIzwcSsg",
-                features: [
-                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
-                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
-                ]
+                features: [{ title: "Native Hardware", desc: "Gerakan mouse 100% asli." }]
             },
             {
-                id: "delta-v2-HW",
+                id: "delta-v2-hw",
                 name: "Delta Force V2",
-                subtitle: "Versi Garena & Steam Ready!",
+                subtitle: "Hardware Unit-X Ready!",
                 price: "Rp 200.000",
                 tag: "DeltaForce (UNIT-X)",
-                image: "https://tse4.mm.bing.net/th/id/OIP.U8CQhGEgx-neoeVKBQ2ooAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://tse4.mm.bing.net/th/id/OIP.U8CQhGEgx-neoeVKBQ2ooAHaHa",
                 videoId: "SsWBIzwcSsg",
-                features: [
-                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
-                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
-                ]
+                features: [{ title: "Premium Hardware", desc: "Bypass anti-cheat tingkat tinggi." }]
             },
             {
-                id: "pubg-HW",
+                id: "pubg-hw",
                 name: "PUBG",
-                subtitle: "Hardware Level & Steam Ready!",
+                subtitle: "Steam Ready Hardware!",
                 price: "Rp 200.000",
                 tag: "PUBG (UNIT-X)",
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/0406/d8836a7efd114c7302d116f5b1242ca8c50bf8f137f6a71d.png",
                 videoId: "gvTQ4MFALF4",
-                features: [
-                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
-                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
-                ]
+                features: [{ title: "Recoil Control", desc: "Stabilitas senjata maksimal." }]
             },
             {
-                id: "bloodstrike-SW",
+                id: "bloodstrike-sw",
                 name: "BLOODSTRIKE",
-                subtitle: "Versi Windows & Steam Ready!",
+                subtitle: "Windows & Steam Ready!",
                 price: "Rp 100.000",
                 tag: "BloodStrike (Software)",
                 image: "https://cdna.artstation.com/p/assets/covers/images/085/755/392/large/aaa-aaa-111-1.jpg?1741590140",
                 videoId: "-ucNJ4KahjI",
-                features: [
-                    { title: "Click-Sync", desc: "Auto-timing tembakan." },
-                    { title: "Ultra Lightweight", desc: "Tanpa beban CPU." }
-                ]
+                features: [{ title: "Quick Response", desc: "Optimasi FPS & Input." }]
             }
         ];
 
         let activeVideoId = '';
+
+        function renderTestimonials() {
+            const container = document.getElementById('testi-scroll-container');
+            container.innerHTML = TESTIMONIAL_IMAGES.map(url => `
+                <div class="testi-card" onclick="openLightbox('${url}')">
+                    <img src="${url}" alt="Testimonial">
+                </div>
+            `).join('');
+        }
+
+        // --- FUNGSI LIGHTBOX ---
+        function openLightbox(url) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = url;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            if(document.getElementById('detail-modal').classList.contains('hidden') && 
+               document.getElementById('contact-modal').classList.contains('hidden')) {
+                document.body.style.overflow = 'auto';
+            }
+        }
 
         function renderProducts() {
             const list = document.getElementById('product-list');
@@ -418,7 +496,7 @@
                 <div class="product-grid-card group cursor-pointer" onclick="openDetail('${p.id}')">
                     <div class="product-image-container">
                         <div class="category-tag">${p.tag}</div>
-                        <img src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/400x400/0f172a/fbbf24?text=${p.name.replace(/ /g, '+')}'">
+                        <img src="${p.image}" alt="${p.name}">
                     </div>
                     <div class="p-4">
                         <h3 class="text-[10px] font-black text-white uppercase italic mb-1">${p.name}</h3>
@@ -431,54 +509,42 @@
                         </div>
                     </div>
                 </div>
-            `).join('') + `
-                <div class="product-grid-card border-dashed border-white/5 opacity-30 flex items-center justify-center min-h-[200px]">
-                    <span class="text-[8px] uppercase font-bold tracking-widest text-slate-600 italic">Coming Soon</span>
-                </div>
-            `;
+            `).join('');
         }
 
         function renderSocialLinks() {
             const modalContainer = document.getElementById('social-links-container');
             const footerContainer = document.getElementById('footer-social-container');
-            
             const links = [
-                { id: 'whatsapp', icon: 'fa-whatsapp', color: 'green-500', label: 'WhatsApp', sub: 'Chat Admin' },
-                { id: 'discord', icon: 'fa-discord', color: 'indigo-500', label: 'Discord', sub: 'Testimoni' },
-                { id: 'tiktok', icon: 'fa-tiktok', color: 'white', label: 'TikTok', sub: 'Follow Us' },
-                { id: 'youtube', icon: 'fa-youtube', color: 'red-500', label: 'YouTube', sub: 'Demo Video' }
+                { id: 'whatsapp', icon: 'fa-whatsapp', color: 'green-500', label: 'WhatsApp' },
+                { id: 'discord', icon: 'fa-discord', color: 'indigo-500', label: 'Discord' },
+                { id: 'tiktok', icon: 'fa-tiktok', color: 'white', label: 'TikTok' },
+                { id: 'youtube', icon: 'fa-youtube', color: 'red-500', label: 'YouTube' }
             ];
+
+            footerContainer.innerHTML = links.map(l => `
+                <button onclick="goTo('${l.id}')" class="flex flex-col items-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 transition-all">
+                    <i class="fa-brands ${l.icon} text-${l.color} text-lg mb-2"></i>
+                    <span class="text-[9px] font-black text-white uppercase">${l.label}</span>
+                </button>
+            `).join('');
 
             modalContainer.innerHTML = links.map(l => `
                 <div onclick="goTo('${l.id}')" class="social-btn">
-                    <div class="w-10 h-10 bg-${l.color}/10 rounded-xl flex items-center justify-center text-${l.color}">
-                        <i class="fa-brands ${l.icon} text-lg"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-[10px] font-black text-white uppercase">${l.label}</h4>
-                        <p class="text-[9px] text-slate-500">${l.sub}</p>
-                    </div>
+                    <div class="w-10 h-10 bg-${l.color}/10 rounded-xl flex items-center justify-center text-${l.color}"><i class="fa-brands ${l.icon} text-lg"></i></div>
+                    <div><h4 class="text-[10px] font-black text-white uppercase">${l.label}</h4></div>
                 </div>
-            `).join('');
-
-            footerContainer.innerHTML = links.map(l => `
-                <button onclick="goTo('${l.id}')" class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 hover:bg-amber-500/5 transition-all group">
-                    <i class="fa-brands ${l.icon} text-${l.color} text-xl mb-1"></i>
-                    <span class="text-[9px] font-black text-white uppercase tracking-widest">${l.label}</span>
-                </button>
             `).join('');
         }
 
-        function openDetail(productId) {
-            const p = PRODUCTS.find(item => item.id === productId);
+        function openDetail(id) {
+            const p = PRODUCTS.find(i => i.id === id);
             if (!p) return;
-
             activeVideoId = p.videoId;
             document.getElementById('modal-title').innerText = p.name;
             document.getElementById('modal-price').innerText = p.price;
             document.getElementById('modal-tag').innerText = p.tag;
             document.getElementById('modal-yt-thumbnail').src = `https://img.youtube.com/vi/${p.videoId}/mqdefault.jpg`;
-            
             document.getElementById('modal-features').innerHTML = p.features.map(f => `
                 <div class="flex gap-4 items-start">
                     <i class="fa-solid fa-check text-amber-500 text-[10px] mt-1"></i>
@@ -488,7 +554,6 @@
                     </div>
                 </div>
             `).join('');
-
             document.getElementById('detail-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -496,15 +561,10 @@
         function goTo(p) { window.open(CONFIG.social[p], '_blank'); }
         function playCurrentVideo() { if(activeVideoId) window.open(`https://youtube.com/watch?v=${activeVideoId}`, '_blank'); }
         function closeDetail() { document.getElementById('detail-modal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
-        function openContact() { document.getElementById('contact-modal').classList.remove('hidden'); }
-        function closeContact() { document.getElementById('contact-modal').classList.add('hidden'); if(document.getElementById('detail-modal').classList.contains('hidden')) document.body.style.overflow = 'auto'; }
+        function openContact() { document.getElementById('contact-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeContact() { document.getElementById('contact-modal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
 
-        window.onclick = e => {
-            if(e.target.id === 'detail-modal') closeDetail();
-            if(e.target.id === 'contact-modal') closeContact();
-        }
-
-        window.onload = () => { renderProducts(); renderSocialLinks(); };
+        window.onload = () => { renderProducts(); renderSocialLinks(); renderTestimonials(); };
     </script>
 </body>
 </html>
