@@ -270,46 +270,67 @@
         
         <!-- KEAMANAN SECTION -->
         <section class="mb-6 pb-6" style="border-bottom:1px solid rgba(255,255,255,0.07);">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <span style="font-size:20px;">🛡️</span>
-                    <div>
-                        <p class="text-[10px] font-black text-white uppercase leading-tight">System Safe</p>
-                        <p class="text-[8px] text-slate-500 mt-0.5">Tanpa injeksi kode</p>
+            <!-- Wrapper dengan background gradient + decorative glow -->
+            <div class="relative rounded-2xl overflow-hidden px-4 py-4" style="background:linear-gradient(135deg,rgba(251,191,36,0.06) 0%,rgba(255,255,255,0.01) 60%);border:1px solid rgba(251,191,36,0.1);">
+
+                <!-- Dekorasi glow sudut kiri atas -->
+                <div style="position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(251,191,36,0.12),transparent 70%);pointer-events:none;"></div>
+                <!-- Dekorasi glow sudut kanan bawah -->
+                <div style="position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle,rgba(251,191,36,0.08),transparent 70%);pointer-events:none;"></div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 relative">
+
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                        <span style="font-size:20px;">🛡️</span>
+                        <div>
+                            <p class="text-[10px] font-black text-white uppercase leading-tight">System Safe</p>
+                            <p class="text-[8px] text-slate-400 mt-0.5">Tanpa injeksi kode</p>
+                        </div>
                     </div>
-                </div>
-                <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <span style="font-size:20px;">🖱️</span>
-                    <div>
-                        <p class="text-[10px] font-black text-white uppercase leading-tight">Native Input</p>
-                        <p class="text-[8px] text-slate-500 mt-0.5">Gerakan mouse asli OS</p>
+
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                        <span style="font-size:20px;">🖱️</span>
+                        <div>
+                            <p class="text-[10px] font-black text-white uppercase leading-tight">Native Input</p>
+                            <p class="text-[8px] text-slate-400 mt-0.5">Gerakan mouse asli OS</p>
+                        </div>
                     </div>
-                </div>
-                <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <span style="font-size:20px;">⚡</span>
-                    <div>
-                        <p class="text-[10px] font-black text-white uppercase leading-tight">Stable Engine</p>
-                        <p class="text-[8px] text-slate-500 mt-0.5">Performa konsisten</p>
+
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                        <span style="font-size:20px;">⚡</span>
+                        <div>
+                            <p class="text-[10px] font-black text-white uppercase leading-tight">Stable Engine</p>
+                            <p class="text-[8px] text-slate-400 mt-0.5">Performa konsisten</p>
+                        </div>
                     </div>
-                </div>
-                <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <span style="font-size:20px;">🔌</span>
-                    <div>
-                        <p class="text-[10px] font-black text-white uppercase leading-tight">All Mouse</p>
-                        <p class="text-[8px] text-slate-500 mt-0.5">Semua perangkat</p>
+
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                        <span style="font-size:20px;">🔌</span>
+                        <div>
+                            <p class="text-[10px] font-black text-white uppercase leading-tight">All Mouse</p>
+                            <p class="text-[8px] text-slate-400 mt-0.5">Semua perangkat</p>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- UPGRADE SKILL SECTION (dipindah ke atas katalog) -->
-        <section id="contact-section" class="mb-10 py-10 px-6 footer-contact-card" style="border-bottom:1px solid rgba(255,255,255,0.07);">
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center md:text-left mb-6">
-                    <h2 class="text-xl font-black text-white uppercase italic tracking-tight mb-2">Siap untuk <span class="text-amber-500">Upgrade Skill?</span></h2>
-                    <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Hubungi admin untuk konsultasi & instalasi</p>
+        <!-- UPGRADE SKILL SECTION -->
+        <section id="contact-section" class="mb-8 pb-8" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 rounded-2xl" style="background:rgba(251,191,36,0.04);border:1px solid rgba(251,191,36,0.12);">
+                <!-- Teks kiri -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(251,191,36,0.15);">
+                        <i class="fa-solid fa-headset text-amber-400 text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-black text-white uppercase italic">Siap untuk <span class="text-amber-400">Upgrade Skill?</span></p>
+                        <p class="text-[8px] text-slate-400 mt-0.5">Hubungi admin untuk konsultasi & instalasi</p>
+                    </div>
                 </div>
-                <div id="footer-social-container" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+                <!-- Tombol sosial kanan -->
+                <div id="footer-social-container" class="flex gap-2"></div>
             </div>
         </section>
 
@@ -330,83 +351,77 @@
             </h2>
             <p class="text-center text-[9px] text-slate-400 uppercase tracking-widest mb-8">Pilih tipe yang sesuai dengan gaya bermain kamu</p>
 
-            <!-- 3 Kartu Tipe — 3 kolom horizontal sejajar -->
-            <div class="grid grid-cols-3 gap-4">
+            <!-- 3 Kartu — thumbnail kecil kiri, teks kanan, semua dalam 1 baris -->
+            <div class="grid grid-cols-3 gap-3">
 
                 <!-- TIPE 1: MODE HOLD -->
-                <div class="rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
-                    <!-- Thumbnail YouTube -->
-                    <div class="relative cursor-pointer group"
+                <div class="flex gap-3 items-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
+                    <!-- Thumbnail kecil -->
+                    <div class="relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer group"
                          id="macro-thumb-hold" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.hold,'_blank')"
-                         style="background:#000;aspect-ratio:16/9;">
+                         style="width:72px;height:48px;background:#000;">
                         <img id="macro-img-hold" src="https://img.youtube.com/vi/VIDEO_ID_HOLD/mqdefault.jpg"
-                             alt="Mode Hold" class="w-full h-full object-cover group-hover:opacity-70 transition-opacity" style="opacity:0.55;">
+                             alt="Mode Hold" class="w-full h-full object-cover" style="opacity:0.6;">
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
-                                 style="background:rgba(255,0,0,0.9);box-shadow:0 0 12px rgba(255,0,0,0.4);">
-                                <i class="fa-brands fa-youtube text-white text-sm"></i>
+                            <div class="w-6 h-6 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform"
+                                 style="background:rgba(255,0,0,0.9);">
+                                <i class="fa-brands fa-youtube text-white" style="font-size:10px;"></i>
                             </div>
                         </div>
-                        <span class="absolute top-2 left-2 text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
-                              style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.35);color:#fbbf24;">Tipe 1</span>
                     </div>
-                    <!-- Info -->
-                    <div class="px-3 py-2.5" style="border-top:1px solid rgba(255,255,255,0.07);">
-                        <div class="flex items-center gap-1.5 mb-1">
-                            <span style="font-size:12px;">🔒</span>
-                            <h3 class="text-[10px] font-black text-white uppercase italic">Mode Hold</h3>
+                    <!-- Teks -->
+                    <div style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
+                        <div class="flex items-center gap-1 mb-0.5">
+                            <span style="font-size:10px;">🔒</span>
+                            <h3 class="text-[9px] font-black text-white uppercase italic">Mode Hold</h3>
                         </div>
-                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif <span class="text-amber-400 font-bold">selama tombol ditahan</span>. Cocok untuk burst fire & kontrol presisi.</p>
+                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif <span class="text-amber-400 font-bold">selama tombol ditahan</span>. Cocok untuk burst fire & kontrol presisi.</p>
                     </div>
                 </div>
 
                 <!-- TIPE 2: MODE TOGGLE -->
-                <div class="rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
-                    <div class="relative cursor-pointer group"
+                <div class="flex gap-3 items-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
+                    <div class="relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer group"
                          id="macro-thumb-toggle" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.toggle,'_blank')"
-                         style="background:#000;aspect-ratio:16/9;">
+                         style="width:72px;height:48px;background:#000;">
                         <img id="macro-img-toggle" src="https://img.youtube.com/vi/VIDEO_ID_TOGGLE/mqdefault.jpg"
-                             alt="Mode Toggle" class="w-full h-full object-cover group-hover:opacity-70 transition-opacity" style="opacity:0.55;">
+                             alt="Mode Toggle" class="w-full h-full object-cover" style="opacity:0.6;">
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
-                                 style="background:rgba(255,0,0,0.9);box-shadow:0 0 12px rgba(255,0,0,0.4);">
-                                <i class="fa-brands fa-youtube text-white text-sm"></i>
+                            <div class="w-6 h-6 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform"
+                                 style="background:rgba(255,0,0,0.9);">
+                                <i class="fa-brands fa-youtube text-white" style="font-size:10px;"></i>
                             </div>
                         </div>
-                        <span class="absolute top-2 left-2 text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
-                              style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.35);color:#fbbf24;">Tipe 2</span>
                     </div>
-                    <div class="px-3 py-2.5" style="border-top:1px solid rgba(255,255,255,0.07);">
-                        <div class="flex items-center gap-1.5 mb-1">
-                            <span style="font-size:12px;">🔄</span>
-                            <h3 class="text-[10px] font-black text-white uppercase italic">Mode Toggle</h3>
+                    <div style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
+                        <div class="flex items-center gap-1 mb-0.5">
+                            <span style="font-size:10px;">🔄</span>
+                            <h3 class="text-[9px] font-black text-white uppercase italic">Mode Toggle</h3>
                         </div>
-                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif/nonaktif dengan <span class="text-amber-400 font-bold">satu klik</span>. Cocok untuk spray panjang tanpa menahan tombol.</p>
+                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif/nonaktif dengan <span class="text-amber-400 font-bold">satu klik</span>. Cocok untuk spray panjang tanpa menahan tombol.</p>
                     </div>
                 </div>
 
                 <!-- TIPE 3: FIRE RECOIL -->
-                <div class="rounded-2xl overflow-hidden" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
-                    <div class="relative cursor-pointer group"
+                <div class="flex gap-3 items-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
+                    <div class="relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer group"
                          id="macro-thumb-firerecoil" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.firerecoil,'_blank')"
-                         style="background:#000;aspect-ratio:16/9;">
+                         style="width:72px;height:48px;background:#000;">
                         <img id="macro-img-firerecoil" src="https://img.youtube.com/vi/VIDEO_ID_FIRERECOIL/mqdefault.jpg"
-                             alt="Fire Recoil" class="w-full h-full object-cover group-hover:opacity-70 transition-opacity" style="opacity:0.55;">
+                             alt="Fire Recoil" class="w-full h-full object-cover" style="opacity:0.6;">
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform"
-                                 style="background:rgba(255,0,0,0.9);box-shadow:0 0 12px rgba(255,0,0,0.4);">
-                                <i class="fa-brands fa-youtube text-white text-sm"></i>
+                            <div class="w-6 h-6 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform"
+                                 style="background:rgba(255,0,0,0.9);">
+                                <i class="fa-brands fa-youtube text-white" style="font-size:10px;"></i>
                             </div>
                         </div>
-                        <span class="absolute top-2 left-2 text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full"
-                              style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.35);color:#fbbf24;">Tipe 3</span>
                     </div>
-                    <div class="px-3 py-2.5" style="border-top:1px solid rgba(255,255,255,0.07);">
-                        <div class="flex items-center gap-1.5 mb-1">
-                            <span style="font-size:12px;">🔥</span>
-                            <h3 class="text-[10px] font-black text-white uppercase italic">Fire Recoil</h3>
+                    <div style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
+                        <div class="flex items-center gap-1 mb-0.5">
+                            <span style="font-size:10px;">🔥</span>
+                            <h3 class="text-[9px] font-black text-white uppercase italic">Fire Recoil</h3>
                         </div>
-                        <p class="text-[8px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-amber-400 font-bold">tombol tembak</span>. Recoil otomatis terkontrol setiap tembakan dilepas.</p>
+                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-amber-400 font-bold">tombol tembak</span>. Recoil otomatis terkontrol setiap tembakan dilepas.</p>
                     </div>
                 </div>
 
@@ -744,9 +759,9 @@
             },
 			{
                 id: "pubg-hw",
-                name: "[HARDWARE]  COOMINGSOON!!",
+                name: "COOMINGSOON!!",
                 subtitle: "Steam Ready Hardware!",
-                price: "Rp 300.000 (Lifetime)",
+                price: "-",
                 tag: "PUBG (UNIT-X)",
                 image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/0406/d8836a7efd114c7302d116f5b1242ca8c50bf8f137f6a71d.png",
                 videoId: "gvTQ4MFALF4",
@@ -882,9 +897,9 @@
             ];
 
             footerContainer.innerHTML = links.map(l => `
-                <button onclick="goTo('${l.id}')" class="flex flex-col items-center p-4 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 transition-all">
-                    <i class="fa-brands ${l.icon} text-${l.color} text-lg mb-2"></i>
-                    <span class="text-[9px] font-black text-white uppercase">${l.label}</span>
+                <button onclick="goTo('${l.id}')" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 transition-all">
+                    <i class="fa-brands ${l.icon} text-${l.color} text-sm"></i>
+                    <span class="text-[8px] font-black text-white uppercase">${l.label}</span>
                 </button>
             `).join('');
 
