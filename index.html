@@ -351,15 +351,14 @@
             </h2>
             <p class="text-center text-[9px] text-slate-400 uppercase tracking-widest mb-8">Pilih tipe yang sesuai dengan gaya bermain kamu</p>
 
-            <!-- 3 Kartu — thumbnail kecil kiri, teks kanan, semua dalam 1 baris -->
-            <div class="grid grid-cols-3 gap-3">
+            <!-- 3 Kartu — mobile: stack vertikal, desktop: 3 kolom -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
 
                 <!-- TIPE 1: MODE HOLD -->
                 <div class="flex gap-3 items-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
-                    <!-- Thumbnail kecil -->
                     <div class="relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer group"
                          id="macro-thumb-hold" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.hold,'_blank')"
-                         style="width:72px;height:48px;background:#000;">
+                         style="width:80px;height:52px;background:#000;">
                         <img id="macro-img-hold" src="https://img.youtube.com/vi/VIDEO_ID_HOLD/mqdefault.jpg"
                              alt="Mode Hold" class="w-full h-full object-cover" style="opacity:0.6;">
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -369,13 +368,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Teks -->
-                    <div style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
+                    <div class="flex-1 min-w-0" style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
                         <div class="flex items-center gap-1 mb-0.5">
                             <span style="font-size:10px;">🔒</span>
                             <h3 class="text-[9px] font-black text-white uppercase italic">Mode Hold</h3>
                         </div>
-                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif <span class="text-amber-400 font-bold">selama tombol ditahan</span>. Cocok untuk burst fire & kontrol presisi.</p>
+                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif <span class="text-amber-400 font-bold">selama tombol ditahan</span>. Cocok burst fire & presisi.</p>
                     </div>
                 </div>
 
@@ -383,7 +381,7 @@
                 <div class="flex gap-3 items-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
                     <div class="relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer group"
                          id="macro-thumb-toggle" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.toggle,'_blank')"
-                         style="width:72px;height:48px;background:#000;">
+                         style="width:80px;height:52px;background:#000;">
                         <img id="macro-img-toggle" src="https://img.youtube.com/vi/VIDEO_ID_TOGGLE/mqdefault.jpg"
                              alt="Mode Toggle" class="w-full h-full object-cover" style="opacity:0.6;">
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -393,12 +391,12 @@
                             </div>
                         </div>
                     </div>
-                    <div style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
+                    <div class="flex-1 min-w-0" style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
                         <div class="flex items-center gap-1 mb-0.5">
                             <span style="font-size:10px;">🔄</span>
                             <h3 class="text-[9px] font-black text-white uppercase italic">Mode Toggle</h3>
                         </div>
-                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif/nonaktif dengan <span class="text-amber-400 font-bold">satu klik</span>. Cocok untuk spray panjang tanpa menahan tombol.</p>
+                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif/nonaktif <span class="text-amber-400 font-bold">satu klik</span>. Cocok untuk spray panjang.</p>
                     </div>
                 </div>
 
@@ -406,7 +404,7 @@
                 <div class="flex gap-3 items-center p-3 rounded-2xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);">
                     <div class="relative flex-shrink-0 rounded-xl overflow-hidden cursor-pointer group"
                          id="macro-thumb-firerecoil" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.firerecoil,'_blank')"
-                         style="width:72px;height:48px;background:#000;">
+                         style="width:80px;height:52px;background:#000;">
                         <img id="macro-img-firerecoil" src="https://img.youtube.com/vi/VIDEO_ID_FIRERECOIL/mqdefault.jpg"
                              alt="Fire Recoil" class="w-full h-full object-cover" style="opacity:0.6;">
                         <div class="absolute inset-0 flex items-center justify-center">
@@ -416,12 +414,12 @@
                             </div>
                         </div>
                     </div>
-                    <div style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
+                    <div class="flex-1 min-w-0" style="border-left:1px solid rgba(255,255,255,0.07);padding-left:10px;">
                         <div class="flex items-center gap-1 mb-0.5">
                             <span style="font-size:10px;">🔥</span>
                             <h3 class="text-[9px] font-black text-white uppercase italic">Fire Recoil</h3>
                         </div>
-                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-amber-400 font-bold">tombol tembak</span>. Recoil otomatis terkontrol setiap tembakan dilepas.</p>
+                        <p class="text-[8px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-amber-400 font-bold">tombol tembak</span>. Recoil terkontrol otomatis.</p>
                     </div>
                 </div>
 
@@ -757,16 +755,6 @@
                 videoId: "KuPa3mpymDo",
                 features: [{ title: "Advanced Control", desc: "Bypass anti-cheat tingkat tinggi." }]
             },
-			{
-                id: "pubg-hw",
-                name: "COOMINGSOON!!",
-                subtitle: "Steam Ready Hardware!",
-                price: "-",
-                tag: "PUBG (UNIT-X)",
-                image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/0406/d8836a7efd114c7302d116f5b1242ca8c50bf8f137f6a71d.png",
-                videoId: "gvTQ4MFALF4",
-                features: [{ title: "Recoil Control", desc: "Stabilitas senjata maksimal." }]
-            },
             {
                 id: "delta-v1-sw",
                 name: "Delta   Force  V1",
@@ -787,7 +775,6 @@
                 videoId: "Od8l251f13M",
                 features: [{ title: "Advanced Control", desc: "Setting lebih presisi." }]
             },
-            
 			{
                 id: "bloodstrike-sw",
                 name: "BLOODSTRIKE",
@@ -797,6 +784,16 @@
                 image: "https://cdna.artstation.com/p/assets/covers/images/085/755/392/large/aaa-aaa-111-1.jpg?1741590140",
                 videoId: "-ucNJ4KahjI",
                 features: [{ title: "Quick Response", desc: "Optimasi FPS & Input." }]
+            },
+			{
+                id: "pubg-hw",
+                name: "COOMINGSOON!!",
+                subtitle: "-",
+                price: "-",
+                tag: "(UNIT-X)",
+                image: "-",
+                videoId: "-",
+                features: [{ title: "-" }]
             }
         ];
         // ← Tambah produk baru di atas baris ini
@@ -872,10 +869,10 @@
                         <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to top,#0f172a,transparent);"></div>
                     </div>
                     <div class="p-4" style="border-top:1px solid ${isHW ? 'rgba(34,211,238,0.15)' : 'rgba(255,255,255,0.08)'};">
-                        <h3 class="text-[11px] font-black text-white uppercase italic mb-1 leading-tight">${p.name}</h3>
-                        <p class="text-[9px] text-slate-400 mb-3">${p.subtitle}</p>
-                        <div class="flex items-center justify-between pt-2" style="border-top:1px solid rgba(255,255,255,0.05);">
-                            <span class="font-black text-[10px] italic" style="color:${accentColor};">${p.price}</span>
+                        <h3 class="text-[8px] md:text-[10px] font-black text-white uppercase italic mb-0.5 leading-tight">${p.name}</h3>
+                        <p class="text-[7px] md:text-[8px] text-slate-400 mb-2">${p.subtitle}</p>
+                        <div class="flex items-center justify-between pt-1.5" style="border-top:1px solid rgba(255,255,255,0.05);">
+                            <span class="font-black text-[7px] md:text-[9px] italic" style="color:${accentColor};">${p.price}</span>
                             <div class="w-5 h-5 rounded-full flex items-center justify-center transition-all group-hover:scale-110"
                                  style="border:1px solid ${accentColor};">
                                 <i class="fa-solid fa-chevron-right text-[7px]" style="color:${accentColor};"></i>
