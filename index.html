@@ -10,12 +10,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
         :root {
-            --bg-dark: #353839;
-            --accent: #fbbf24;
+            --bg-dark: #0f1410;
+            --accent: #22c55e;
         }
 
         body {
             background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(ellipse at 20% 0%, rgba(34,197,94,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(34,197,94,0.04) 0%, transparent 50%);
             color: #ffffff;
             font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
@@ -23,8 +26,8 @@
 
         .glass-nav {
             backdrop-filter: blur(16px);
-            background: rgba(7, 8, 10, 0.85);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(5, 12, 7, 0.92);
+            border-bottom: 1px solid rgba(34, 197, 94, 0.15);
         }
 
         /* GARIS PEMISAH GLOBAL */
@@ -51,7 +54,7 @@
         .product-image-container {
             width: 100%;
             aspect-ratio: 1 / 1;
-            background: #0a0f1a;
+            background: #0a1209;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -85,11 +88,11 @@
             color: var(--accent);
             text-transform: uppercase;
             font-weight: 900;
-            border: 1px solid rgba(251, 191, 36, 0.3);
+            border: 1px solid rgba(34, 197, 94, 0.3);
         }
 
         .text-glow {
-            text-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+            text-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
         }
 
         .video-thumbnail-container {
@@ -130,7 +133,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
         }
 
         .section-box {
@@ -153,13 +156,13 @@
         }
 
         .social-btn:hover {
-            background: rgba(251, 191, 36, 0.1);
+            background: rgba(34, 197, 94, 0.08);
             border-color: var(--accent);
             transform: translateX(5px);
         }
 
         .footer-contact-card {
-            background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.05), transparent);
+            background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.06), transparent);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
         }
@@ -172,7 +175,7 @@
             padding: 10px 0 30px 0;
             scroll-snap-type: x mandatory;
             scrollbar-width: thin;
-            scrollbar-color: var(--accent) transparent;
+            scrollbar-color: #22c55e transparent;
         }
 
         .gallery-scroll-container::-webkit-scrollbar {
@@ -185,15 +188,15 @@
         }
 
         .testi-card {
-            min-width: 280px;
-            max-width: 280px;
+            min-width: 240px;
+            max-width: 240px;
             height: 200px;
             flex-shrink: 0;
             scroll-snap-align: start;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            background: #0f172a;
+            background: #0d1a0e;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease, border-color 0.3s ease;
@@ -251,13 +254,13 @@
     <nav class="fixed top-0 w-full z-50 glass-nav">
         <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-amber-500 rounded flex items-center justify-center">
+                <div class="w-6 h-6 bg-green-500 rounded flex items-center justify-center" style="box-shadow:0 0 10px rgba(34,197,94,0.6);">
                     <i class="fa-solid fa-gun text-black text-[10px]"></i>
                 </div>
-                <span class="font-extrabold uppercase tracking-tighter text-white text-sm">BAM<span class="text-amber-500">MACRO RECOIL</span></span>
+                <span class="font-extrabold uppercase tracking-tighter text-white text-sm">BAM<span class="text-green-500">MACRO RECOIL</span></span>
             </div>
             <div class="flex gap-4 items-center">
-                <button onclick="openContact()" class="bg-white text-black px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-amber-500 transition-all flex items-center gap-2">
+                <button onclick="openContact()" class="bg-white text-black px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-green-500 transition-all flex items-center gap-2">
                     <i class="fa-solid fa-headset"></i> Kontak Admin
                 </button>
             </div>
@@ -266,21 +269,21 @@
 
     <!-- HEADER dihapus -->
 
-    <main class="max-w-6xl mx-auto px-6 pt-24">
+    <main class="max-w-6xl mx-auto px-3 md:px-6 pt-24">
         
         <!-- KEAMANAN SECTION -->
         <section class="mb-6 pb-6" style="border-bottom:1px solid rgba(255,255,255,0.07);">
             <!-- Wrapper dengan background gradient + decorative glow -->
-            <div class="relative rounded-2xl overflow-hidden px-4 py-4" style="background:linear-gradient(135deg,rgba(251,191,36,0.06) 0%,rgba(255,255,255,0.01) 60%);border:1px solid rgba(251,191,36,0.1);">
+            <div class="relative rounded-2xl overflow-hidden px-4 py-4" style="background:linear-gradient(135deg,rgba(34,197,94,0.06) 0%,rgba(255,255,255,0.01) 60%);border:1px solid rgba(34,197,94,0.1);">
 
                 <!-- Dekorasi glow sudut kiri atas -->
-                <div style="position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(251,191,36,0.12),transparent 70%);pointer-events:none;"></div>
+                <div style="position:absolute;top:-30px;left:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(34,197,94,0.12),transparent 70%);pointer-events:none;"></div>
                 <!-- Dekorasi glow sudut kanan bawah -->
-                <div style="position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle,rgba(251,191,36,0.08),transparent 70%);pointer-events:none;"></div>
+                <div style="position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle,rgba(34,197,94,0.08),transparent 70%);pointer-events:none;"></div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 relative">
 
-                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(34,197,94,0.12);">
                         <span style="font-size:20px;">🛡️</span>
                         <div>
                             <p class="text-[10px] font-black text-white uppercase leading-tight">System Safe</p>
@@ -288,7 +291,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(34,197,94,0.12);">
                         <span style="font-size:20px;">🖱️</span>
                         <div>
                             <p class="text-[10px] font-black text-white uppercase leading-tight">Native Input</p>
@@ -296,7 +299,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(34,197,94,0.12);">
                         <span style="font-size:20px;">⚡</span>
                         <div>
                             <p class="text-[10px] font-black text-white uppercase leading-tight">Stable Engine</p>
@@ -304,7 +307,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(251,191,36,0.12);">
+                    <div class="flex items-center gap-3 px-4 py-3 rounded-2xl" style="background:rgba(0,0,0,0.25);border:1px solid rgba(34,197,94,0.12);">
                         <span style="font-size:20px;">🔌</span>
                         <div>
                             <p class="text-[10px] font-black text-white uppercase leading-tight">All Mouse</p>
@@ -313,24 +316,6 @@
                     </div>
 
                 </div>
-            </div>
-        </section>
-
-        <!-- UPGRADE SKILL SECTION -->
-        <section id="contact-section" class="mb-8 pb-8" style="border-bottom:1px solid rgba(255,255,255,0.07);">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 rounded-2xl" style="background:rgba(251,191,36,0.04);border:1px solid rgba(251,191,36,0.12);">
-                <!-- Teks kiri -->
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(251,191,36,0.15);">
-                        <i class="fa-solid fa-headset text-amber-400 text-xs"></i>
-                    </div>
-                    <div>
-                        <p class="text-[11px] font-black text-white uppercase italic">Siap untuk <span class="text-amber-400">Upgrade Skill?</span></p>
-                        <p class="text-[8px] text-slate-400 mt-0.5">Hubungi admin untuk konsultasi & instalasi</p>
-                    </div>
-                </div>
-                <!-- Tombol sosial kanan -->
-                <div id="footer-social-container" class="flex gap-2"></div>
             </div>
         </section>
 
@@ -373,7 +358,7 @@
                             <span style="font-size:10px;">🔒</span>
                             <h3 class="text-[9px] font-black text-white uppercase italic">Mode Hold</h3>
                         </div>
-                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif <span class="text-amber-400 font-bold">selama tombol ditahan</span>. Cocok burst fire & presisi.</p>
+                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif <span class="text-green-400 font-bold">selama tombol ditahan</span>. Cocok burst fire & presisi.</p>
                     </div>
                 </div>
 
@@ -396,7 +381,7 @@
                             <span style="font-size:10px;">🔄</span>
                             <h3 class="text-[9px] font-black text-white uppercase italic">Mode Toggle</h3>
                         </div>
-                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif/nonaktif <span class="text-amber-400 font-bold">satu klik</span>. Cocok untuk spray panjang.</p>
+                        <p class="text-[8px] text-slate-400 leading-relaxed">Aktif/nonaktif <span class="text-green-400 font-bold">satu klik</span>. Cocok untuk spray panjang.</p>
                     </div>
                 </div>
 
@@ -419,7 +404,7 @@
                             <span style="font-size:10px;">🔥</span>
                             <h3 class="text-[9px] font-black text-white uppercase italic">Fire Recoil</h3>
                         </div>
-                        <p class="text-[8px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-amber-400 font-bold">tombol tembak</span>. Recoil terkontrol otomatis.</p>
+                        <p class="text-[8px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-green-400 font-bold">tombol tembak</span>. Recoil terkontrol otomatis.</p>
                     </div>
                 </div>
 
@@ -436,27 +421,43 @@
             <!-- Legend Software vs Hardware -->
             <div class="flex items-center justify-center gap-6 mb-6">
                 <div class="flex items-center gap-2">
-                    <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
                     <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Software</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <div class="w-2.5 h-2.5 rounded-full bg-cyan-400"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
                     <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Hardware (Unit-X)</span>
                 </div>
             </div>
-            <div id="product-list" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
+            <div id="product-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </div>
+
+        <!-- UPGRADE SKILL SECTION -->
+        <section id="contact-section" class="mb-8 pb-8" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 rounded-2xl" style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.12);">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
+                        <i class="fa-solid fa-headset text-green-400 text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-black text-white uppercase italic">Siap untuk <span class="text-green-400">Upgrade Skill?</span></p>
+                        <p class="text-[8px] text-slate-400 mt-0.5">Hubungi admin untuk konsultasi & instalasi</p>
+                    </div>
+                </div>
+                <div id="footer-social-container" class="flex flex-wrap gap-2 justify-center md:justify-end"></div>
+            </div>
+        </section>
 
         <!-- TESTIMONIALS SECTION -->
         <section id="testimonials-section" class="mb-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.07);">
             <!-- Header -->
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-2" style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);">
-                        <i class="fa-solid fa-star text-amber-400 text-[9px]"></i>
-                        <span class="text-[9px] font-black text-amber-400 uppercase tracking-widest">Verified Buyers</span>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-2" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);">
+                        <i class="fa-solid fa-star text-green-400 text-[9px]"></i>
+                        <span class="text-[9px] font-black text-green-400 uppercase tracking-widest">Verified Buyers</span>
                     </div>
-                    <h2 class="text-lg font-black text-white uppercase italic tracking-tight">Bukti Transaksi & <span class="text-amber-400">Testimoni</span></h2>
+                    <h2 class="text-lg font-black text-white uppercase italic tracking-tight">Bukti Transaksi & <span class="text-green-400">Testimoni</span></h2>
                     <p class="text-[9px] text-slate-400 mt-1">Screenshot langsung dari pembeli nyata kami</p>
                 </div>
                 <button onclick="goTo('discord')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-black text-[9px] uppercase tracking-widest transition-all flex-shrink-0" style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#818cf8;" onmouseover="this.style.background='rgba(99,102,241,0.3)'" onmouseout="this.style.background='rgba(99,102,241,0.15)'">
@@ -467,15 +468,15 @@
             <!-- Stats bar -->
             <div class="grid grid-cols-3 gap-3 mb-6">
                 <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <p class="text-xl font-black text-amber-400">500+</p>
+                    <p class="text-xl font-black text-green-400">500+</p>
                     <p class="text-[8px] text-slate-400 uppercase tracking-widest font-bold mt-1">Total Pembeli</p>
                 </div>
                 <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <p class="text-xl font-black text-amber-400">4.9★</p>
+                    <p class="text-xl font-black text-green-400">4.9★</p>
                     <p class="text-[8px] text-slate-400 uppercase tracking-widest font-bold mt-1">Rating</p>
                 </div>
                 <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <p class="text-xl font-black text-amber-400">100%</p>
+                    <p class="text-xl font-black text-green-400">100%</p>
                     <p class="text-[8px] text-slate-400 uppercase tracking-widest font-bold mt-1">Lifetime Access</p>
                 </div>
             </div>
@@ -497,7 +498,7 @@
     </div>
 
     <div id="contact-modal" class="fixed inset-0 z-[110] bg-black/95 hidden flex items-center justify-center p-6">
-        <div class="max-w-md w-full bg-[#0a0b0d] border border-white/10 rounded-3xl p-8 relative">
+        <div class="max-w-md w-full bg-[#0a120b] border border-white/10 rounded-3xl p-8 relative">
             <button onclick="closeContact()" class="absolute top-6 right-6 text-slate-500"><i class="fa-solid fa-xmark"></i></button>
             <h2 class="text-xl font-black text-white uppercase italic text-center mb-8">Hubungi Kami</h2>
             <div id="social-links-container" class="space-y-3"></div>
@@ -507,12 +508,12 @@
     <div id="detail-modal" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 overflow-y-auto" style="backdrop-filter:blur(8px);">
         <div class="max-w-2xl w-full relative" style="animation: modalIn 0.3s ease;">
             <!-- Close Button -->
-            <button onclick="closeDetail()" class="absolute -top-3 -right-3 z-20 w-9 h-9 bg-white/10 hover:bg-amber-500 border border-white/10 rounded-full flex items-center justify-center transition-all">
+            <button onclick="closeDetail()" class="absolute -top-3 -right-3 z-20 w-9 h-9 bg-white/10 hover:bg-green-500 border border-white/10 rounded-full flex items-center justify-center transition-all">
                 <i class="fa-solid fa-xmark text-white text-xs"></i>
             </button>
 
             <!-- Card -->
-            <div class="bg-[#0d0e10] border border-white/10 rounded-3xl overflow-hidden">
+            <div class="bg-[#0b130c] border border-white/10 rounded-3xl overflow-hidden">
 
                 <!-- VIDEO SECTION -->
                 <div class="relative cursor-pointer group" onclick="playCurrentVideo()" style="background:#000;">
@@ -522,7 +523,7 @@
 
                     <!-- YouTube branding bar di atas -->
                     <div class="absolute top-0 left-0 right-0 flex items-center justify-between px-4 py-3" style="background:linear-gradient(to bottom,rgba(0,0,0,0.7),transparent);">
-                        <span id="modal-tag" class="text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full border" style="background:rgba(7,8,10,0.85);border-color:rgba(251,191,36,0.4);color:#fbbf24;backdrop-filter:blur(4px);">TAG</span>
+                        <span id="modal-tag" class="text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full border" style="background:rgba(7,8,10,0.85);border-color:rgba(34,197,94,0.4);color:#22c55e;backdrop-filter:blur(4px);">TAG</span>
                         <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.3);">
                             <i class="fa-brands fa-youtube text-red-500 text-xs"></i>
                             <span class="text-[8px] font-black text-white uppercase tracking-wider">YouTube</span>
@@ -559,8 +560,8 @@
                         <div>
                             <h2 id="modal-title" class="text-lg font-black text-white uppercase italic leading-tight mb-1">TITLE</h2>
                             <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-tag text-amber-500 text-[10px]"></i>
-                                <p id="modal-price" class="text-amber-500 font-black text-sm italic">PRICE</p>
+                                <i class="fa-solid fa-tag text-green-500 text-[10px]"></i>
+                                <p id="modal-price" class="text-green-500 font-black text-sm italic">PRICE</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-green-500/10 border border-green-500/20">
@@ -574,7 +575,7 @@
 
                     <!-- CTA -->
                     <div class="flex gap-3">
-                        <button onclick="openContact()" class="flex-1 py-3.5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2" style="background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#000;box-shadow:0 4px 20px rgba(251,191,36,0.3);" onmouseover="this.style.boxShadow='0 4px 30px rgba(251,191,36,0.6)'" onmouseout="this.style.boxShadow='0 4px 20px rgba(251,191,36,0.3)'">
+                        <button onclick="openContact()" class="flex-1 py-3.5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 20px rgba(34,197,94,0.3);" onmouseover="this.style.boxShadow='0 4px 30px rgba(251,191,36,0.6)'" onmouseout="this.style.boxShadow='0 4px 20px rgba(34,197,94,0.3)'">
                             <i class="fa-solid fa-bolt"></i> Order Sekarang
                         </button>
                         <button onclick="goTo('whatsapp')" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/5 hover:bg-green-500/20 hover:border-green-500/40 flex items-center justify-center transition-all">
@@ -721,7 +722,7 @@
                 subtitle: "Versi Steam",
                 price: "Rp 100.000 (Lifetime)",
                 tag: "PUBG (Software)",
-                image: "https://tse2.mm.bing.net/th/id/OIP.ZC4AHqMshRpCB21YnR481AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://4kwallpapers.com/images/wallpapers/playerunknowns-2732x2732-20844.jpg",
                 videoId: "YoyGEKerbjc",
                 features: [{ title: "Advanced Control", desc: "Bypass anti-cheat tingkat tinggi." }]
             },
@@ -731,7 +732,7 @@
                 subtitle: "Versi Steam",
                 price: "Rp 100.000 (Lifetime)",
                 tag: "PUBG (Software)",
-                image: "https://tse2.mm.bing.net/th/id/OIP.ZC4AHqMshRpCB21YnR481AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+                image: "https://4kwallpapers.com/images/wallpapers/playerunknowns-2732x2732-20844.jpg",
                 videoId: "n7DOgW1gn5w",
                 features: [{ title: "Advanced Control", desc: "Bypass anti-cheat tingkat tinggi." }]
             },
@@ -761,7 +762,7 @@
                 subtitle: "Versi Garena & Steam Ready!",
                 price: "Rp 50.000 (Lifetime)",
                 tag: "DeltaForce (Software)",
-                image: "https://assets-prd.ignimgs.com/2024/08/28/delta-force-button-replacement-1724855313566.jpg",
+                image: "https://cdn-cf.gamivo.com/image_cover.jpg?f=524077&n=0c6d6469-85d0-4402-8cde-f9b042f00547.jpg&h=ab453b3db334aec27f4bded205e0d850",
                 videoId: "zG8VmiLS0rw",
                 features: [{ title: "Pure Native Logic", desc: "Aman tanpa library luar." }]
             },
@@ -771,7 +772,7 @@
                 subtitle: "Versi Garena & Steam Ready!",
                 price: "Rp 100.000 (Lifetime)",
                 tag: "DeltaForce (Software)",
-                image: "https://assets-prd.ignimgs.com/2024/08/28/delta-force-button-replacement-1724855313566.jpg", 
+                image: "https://cdn-cf.gamivo.com/image_cover.jpg?f=524077&n=0c6d6469-85d0-4402-8cde-f9b042f00547.jpg&h=ab453b3db334aec27f4bded205e0d850", 
                 videoId: "Od8l251f13M",
                 features: [{ title: "Advanced Control", desc: "Setting lebih presisi." }]
             },
@@ -781,7 +782,7 @@
                 subtitle: "Windows & Steam Ready!",
                 price: "Rp 100.000 (Lifetime)",
                 tag: "BloodStrike (Software)",
-                image: "https://cdna.artstation.com/p/assets/covers/images/085/755/392/large/aaa-aaa-111-1.jpg?1741590140",
+                image: "https://static.tophub.id/tophub/product/blood-strike-0_0dfWa-N75.webp?tr=w-640",
                 videoId: "-ucNJ4KahjI",
                 features: [{ title: "Quick Response", desc: "Optimasi FPS & Input." }]
             },
@@ -819,13 +820,13 @@
                                 <span style="font-size:8px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.08em;">Verified</span>
                             </div>
                             <div style="display:flex;gap:2px;">
-                                ${'<i class="fa-solid fa-star" style="color:#fbbf24;font-size:7px;"></i>'.repeat(5)}
+                                ${'<i class="fa-solid fa-star" style="color:#22c55e;font-size:7px;"></i>'.repeat(5)}
                             </div>
                         </div>
                     </div>
                     <!-- Top zoom icon -->
                     <div style="position:absolute;top:10px;right:10px;width:26px;height:26px;background:rgba(0,0,0,0.6);border-radius:8px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(4px);">
-                        <i class="fa-solid fa-magnifying-glass-plus" style="color:#fbbf24;font-size:9px;"></i>
+                        <i class="fa-solid fa-magnifying-glass-plus" style="color:#22c55e;font-size:9px;"></i>
                     </div>
                 </div>
             `).join('');
@@ -852,27 +853,28 @@
             const list = document.getElementById('product-list');
             list.innerHTML = PRODUCTS.map(p => {
                 const isHW = p.tag.toLowerCase().includes('unit-x');
-                const accentColor  = isHW ? '#22d3ee' : '#fbbf24';
-                const badgeBg      = isHW ? 'rgba(34,211,238,0.12)' : 'rgba(251,191,36,0.12)';
-                const badgeBorder  = isHW ? 'rgba(34,211,238,0.35)' : 'rgba(251,191,36,0.35)';
-                const cardBorder   = isHW ? 'rgba(34,211,238,0.15)' : 'rgba(255,255,255,0.05)';
+                const accentColor  = isHW ? '#34d399' : '#22c55e';
+                const badgeBg      = isHW ? 'rgba(52,211,153,0.12)' : 'rgba(34,197,94,0.12)';
+                const badgeBorder  = isHW ? 'rgba(52,211,153,0.35)' : 'rgba(34,197,94,0.35)';
+                const cardBorder   = isHW ? 'rgba(52,211,153,0.15)' : 'rgba(255,255,255,0.05)';
                 const typeIcon     = isHW ? 'fa-microchip' : 'fa-code';
                 const typeLabel    = isHW ? 'Hardware' : 'Software';
                 return `
                 <div class="product-grid-card group cursor-pointer" onclick="openDetail('${p.id}')"
                      style="border-color:${cardBorder};">
                     <div class="product-image-container">
-                        <div class="category-tag" style="color:${accentColor};border-color:${badgeBorder};background:${badgeBg};">
-                            <i class="fa-solid ${typeIcon} mr-1"></i>${typeLabel}
-                        </div>
                         <img src="${p.image}" alt="${p.name}">
-                        <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(to top,#0f172a,transparent);"></div>
+                        <!-- Badge tipe — strip penuh di bawah gambar -->
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:4px 8px;display:flex;align-items:center;gap:4px;background:${isHW ? 'rgba(52,211,153,0.85)' : 'rgba(34,197,94,0.85)'};backdrop-filter:blur(4px);">
+                            <i class="fa-solid ${typeIcon}" style="color:#000;font-size:7px;"></i>
+                            <span style="color:#000;font-size:7px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;">${typeLabel}</span>
+                        </div>
                     </div>
-                    <div class="p-4" style="border-top:1px solid ${isHW ? 'rgba(34,211,238,0.15)' : 'rgba(255,255,255,0.08)'};">
+                    <div class="p-3" style="border-top:1px solid ${isHW ? 'rgba(52,211,153,0.15)' : 'rgba(34,197,94,0.1)'};">
                         <h3 class="text-[8px] md:text-[10px] font-black text-white uppercase italic mb-0.5 leading-tight">${p.name}</h3>
                         <p class="text-[7px] md:text-[8px] text-slate-400 mb-2">${p.subtitle}</p>
                         <div class="flex items-center justify-between pt-1.5" style="border-top:1px solid rgba(255,255,255,0.05);">
-                            <span class="font-black text-[7px] md:text-[9px] italic" style="color:${accentColor};">${p.price}</span>
+                            <span class="font-black text-[7px] md:text-[8px] italic px-1.5 py-0.5 rounded-md" style="color:#000;background:${accentColor};letter-spacing:0.02em;">${p.price}</span>
                             <div class="w-5 h-5 rounded-full flex items-center justify-center transition-all group-hover:scale-110"
                                  style="border:1px solid ${accentColor};">
                                 <i class="fa-solid fa-chevron-right text-[7px]" style="color:${accentColor};"></i>
@@ -894,7 +896,7 @@
             ];
 
             footerContainer.innerHTML = links.map(l => `
-                <button onclick="goTo('${l.id}')" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 transition-all">
+                <button onclick="goTo('${l.id}')" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/5 hover:border-green-500/50 transition-all">
                     <i class="fa-brands ${l.icon} text-${l.color} text-sm"></i>
                     <span class="text-[8px] font-black text-white uppercase">${l.label}</span>
                 </button>
