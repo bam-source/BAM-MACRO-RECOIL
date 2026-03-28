@@ -526,7 +526,7 @@
     </div>
 
     <div id="detail-modal" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 overflow-y-auto" style="backdrop-filter:blur(8px);">
-        <div class="max-w-2xl w-full relative" style="animation: modalIn 0.3s ease;">
+        <div class="max-w-3xl w-full relative" style="animation: modalIn 0.3s ease;">
             <!-- Close Button -->
             <button onclick="closeDetail()" class="absolute -top-3 -right-3 z-20 w-9 h-9 bg-white/10 hover:bg-green-500 border border-white/10 rounded-full flex items-center justify-center transition-all">
                 <i class="fa-solid fa-xmark text-white text-xs"></i>
@@ -535,73 +535,118 @@
             <!-- Card -->
             <div class="bg-[#0b130c] border border-white/10 rounded-3xl overflow-hidden">
 
-                <!-- VIDEO SECTION -->
-                <div class="relative cursor-pointer group" onclick="playCurrentVideo()" style="background:#000;">
-                    <img id="modal-yt-thumbnail" src="" alt="Video Preview" class="w-full object-cover group-hover:opacity-70 transition-opacity" style="height:220px; opacity:0.55;">
-                    <!-- Gradient overlay -->
-                    <div class="absolute inset-0" style="background:linear-gradient(to top, #0d0e10 0%, transparent 60%);"></div>
-
-                    <!-- YouTube branding bar di atas -->
-                    <div class="absolute top-0 left-0 right-0 flex items-center justify-between px-4 py-3" style="background:linear-gradient(to bottom,rgba(0,0,0,0.7),transparent);">
-                        <span id="modal-tag" class="text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full border" style="background:rgba(7,8,10,0.85);border-color:rgba(34,197,94,0.4);color:#22c55e;backdrop-filter:blur(4px);">TAG</span>
-                        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.3);">
-                            <i class="fa-brands fa-youtube text-red-500 text-xs"></i>
-                            <span class="text-[8px] font-black text-white uppercase tracking-wider">YouTube</span>
-                        </div>
+                <!-- HEADER: Title + Tag + Price -->
+                <div class="flex items-center justify-between px-5 pt-5 pb-4" style="border-bottom:1px solid rgba(255,255,255,0.06);">
+                    <div>
+                        <span id="modal-tag" class="inline-block text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full border mb-2" style="background:rgba(7,8,10,0.85);border-color:rgba(34,197,94,0.4);color:#22c55e;">TAG</span>
+                        <h2 id="modal-title" class="text-base font-black text-white uppercase italic leading-tight">TITLE</h2>
                     </div>
-
-                    <!-- Play button tengah -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="flex flex-col items-center gap-2">
-                            <div class="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all" style="background:rgba(255,0,0,0.9);box-shadow:0 0 30px rgba(255,0,0,0.5);">
-                                <i class="fa-brands fa-youtube text-white text-2xl"></i>
-                            </div>
-                            <span class="text-[9px] uppercase font-black tracking-widest" style="color:rgba(255,255,255,0.7);">Klik untuk tonton di YouTube</span>
-                        </div>
-                    </div>
-
-                    <!-- Duration-style bar di bawah -->
-                    <div class="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-2.5" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
-                        <div class="flex items-center gap-1.5">
-                            <i class="fa-solid fa-circle-play text-red-400 text-[10px]"></i>
-                            <span class="text-[8px] font-bold text-white/70 uppercase tracking-wide">Demo Video</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <i class="fa-solid fa-arrow-up-right-from-square text-white/40 text-[8px]"></i>
-                            <span class="text-[8px] text-white/40">Buka YouTube</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CONTENT SECTION -->
-                <div class="p-6">
-                    <!-- Title & Price -->
-                    <div class="flex items-start justify-between gap-4 mb-5">
-                        <div>
-                            <h2 id="modal-title" class="text-lg font-black text-white uppercase italic leading-tight mb-1">TITLE</h2>
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-tag text-green-500 text-[10px]"></i>
-                                <p id="modal-price" class="text-green-500 font-black text-sm italic">PRICE</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-green-500/10 border border-green-500/20">
+                    <div class="text-right">
+                        <p id="modal-price" class="text-green-400 font-black text-sm italic">PRICE</p>
+                        <div class="flex items-center justify-end gap-1 mt-1">
                             <i class="fa-solid fa-circle text-green-400 text-[6px]"></i>
                             <span class="text-[9px] font-black text-green-400 uppercase">Lifetime</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Divider -->
-                    <div class="h-px bg-white/5 mb-5"></div>
+                <!-- 2 VIDEO + CENTER INFO LAYOUT -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-0" style="border-bottom:1px solid rgba(255,255,255,0.06);">
 
-                    <!-- CTA -->
-                    <div class="flex gap-3">
-                        <button onclick="openContact()" class="flex-1 py-3.5 rounded-2xl font-black uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 20px rgba(34,197,94,0.3);" onmouseover="this.style.boxShadow='0 4px 30px rgba(251,191,36,0.6)'" onmouseout="this.style.boxShadow='0 4px 20px rgba(34,197,94,0.3)'">
-                            <i class="fa-solid fa-bolt"></i> Order Sekarang
-                        </button>
-                        <button onclick="goTo('whatsapp')" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/5 hover:bg-green-500/20 hover:border-green-500/40 flex items-center justify-center transition-all">
-                            <i class="fa-brands fa-whatsapp text-green-400"></i>
-                        </button>
+                    <!-- VIDEO 1 (kiri) -->
+                    <div class="relative cursor-pointer group" onclick="playVideo(1)" style="background:#000;min-height:160px;">
+                        <img id="modal-yt-thumbnail" src="" alt="Video 1" class="w-full h-full object-cover group-hover:opacity-70 transition-opacity" style="height:180px;opacity:0.55;">
+                        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 60%);"></div>
+                        <!-- Label atas -->
+                        <div class="absolute top-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to bottom,rgba(0,0,0,0.6),transparent);">
+                            <div class="flex items-center gap-1 px-2 py-0.5 rounded-full w-fit" style="background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.3);">
+                                <i class="fa-brands fa-youtube text-red-500 text-[9px]"></i>
+                                <span id="modal-video1-label" class="text-[7px] font-black text-white uppercase tracking-wider">Video 1</span>
+                            </div>
+                        </div>
+                        <!-- Play icon -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all" style="background:rgba(255,0,0,0.9);box-shadow:0 0 20px rgba(255,0,0,0.5);">
+                                <i class="fa-brands fa-youtube text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <!-- Label bawah -->
+                        <div class="absolute bottom-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
+                            <span class="text-[7px] text-white/50 uppercase tracking-wide">Klik untuk tonton</span>
+                        </div>
                     </div>
+
+                    <!-- CENTER INFO PANEL -->
+                    <div class="p-4 flex flex-col gap-3" style="background:rgba(0,0,0,0.3);border-left:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05);">
+
+                        <!-- Deskripsi -->
+                        <div>
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <i class="fa-solid fa-circle-info text-green-400 text-[9px]"></i>
+                                <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Deskripsi</span>
+                            </div>
+                            <p id="modal-desc" class="text-[8px] text-slate-300 leading-relaxed">-</p>
+                        </div>
+
+                        <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
+
+                        <!-- Spesifikasi -->
+                        <div>
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <i class="fa-solid fa-microchip text-green-400 text-[9px]"></i>
+                                <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Spesifikasi</span>
+                            </div>
+                            <ul id="modal-specs" class="space-y-1">
+                                <!-- diisi JS -->
+                            </ul>
+                        </div>
+
+                        <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
+
+                        <!-- Cara Beli -->
+                        <div>
+                            <div class="flex items-center gap-1.5 mb-1.5">
+                                <i class="fa-solid fa-cart-shopping text-green-400 text-[9px]"></i>
+                                <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Cara Beli</span>
+                            </div>
+                            <ol id="modal-howto" class="space-y-1">
+                                <!-- diisi JS -->
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO 2 (kanan) -->
+                    <div class="relative cursor-pointer group" onclick="playVideo(2)" style="background:#000;min-height:160px;">
+                        <img id="modal-yt-thumbnail2" src="" alt="Video 2" class="w-full h-full object-cover group-hover:opacity-70 transition-opacity" style="height:180px;opacity:0.55;">
+                        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 60%);"></div>
+                        <!-- Label atas -->
+                        <div class="absolute top-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to bottom,rgba(0,0,0,0.6),transparent);">
+                            <div class="flex items-center gap-1 px-2 py-0.5 rounded-full w-fit" style="background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.3);">
+                                <i class="fa-brands fa-youtube text-red-500 text-[9px]"></i>
+                                <span id="modal-video2-label" class="text-[7px] font-black text-white uppercase tracking-wider">Video 2</span>
+                            </div>
+                        </div>
+                        <!-- Play icon -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all" style="background:rgba(255,0,0,0.9);box-shadow:0 0 20px rgba(255,0,0,0.5);">
+                                <i class="fa-brands fa-youtube text-white text-sm"></i>
+                            </div>
+                        </div>
+                        <!-- Label bawah -->
+                        <div class="absolute bottom-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
+                            <span class="text-[7px] text-white/50 uppercase tracking-wide">Klik untuk tonton</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA FOOTER -->
+                <div class="p-5 flex gap-3">
+                    <button onclick="openContact()" class="flex-1 py-3 rounded-2xl font-black uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 20px rgba(34,197,94,0.3);" onmouseover="this.style.boxShadow='0 4px 30px rgba(34,197,94,0.6)'" onmouseout="this.style.boxShadow='0 4px 20px rgba(34,197,94,0.3)'">
+                        <i class="fa-solid fa-bolt"></i> Order Sekarang
+                    </button>
+                    <button onclick="goTo('whatsapp')" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/5 hover:bg-green-500/20 hover:border-green-500/40 flex items-center justify-center transition-all">
+                        <i class="fa-brands fa-whatsapp text-green-400"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -741,47 +786,52 @@
         //      - image    : URL gambar thumbnail produk
         //      - videoId  : ID video YouTube (bagian setelah ?v= di URL)
         // ================================================================
+        // ================================================================
+        // DAFTAR PRODUK
+        // Field baru yang bisa kamu edit di setiap produk:
+        //   - videoId      : ID video YouTube pertama (kiri)
+        //   - video1Label  : Label thumbnail kiri, contoh: "Mode Hold Demo"
+        //   - videoId2     : ID video YouTube kedua (kanan) — isi "-" jika tidak ada
+        //   - video2Label  : Label thumbnail kanan, contoh: "Gameplay Proof"
+        //   - desc         : Deskripsi singkat produk
+        //   - specs        : Array spesifikasi, contoh: ["Windows 10/11", "Semua mouse"]
+        //   - howto        : Array langkah cara beli, contoh: ["Hubungi admin", "Transfer"]
+        // ================================================================
         const PRODUCTS = [
 			{
-                id: "pubg-sw-hold",
+                id: "pubg-sw-lite",
                 name: "PUBG  -  Lite",
                 subtitle: "MODE HOLD / TOGGLE",
                 price: "Rp 100.000 (Lifetime)",
                 tag: "PUBG (Software)",
                 image: "https://4kwallpapers.com/images/wallpapers/playerunknowns-2732x2732-20844.jpg",
                 videoId: "YoyGEKerbjc",
+                video1Label: "Demo Mode Hold",
+                videoId2: "n7DOgW1gn5w",
+                video2Label: "Demo Mode Toggle",
+                desc: "Mode Hold aktif saat klik kanan (scope) ditahan dan berhenti saat dilepas, Mode Toggle cukup klik kanan sekali untuk aktif dan klik lagi untuk nonaktif, sedangkan Mode Scope hanya menjalankan macro saat klik kanan (ADS) dan tidak aktif saat hipfire.",
+                specs: ["OS: Windows 10 / 11", "Semua jenis mouse", "Tanpa injeksi kode", "Lifetime license"],
+                howto: ["Hubungi admin via WhatsApp/Discord", "Kirim bukti pembayaran", "Admin kirim file + panduan instalasi", "Aktifkan & langsung pakai"],
                 features: [{ title: "Advanced Control", desc: "Bypass anti-cheat tingkat tinggi." }]
             },
+			
 			{
-                id: "pubg-sw-toggle",
-                name: "PUBG  -  MODE  TOGGLE",
-                subtitle: "Versi Steam",
-                price: "Rp 100.000 (Lifetime)",
-                tag: "PUBG (Software)",
-                image: "https://4kwallpapers.com/images/wallpapers/playerunknowns-2732x2732-20844.jpg",
-                videoId: "n7DOgW1gn5w",
-                features: [{ title: "Advanced Control", desc: "Bypass anti-cheat tingkat tinggi." }]
-            },
-			{
-                id: "pubg-sw-frhold",
-                name: "PUBG  -  FIRE  RECOIL  HOLD",
-                subtitle: "Versi Steam",
+                id: "pubg-sw-fr",
+                name: "PUBG  -  Pro",
+                subtitle: "MODE HOLD / TOGGLE",
                 price: "Rp 150.000 (Lifetime)",
                 tag: "PUBG (Software)",
                 image: "https://gamerant.com/wp-content/uploads/2021/08/pubg-battlegrounds-silly-name.jpg",
                 videoId: "yCeOoyfk2Rk",
+                video1Label: "Demo Pro Mode Hold",
+                videoId2: "KuPa3mpymDo",
+                video2Label: "Demo Pro Mode Toggle",
+                desc: "Mode Hold aktif saat klik kanan (scope) ditahan atau saat hipfire dan berhenti saat dilepas, Mode Toggle cukup klik kanan sekali untuk aktif dan klik lagi untuk nonaktif dengan dukungan penuh saat hipfire, serta Mode Scope aktif saat klik kanan (ADS) dan sudah support penggunaan saat hipfire.",
+                specs: ["OS: Windows 10 / 11", "Semua jenis mouse", "Tanpa injeksi kode", "Lifetime license"],
+                howto: ["Hubungi admin via WhatsApp/Discord", "Kirim bukti pembayaran", "Admin kirim file + panduan instalasi", "Aktifkan & langsung pakai"],
                 features: [{ title: "Advanced Control", desc: "Bypass anti-cheat tingkat tinggi." }]
             },
-			{
-                id: "pubg-sw-frtoggle",
-                name: "PUBG  -  FIRE  RECOIL  TOGGLE",
-                subtitle: "Versi Steam",
-                price: "Rp 150.000 (Lifetime)",
-                tag: "PUBG (Software)",
-                image: "https://gamerant.com/wp-content/uploads/2021/08/pubg-battlegrounds-silly-name.jpg",
-                videoId: "KuPa3mpymDo",
-                features: [{ title: "Advanced Control", desc: "Bypass anti-cheat tingkat tinggi." }]
-            },
+			
             {
                 id: "delta-v1-sw",
                 name: "Delta   Force  V1",
@@ -790,6 +840,12 @@
                 tag: "DeltaForce (Software)",
                 image: "https://cdn-cf.gamivo.com/image_cover.jpg?f=524077&n=0c6d6469-85d0-4402-8cde-f9b042f00547.jpg&h=ab453b3db334aec27f4bded205e0d850",
                 videoId: "zG8VmiLS0rw",
+                video1Label: "Demo Delta Force V1",
+                videoId2: "-",
+                video2Label: "Gameplay Proof",
+                desc: "Macro Delta Force V1 kompatibel versi Garena & Steam. Native logic tanpa library luar, aman dan stabil.",
+                specs: ["OS: Windows 10 / 11", "Garena & Steam", "Semua jenis mouse", "Lifetime license"],
+                howto: ["Hubungi admin via WhatsApp/Discord", "Kirim bukti pembayaran", "Admin kirim file + panduan instalasi", "Aktifkan & langsung pakai"],
                 features: [{ title: "Pure Native Logic", desc: "Aman tanpa library luar." }]
             },
             {
@@ -800,6 +856,12 @@
                 tag: "DeltaForce (Software)",
                 image: "https://cdn-cf.gamivo.com/image_cover.jpg?f=524077&n=0c6d6469-85d0-4402-8cde-f9b042f00547.jpg&h=ab453b3db334aec27f4bded205e0d850", 
                 videoId: "Od8l251f13M",
+                video1Label: "Demo Delta Force V2",
+                videoId2: "-",
+                video2Label: "Gameplay Proof",
+                desc: "Macro Delta Force V2 dengan kontrol lebih presisi. Setting lebih lengkap, cocok untuk player yang ingin performa maksimal.",
+                specs: ["OS: Windows 10 / 11", "Garena & Steam", "Semua jenis mouse", "Lifetime license"],
+                howto: ["Hubungi admin via WhatsApp/Discord", "Kirim bukti pembayaran", "Admin kirim file + panduan instalasi", "Aktifkan & langsung pakai"],
                 features: [{ title: "Advanced Control", desc: "Setting lebih presisi." }]
             },
 			{
@@ -810,6 +872,12 @@
                 tag: "BloodStrike (Software)",
                 image: "https://static.tophub.id/tophub/product/blood-strike-0_0dfWa-N75.webp?tr=w-640",
                 videoId: "-ucNJ4KahjI",
+                video1Label: "Demo BloodStrike",
+                videoId2: "-",
+                video2Label: "Gameplay Proof",
+                desc: "Macro BloodStrike untuk Windows & Steam. Optimasi FPS & input, respon cepat dan stabil di semua kondisi game.",
+                specs: ["OS: Windows 10 / 11", "Windows & Steam", "Semua jenis mouse", "Lifetime license"],
+                howto: ["Hubungi admin via WhatsApp/Discord", "Kirim bukti pembayaran", "Admin kirim file + panduan instalasi", "Aktifkan & langsung pakai"],
                 features: [{ title: "Quick Response", desc: "Optimasi FPS & Input." }]
             },
 			{
@@ -820,6 +888,12 @@
                 tag: "(UNIT-X)",
                 image: "https://media.indiedb.com/images/games/1/43/42826/COMING_SOON.jpg",
                 videoId: "-",
+                video1Label: "Teaser",
+                videoId2: "-",
+                video2Label: "Preview",
+                desc: "Produk hardware Unit-X sedang dalam pengembangan. Stay tuned untuk update selanjutnya!",
+                specs: ["Info segera hadir", "Follow sosial media kami"],
+                howto: ["Pantau terus update di Discord & TikTok"],
                 features: [{ title: "-" }]
             }
         ];
@@ -830,6 +904,7 @@
         // VARIABEL & FUNGSI — tidak perlu diubah
         // ================================================================
         let activeVideoId = '';
+        let activeVideoId2 = '';
 
         function renderTestimonials() {
             const container = document.getElementById('testi-scroll-container');
@@ -940,17 +1015,56 @@
             const p = PRODUCTS.find(i => i.id === id);
             if (!p) return;
             activeVideoId = p.videoId;
+            activeVideoId2 = p.videoId2 || '-';
+
             document.getElementById('modal-title').innerText = p.name;
             document.getElementById('modal-price').innerText = p.price;
             document.getElementById('modal-tag').innerText = p.tag;
-            document.getElementById('modal-yt-thumbnail').src = `https://img.youtube.com/vi/${p.videoId}/mqdefault.jpg`;
+
+            // Video 1
+            const vid1 = p.videoId && p.videoId !== '-';
+            document.getElementById('modal-yt-thumbnail').src = vid1
+                ? `https://img.youtube.com/vi/${p.videoId}/mqdefault.jpg`
+                : 'https://placehold.co/400x180/0b130c/22c55e?text=No+Video';
+            document.getElementById('modal-video1-label').innerText = p.video1Label || 'Video 1';
+
+            // Video 2
+            const vid2 = p.videoId2 && p.videoId2 !== '-';
+            document.getElementById('modal-yt-thumbnail2').src = vid2
+                ? `https://img.youtube.com/vi/${p.videoId2}/mqdefault.jpg`
+                : 'https://placehold.co/400x180/0b130c/22c55e?text=No+Video';
+            document.getElementById('modal-video2-label').innerText = p.video2Label || 'Video 2';
+
+            // Deskripsi
+            document.getElementById('modal-desc').innerText = p.desc || '-';
+
+            // Spesifikasi
+            const specsEl = document.getElementById('modal-specs');
+            specsEl.innerHTML = (p.specs || []).map(s =>
+                `<li class="flex items-start gap-1.5">
+                    <i class="fa-solid fa-check text-green-400 text-[8px] mt-0.5 flex-shrink-0"></i>
+                    <span class="text-[8px] text-slate-300">${s}</span>
+                 </li>`
+            ).join('');
+
+            // Cara Beli
+            const howtoEl = document.getElementById('modal-howto');
+            howtoEl.innerHTML = (p.howto || []).map((h, i) =>
+                `<li class="flex items-start gap-1.5">
+                    <span class="text-[7px] font-black text-green-400 flex-shrink-0 mt-0.5">${i+1}.</span>
+                    <span class="text-[8px] text-slate-300">${h}</span>
+                 </li>`
+            ).join('');
 
             document.getElementById('detail-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
         function goTo(p) { window.open(CONFIG.social[p], '_blank'); }
-        function playCurrentVideo() { if(activeVideoId) window.open(`https://youtube.com/watch?v=${activeVideoId}`, '_blank'); }
+        function playVideo(n) {
+            const id = n === 2 ? activeVideoId2 : activeVideoId;
+            if (id && id !== '-') window.open(`https://youtube.com/watch?v=${id}`, '_blank');
+        }
         function closeDetail() { document.getElementById('detail-modal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
         function openContact() { document.getElementById('contact-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
         function closeContact() { document.getElementById('contact-modal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
