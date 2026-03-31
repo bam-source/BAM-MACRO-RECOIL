@@ -246,6 +246,26 @@
         .lightbox-overlay.active .lightbox-img {
             transform: scale(1);
         }
+
+        /* Info panel desktop borders */
+        @media (min-width: 768px) {
+            .info-col-mid {
+                border-left: 1px solid rgba(255,255,255,0.05) !important;
+                border-right: 1px solid rgba(255,255,255,0.05) !important;
+                border-top: none !important;
+                border-bottom: none !important;
+            }
+            .info-col-first {
+                border-bottom: none !important;
+            }
+            .info-col-last {
+                border-top: none !important;
+            }
+            /* teknologi badge row 2 border-top override */
+            .tech-badge-row2 {
+                border-top: none !important;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -272,125 +292,162 @@
     <main class="max-w-6xl mx-auto px-3 md:px-6 pt-24">
         
         <!-- ================================================================
-             FITUR & TIPE MACRO SECTION (gabungan)
-             Ganti VIDEO_ID_xxx dengan ID video YouTube kamu
-             Contoh: youtube.com/watch?v=ABC123 → videoId = ABC123
+             TEKNOLOGI & TIPE MACRO SECTION
              ================================================================ -->
-        <section class="mb-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+        <section class="mb-8 pb-8" style="border-bottom:1px solid rgba(255,255,255,0.07);">
 
-            <!-- Section Header -->
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-1 h-6 rounded-full" style="background:linear-gradient(to bottom,#22c55e,#16a34a);"></div>
-                <div>
-                    <h2 class="text-sm font-black text-white uppercase tracking-[0.3em]">Teknologi & Tipe Macro</h2>
-                    <p class="text-[8px] text-slate-400 uppercase tracking-widest mt-0.5">Keamanan sistem · Pilih tipe sesuai gaya bermain</p>
-                </div>
+            <!-- Section label -->
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-1 h-5 rounded-full flex-shrink-0" style="background:linear-gradient(to bottom,#22c55e,#16a34a);"></div>
+                <p class="text-[10px] font-black text-white uppercase tracking-[0.25em]">Teknologi & Tipe Macro</p>
+                <div class="flex-1 h-px" style="background:rgba(255,255,255,0.06);"></div>
             </div>
 
-            <!-- Baris 1: 4 Fitur Keamanan -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
-                <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl" style="background:rgba(0,0,0,0.3);border:1px solid rgba(34,197,94,0.12);">
-                    <span style="font-size:16px;">🛡️</span>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-tight">System Safe</p>
-                        <p class="text-[7px] text-slate-500 mt-0.5">Tanpa injeksi kode</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl" style="background:rgba(0,0,0,0.3);border:1px solid rgba(34,197,94,0.12);">
-                    <span style="font-size:16px;">🖱️</span>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-tight">Native Input</p>
-                        <p class="text-[7px] text-slate-500 mt-0.5">Gerakan mouse asli OS</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl" style="background:rgba(0,0,0,0.3);border:1px solid rgba(34,197,94,0.12);">
-                    <span style="font-size:16px;">⚡</span>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-tight">Stable Engine</p>
-                        <p class="text-[7px] text-slate-500 mt-0.5">Performa konsisten</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 px-3 py-2.5 rounded-xl" style="background:rgba(0,0,0,0.3);border:1px solid rgba(34,197,94,0.12);">
-                    <span style="font-size:16px;">🔌</span>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-tight">All Mouse</p>
-                        <p class="text-[7px] text-slate-500 mt-0.5">Semua perangkat</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Wrapper card tunggal -->
+            <div class="rounded-2xl overflow-hidden" style="border:1px solid rgba(34,197,94,0.12);background:rgba(0,0,0,0.2);">
 
-            <!-- Divider tipis -->
-            <div style="height:1px;background:rgba(255,255,255,0.05);margin:12px 0;"></div>
+                <!-- ── BARIS 1: 4 badge teknologi ── -->
+                <!-- Mobile: 2×2 grid | Desktop: 4 kolom -->
+                <div class="grid grid-cols-2 md:grid-cols-4" style="border-bottom:1px solid rgba(255,255,255,0.05);">
 
-            <!-- Baris 2: 3 Tipe Macro -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div class="flex items-center gap-3 px-4 py-3" style="border-right:1px solid rgba(255,255,255,0.05);">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-base" style="background:rgba(34,197,94,0.1);">🛡️</div>
+                        <div>
+                            <p class="text-[9px] font-black text-white uppercase leading-none">System Safe</p>
+                            <p class="text-[7px] text-slate-500 mt-0.5">Tanpa injeksi kode</p>
+                        </div>
+                    </div>
 
-                <!-- TIPE 1: MODE HOLD -->
-                <div class="flex gap-3 items-center p-3 rounded-xl" style="background:rgba(34,197,94,0.03);border:1px solid rgba(34,197,94,0.1);">
-                    <div class="relative flex-shrink-0 rounded-lg overflow-hidden cursor-pointer group"
-                         id="macro-thumb-hold" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.hold,'_blank')"
-                         style="width:80px;height:52px;background:#000;">
-                        <img id="macro-img-hold" src="https://img.youtube.com/vi/VIDEO_ID_HOLD/mqdefault.jpg"
-                             alt="Mode Hold" class="w-full h-full object-cover" style="opacity:0.6;">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-6 h-6 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform" style="background:rgba(255,0,0,0.9);">
-                                <i class="fa-brands fa-youtube text-white" style="font-size:10px;"></i>
+                    <div class="flex items-center gap-3 px-4 py-3 md:border-r" style="border-right:1px solid rgba(255,255,255,0.05);">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-base" style="background:rgba(34,197,94,0.1);">🖱️</div>
+                        <div>
+                            <p class="text-[9px] font-black text-white uppercase leading-none">Native Input</p>
+                            <p class="text-[7px] text-slate-500 mt-0.5">Gerakan mouse asli OS</p>
+                        </div>
+                    </div>
+
+                    <!-- Mobile: border-top pada baris ke-2 -->
+                    <div class="tech-badge-row2 flex items-center gap-3 px-4 py-3 border-t md:border-t-0" style="border-top:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05);">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-base" style="background:rgba(34,197,94,0.1);">⚡</div>
+                        <div>
+                            <p class="text-[9px] font-black text-white uppercase leading-none">Stable Engine</p>
+                            <p class="text-[7px] text-slate-500 mt-0.5">Performa konsisten</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-badge-row2 flex items-center gap-3 px-4 py-3 border-t md:border-t-0" style="border-top:1px solid rgba(255,255,255,0.05);">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-base" style="background:rgba(34,197,94,0.1);">🔌</div>
+                        <div>
+                            <p class="text-[9px] font-black text-white uppercase leading-none">All Mouse</p>
+                            <p class="text-[7px] text-slate-500 mt-0.5">Semua perangkat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-header tipe macro -->
+                <div class="px-4 py-2.5 flex items-center gap-2" style="background:rgba(34,197,94,0.04);border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <i class="fa-solid fa-play text-green-500" style="font-size:7px;"></i>
+                    <p class="text-[8px] font-black text-green-400 uppercase tracking-[0.2em]">Tipe Macro — Klik thumbnail untuk tonton demo</p>
+                </div>
+
+                <!-- ── BARIS 2: 3 tipe macro ── -->
+                <!-- Mobile: 1 kolom (stacked) | Desktop: 3 kolom sejajar -->
+                <div class="grid grid-cols-1 md:grid-cols-3">
+
+                    <!-- HOLD -->
+                    <div class="cursor-pointer group transition-colors"
+                         onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.hold,'_blank')"
+                         style="border-right:1px solid rgba(255,255,255,0.05);"
+                         onmouseover="this.style.background='rgba(34,197,94,0.04)'"
+                         onmouseout="this.style.background='transparent'">
+                        <!-- Thumbnail landscape 16:9 -->
+                        <div style="position:relative;width:100%;padding-bottom:52%;background:#000;overflow:hidden;">
+                            <img id="macro-img-hold" src="" alt="Mode Hold"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.3s;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%);"></div>
+                            <!-- Play button -->
+                            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                                <div class="group-hover:scale-110 transition-transform"
+                                     style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(220,38,38,0.92);box-shadow:0 0 16px rgba(220,38,38,0.45);">
+                                    <i class="fa-brands fa-youtube text-white" style="font-size:13px;"></i>
+                                </div>
+                            </div>
+                            <!-- Badge atas kanan -->
+                            <div style="position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:99px;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(4px);">
+                                <i class="fa-brands fa-youtube text-red-500" style="font-size:7px;"></i>
+                                <span style="font-size:6.5px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.08em;">YouTube</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex-1 min-w-0" style="border-left:1px solid rgba(34,197,94,0.15);padding-left:10px;">
-                        <div class="flex items-center gap-1.5 mb-0.5">
-                            <span style="font-size:9px;">🔒</span>
-                            <h3 class="text-[9px] font-black text-white uppercase italic">Mode Hold</h3>
+                        <!-- Teks info -->
+                        <div class="px-4 py-3 border-b md:border-b-0" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span style="font-size:11px;">🔒</span>
+                                <h3 class="text-[9px] font-black text-white uppercase italic tracking-wide">Mode Hold</h3>
+                            </div>
+                            <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif <span class="text-green-400 font-semibold">selama tombol ditahan</span>. Cocok burst fire & presisi.</p>
                         </div>
-                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif <span class="text-green-400 font-bold">selama tombol ditahan</span>. Cocok burst fire & presisi.</p>
                     </div>
-                </div>
 
-                <!-- TIPE 2: MODE TOGGLE -->
-                <div class="flex gap-3 items-center p-3 rounded-xl" style="background:rgba(34,197,94,0.03);border:1px solid rgba(34,197,94,0.1);">
-                    <div class="relative flex-shrink-0 rounded-lg overflow-hidden cursor-pointer group"
-                         id="macro-thumb-toggle" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.toggle,'_blank')"
-                         style="width:80px;height:52px;background:#000;">
-                        <img id="macro-img-toggle" src="https://img.youtube.com/vi/VIDEO_ID_TOGGLE/mqdefault.jpg"
-                             alt="Mode Toggle" class="w-full h-full object-cover" style="opacity:0.6;">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-6 h-6 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform" style="background:rgba(255,0,0,0.9);">
-                                <i class="fa-brands fa-youtube text-white" style="font-size:10px;"></i>
+                    <!-- TOGGLE -->
+                    <div class="cursor-pointer group transition-colors"
+                         onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.toggle,'_blank')"
+                         style="border-right:1px solid rgba(255,255,255,0.05);"
+                         onmouseover="this.style.background='rgba(34,197,94,0.04)'"
+                         onmouseout="this.style.background='transparent'">
+                        <div style="position:relative;width:100%;padding-bottom:52%;background:#000;overflow:hidden;">
+                            <img id="macro-img-toggle" src="" alt="Mode Toggle"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.3s;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%);"></div>
+                            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                                <div class="group-hover:scale-110 transition-transform"
+                                     style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(220,38,38,0.92);box-shadow:0 0 16px rgba(220,38,38,0.45);">
+                                    <i class="fa-brands fa-youtube text-white" style="font-size:13px;"></i>
+                                </div>
+                            </div>
+                            <div style="position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:99px;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(4px);">
+                                <i class="fa-brands fa-youtube text-red-500" style="font-size:7px;"></i>
+                                <span style="font-size:6.5px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.08em;">YouTube</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex-1 min-w-0" style="border-left:1px solid rgba(34,197,94,0.15);padding-left:10px;">
-                        <div class="flex items-center gap-1.5 mb-0.5">
-                            <span style="font-size:9px;">🔄</span>
-                            <h3 class="text-[9px] font-black text-white uppercase italic">Mode Toggle</h3>
+                        <div class="px-4 py-3 border-b md:border-b-0" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span style="font-size:11px;">🔄</span>
+                                <h3 class="text-[9px] font-black text-white uppercase italic tracking-wide">Mode Toggle</h3>
+                            </div>
+                            <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif/nonaktif <span class="text-green-400 font-semibold">satu klik</span>. Cocok untuk spray panjang.</p>
                         </div>
-                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Aktif/nonaktif <span class="text-green-400 font-bold">satu klik</span>. Cocok untuk spray panjang.</p>
                     </div>
-                </div>
 
-                <!-- TIPE 3: FIRE RECOIL -->
-                <div class="flex gap-3 items-center p-3 rounded-xl" style="background:rgba(34,197,94,0.03);border:1px solid rgba(34,197,94,0.1);">
-                    <div class="relative flex-shrink-0 rounded-lg overflow-hidden cursor-pointer group"
-                         id="macro-thumb-firerecoil" onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.firerecoil,'_blank')"
-                         style="width:80px;height:52px;background:#000;">
-                        <img id="macro-img-firerecoil" src="https://img.youtube.com/vi/VIDEO_ID_FIRERECOIL/mqdefault.jpg"
-                             alt="Fire Recoil" class="w-full h-full object-cover" style="opacity:0.6;">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-6 h-6 rounded-md flex items-center justify-center group-hover:scale-110 transition-transform" style="background:rgba(255,0,0,0.9);">
-                                <i class="fa-brands fa-youtube text-white" style="font-size:10px;"></i>
+                    <!-- FIRE RECOIL -->
+                    <div class="cursor-pointer group transition-colors"
+                         onclick="window.open('https://youtube.com/watch?v='+CONFIG.macroVideos.firerecoil,'_blank')"
+                         onmouseover="this.style.background='rgba(34,197,94,0.04)'"
+                         onmouseout="this.style.background='transparent'">
+                        <div style="position:relative;width:100%;padding-bottom:52%;background:#000;overflow:hidden;">
+                            <img id="macro-img-firerecoil" src="" alt="Fire Recoil"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;transition:opacity 0.3s;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%);"></div>
+                            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                                <div class="group-hover:scale-110 transition-transform"
+                                     style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(220,38,38,0.92);box-shadow:0 0 16px rgba(220,38,38,0.45);">
+                                    <i class="fa-brands fa-youtube text-white" style="font-size:13px;"></i>
+                                </div>
+                            </div>
+                            <div style="position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:99px;background:rgba(0,0,0,0.65);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(4px);">
+                                <i class="fa-brands fa-youtube text-red-500" style="font-size:7px;"></i>
+                                <span style="font-size:6.5px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.08em;">YouTube</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="flex-1 min-w-0" style="border-left:1px solid rgba(34,197,94,0.15);padding-left:10px;">
-                        <div class="flex items-center gap-1.5 mb-0.5">
-                            <span style="font-size:9px;">🔥</span>
-                            <h3 class="text-[9px] font-black text-white uppercase italic">Fire Recoil</h3>
+                        <div class="px-4 py-3">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span style="font-size:11px;">🔥</span>
+                                <h3 class="text-[9px] font-black text-white uppercase italic tracking-wide">Fire Recoil</h3>
+                            </div>
+                            <p class="text-[7.5px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-green-400 font-semibold">tombol tembak</span>. Recoil terkontrol otomatis.</p>
                         </div>
-                        <p class="text-[7.5px] text-slate-400 leading-relaxed">Menyatu dengan <span class="text-green-400 font-bold">tombol tembak</span>. Recoil terkontrol otomatis.</p>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
 
@@ -525,129 +582,144 @@
         </div>
     </div>
 
-    <div id="detail-modal" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 overflow-y-auto" style="backdrop-filter:blur(8px);">
-        <div class="max-w-3xl w-full relative" style="animation: modalIn 0.3s ease;">
-            <!-- Close Button -->
-            <button onclick="closeDetail()" class="absolute -top-3 -right-3 z-20 w-9 h-9 bg-white/10 hover:bg-green-500 border border-white/10 rounded-full flex items-center justify-center transition-all">
+    <div id="detail-modal" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-3 md:p-6 overflow-y-auto" style="backdrop-filter:blur(10px);">
+        <div class="max-w-xl w-full relative my-auto" style="animation: modalIn 0.3s ease;">
+
+            <!-- Close -->
+            <button onclick="closeDetail()" class="absolute -top-3 -right-3 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12);" onmouseover="this.style.background='#22c55e'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
                 <i class="fa-solid fa-xmark text-white text-xs"></i>
             </button>
 
-            <!-- Card -->
-            <div class="bg-[#0b130c] border border-white/10 rounded-3xl overflow-hidden">
+            <div style="background:#0a1209;border:1px solid rgba(34,197,94,0.18);border-radius:20px;overflow:hidden;">
 
-                <!-- HEADER: Title + Tag + Price -->
-                <div class="flex items-center justify-between px-5 pt-5 pb-4" style="border-bottom:1px solid rgba(255,255,255,0.06);">
-                    <div>
-                        <span id="modal-tag" class="inline-block text-[8px] font-black uppercase tracking-widest px-3 py-1 rounded-full border mb-2" style="background:rgba(7,8,10,0.85);border-color:rgba(34,197,94,0.4);color:#22c55e;">TAG</span>
-                        <h2 id="modal-title" class="text-base font-black text-white uppercase italic leading-tight">TITLE</h2>
+                <!-- ── HEADER ── -->
+                <div class="flex items-start justify-between px-4 pt-4 pb-3" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <div class="flex-1 min-w-0 pr-3">
+                        <span id="modal-tag" class="inline-block text-[7px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mb-1.5" style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);color:#22c55e;">TAG</span>
+                        <h2 id="modal-title" class="text-[13px] font-black text-white uppercase italic leading-snug">TITLE</h2>
                     </div>
-                    <div class="text-right">
-                        <p id="modal-price" class="text-green-400 font-black text-sm italic">PRICE</p>
-                        <div class="flex items-center justify-end gap-1 mt-1">
-                            <i class="fa-solid fa-circle text-green-400 text-[6px]"></i>
-                            <span class="text-[9px] font-black text-green-400 uppercase">Lifetime</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2 VIDEO + CENTER INFO LAYOUT -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-0" style="border-bottom:1px solid rgba(255,255,255,0.06);">
-
-                    <!-- VIDEO 1 (kiri) -->
-                    <div class="relative cursor-pointer group" onclick="playVideo(1)" style="background:#000;min-height:160px;">
-                        <img id="modal-yt-thumbnail" src="" alt="Video 1" class="w-full h-full object-cover group-hover:opacity-70 transition-opacity" style="height:180px;opacity:0.55;">
-                        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 60%);"></div>
-                        <!-- Label atas -->
-                        <div class="absolute top-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to bottom,rgba(0,0,0,0.6),transparent);">
-                            <div class="flex items-center gap-1 px-2 py-0.5 rounded-full w-fit" style="background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.3);">
-                                <i class="fa-brands fa-youtube text-red-500 text-[9px]"></i>
-                                <span id="modal-video1-label" class="text-[7px] font-black text-white uppercase tracking-wider">Video 1</span>
-                            </div>
-                        </div>
-                        <!-- Play icon -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all" style="background:rgba(255,0,0,0.9);box-shadow:0 0 20px rgba(255,0,0,0.5);">
-                                <i class="fa-brands fa-youtube text-white text-sm"></i>
-                            </div>
-                        </div>
-                        <!-- Label bawah -->
-                        <div class="absolute bottom-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
-                            <span class="text-[7px] text-white/50 uppercase tracking-wide">Klik untuk tonton</span>
-                        </div>
-                    </div>
-
-                    <!-- CENTER INFO PANEL -->
-                    <div class="p-4 flex flex-col gap-3" style="background:rgba(0,0,0,0.3);border-left:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05);">
-
-                        <!-- Deskripsi -->
-                        <div>
-                            <div class="flex items-center gap-1.5 mb-1.5">
-                                <i class="fa-solid fa-circle-info text-green-400 text-[9px]"></i>
-                                <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Deskripsi</span>
-                            </div>
-                            <p id="modal-desc" class="text-[8px] text-slate-300 leading-relaxed">-</p>
-                        </div>
-
-                        <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
-
-                        <!-- Spesifikasi -->
-                        <div>
-                            <div class="flex items-center gap-1.5 mb-1.5">
-                                <i class="fa-solid fa-microchip text-green-400 text-[9px]"></i>
-                                <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Spesifikasi</span>
-                            </div>
-                            <ul id="modal-specs" class="space-y-1">
-                                <!-- diisi JS -->
-                            </ul>
-                        </div>
-
-                        <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
-
-                        <!-- Cara Beli -->
-                        <div>
-                            <div class="flex items-center gap-1.5 mb-1.5">
-                                <i class="fa-solid fa-cart-shopping text-green-400 text-[9px]"></i>
-                                <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Cara Beli</span>
-                            </div>
-                            <ol id="modal-howto" class="space-y-1">
-                                <!-- diisi JS -->
-                            </ol>
-                        </div>
-                    </div>
-
-                    <!-- VIDEO 2 (kanan) -->
-                    <div class="relative cursor-pointer group" onclick="playVideo(2)" style="background:#000;min-height:160px;">
-                        <img id="modal-yt-thumbnail2" src="" alt="Video 2" class="w-full h-full object-cover group-hover:opacity-70 transition-opacity" style="height:180px;opacity:0.55;">
-                        <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 60%);"></div>
-                        <!-- Label atas -->
-                        <div class="absolute top-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to bottom,rgba(0,0,0,0.6),transparent);">
-                            <div class="flex items-center gap-1 px-2 py-0.5 rounded-full w-fit" style="background:rgba(255,0,0,0.15);border:1px solid rgba(255,0,0,0.3);">
-                                <i class="fa-brands fa-youtube text-red-500 text-[9px]"></i>
-                                <span id="modal-video2-label" class="text-[7px] font-black text-white uppercase tracking-wider">Video 2</span>
-                            </div>
-                        </div>
-                        <!-- Play icon -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all" style="background:rgba(255,0,0,0.9);box-shadow:0 0 20px rgba(255,0,0,0.5);">
-                                <i class="fa-brands fa-youtube text-white text-sm"></i>
-                            </div>
-                        </div>
-                        <!-- Label bawah -->
-                        <div class="absolute bottom-0 left-0 right-0 px-3 py-2" style="background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);">
-                            <span class="text-[7px] text-white/50 uppercase tracking-wide">Klik untuk tonton</span>
+                    <div class="flex-shrink-0 text-right">
+                        <p id="modal-price" class="text-green-400 font-black text-sm italic leading-none">PRICE</p>
+                        <div class="flex items-center justify-end gap-1 mt-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400" style="box-shadow:0 0 4px #22c55e;"></span>
+                            <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Lifetime</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- CTA FOOTER -->
-                <div class="p-5 flex gap-3">
-                    <button onclick="openContact()" class="flex-1 py-3 rounded-2xl font-black uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2" style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 20px rgba(34,197,94,0.3);" onmouseover="this.style.boxShadow='0 4px 30px rgba(34,197,94,0.6)'" onmouseout="this.style.boxShadow='0 4px 20px rgba(34,197,94,0.3)'">
+                <!-- ── 2 VIDEO LANDSCAPE berdampingan ── -->
+                <div class="grid grid-cols-2" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+
+                    <!-- Video 1 -->
+                    <div class="relative cursor-pointer group" onclick="playVideo(1)"
+                         style="border-right:1px solid rgba(255,255,255,0.05);">
+                        <!-- Rasio 16:9 -->
+                        <div style="position:relative;width:100%;padding-bottom:56.25%;overflow:hidden;background:#000;">
+                            <img id="modal-yt-thumbnail" src="" alt="Video 1"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6;transition:opacity 0.25s;">
+                            <!-- gradient bawah -->
+                            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);pointer-events:none;"></div>
+                            <!-- gradient atas -->
+                            <div style="position:absolute;top:0;left:0;right:0;height:40px;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;"></div>
+                            <!-- label kiri atas -->
+                            <div style="position:absolute;top:7px;left:8px;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:99px;background:rgba(220,38,38,0.2);border:1px solid rgba(220,38,38,0.4);">
+                                <i class="fa-brands fa-youtube text-red-400" style="font-size:7px;"></i>
+                                <span id="modal-video1-label" style="font-size:6.5px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.08em;">Video 1</span>
+                            </div>
+                            <!-- play tengah -->
+                            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                                <div class="group-hover:scale-110 transition-transform"
+                                     style="width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(220,38,38,0.9);box-shadow:0 0 14px rgba(220,38,38,0.5);">
+                                    <i class="fa-brands fa-youtube text-white" style="font-size:12px;"></i>
+                                </div>
+                            </div>
+                            <!-- label bawah -->
+                            <div style="position:absolute;bottom:6px;left:8px;">
+                                <span style="font-size:6.5px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;">Klik untuk tonton</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="relative cursor-pointer group" onclick="playVideo(2)">
+                        <div style="position:relative;width:100%;padding-bottom:56.25%;overflow:hidden;background:#000;">
+                            <img id="modal-yt-thumbnail2" src="" alt="Video 2"
+                                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6;transition:opacity 0.25s;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);pointer-events:none;"></div>
+                            <div style="position:absolute;top:0;left:0;right:0;height:40px;background:linear-gradient(to bottom,rgba(0,0,0,0.55),transparent);pointer-events:none;"></div>
+                            <div style="position:absolute;top:7px;left:8px;display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:99px;background:rgba(220,38,38,0.2);border:1px solid rgba(220,38,38,0.4);">
+                                <i class="fa-brands fa-youtube text-red-400" style="font-size:7px;"></i>
+                                <span id="modal-video2-label" style="font-size:6.5px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.08em;">Video 2</span>
+                            </div>
+                            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                                <div class="group-hover:scale-110 transition-transform"
+                                     style="width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(220,38,38,0.9);box-shadow:0 0 14px rgba(220,38,38,0.5);">
+                                    <i class="fa-brands fa-youtube text-white" style="font-size:12px;"></i>
+                                </div>
+                            </div>
+                            <div style="position:absolute;bottom:6px;left:8px;">
+                                <span style="font-size:6.5px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.05em;">Klik untuk tonton</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── INFO PANEL ── -->
+                <!-- Mobile: 1 kolom stacked | Desktop: 3 kolom -->
+                <div class="grid grid-cols-1 md:grid-cols-3" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+
+                    <!-- Deskripsi -->
+                    <div class="info-col-first p-4" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
+                                <i class="fa-solid fa-circle-info text-green-400" style="font-size:7px;"></i>
+                            </div>
+                            <span class="text-[7.5px] font-black text-green-400 uppercase tracking-[0.15em]">Deskripsi</span>
+                        </div>
+                        <p id="modal-desc" class="text-[8px] text-slate-300 leading-relaxed">-</p>
+                    </div>
+
+                    <!-- Spesifikasi -->
+                    <div class="info-col-mid p-4" style="border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
+                                <i class="fa-solid fa-microchip text-green-400" style="font-size:7px;"></i>
+                            </div>
+                            <span class="text-[7.5px] font-black text-green-400 uppercase tracking-[0.15em]">Spesifikasi</span>
+                        </div>
+                        <ul id="modal-specs" class="space-y-1.5"></ul>
+                    </div>
+
+                    <!-- Cara Beli -->
+                    <div class="info-col-last p-4" style="border-top:1px solid rgba(255,255,255,0.04);">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
+                                <i class="fa-solid fa-cart-shopping text-green-400" style="font-size:7px;"></i>
+                            </div>
+                            <span class="text-[7.5px] font-black text-green-400 uppercase tracking-[0.15em]">Cara Beli</span>
+                        </div>
+                        <ol id="modal-howto" class="space-y-1.5"></ol>
+                    </div>
+                </div>
+
+                <!-- ── CTA ── -->
+                <div class="p-4 flex gap-2.5">
+                    <button onclick="openContact()"
+                            class="flex-1 py-3 rounded-xl font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 transition-all"
+                            style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 16px rgba(34,197,94,0.3);"
+                            onmouseover="this.style.boxShadow='0 4px 24px rgba(34,197,94,0.55)'"
+                            onmouseout="this.style.boxShadow='0 4px 16px rgba(34,197,94,0.3)'">
                         <i class="fa-solid fa-bolt"></i> Order Sekarang
                     </button>
-                    <button onclick="goTo('whatsapp')" class="w-12 h-12 rounded-2xl border border-white/10 bg-white/5 hover:bg-green-500/20 hover:border-green-500/40 flex items-center justify-center transition-all">
-                        <i class="fa-brands fa-whatsapp text-green-400"></i>
+                    <button onclick="goTo('whatsapp')"
+                            class="w-12 rounded-xl flex items-center justify-center transition-all"
+                            style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);"
+                            onmouseover="this.style.background='rgba(34,197,94,0.15)';this.style.borderColor='rgba(34,197,94,0.4)'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(255,255,255,0.1)'">
+                        <i class="fa-brands fa-whatsapp text-green-400 text-base"></i>
                     </button>
                 </div>
+
             </div>
         </div>
     </div>
