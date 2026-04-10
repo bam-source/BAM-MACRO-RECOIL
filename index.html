@@ -10,15 +10,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
         
         :root {
-            --bg-dark: #0f1410;
-            --accent: #22c55e;
+            --bg-dark: #141820;
+            --accent: #22d3ee;
         }
 
         body {
             background-color: var(--bg-dark);
             background-image:
-                radial-gradient(ellipse at 20% 0%, rgba(34,197,94,0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 100%, rgba(34,197,94,0.04) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 0%, rgba(34,211,238,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(6,182,212,0.03) 0%, transparent 50%);
             color: #ffffff;
             font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
@@ -26,8 +26,8 @@
 
         .glass-nav {
             backdrop-filter: blur(16px);
-            background: rgba(5, 12, 7, 0.92);
-            border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+            background: rgba(10, 14, 22, 0.96);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.12);
         }
 
         /* GARIS PEMISAH GLOBAL */
@@ -46,15 +46,15 @@
         }
 
         .product-grid-card:hover {
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.04);
+            border-color: #22d3ee;
+            background: rgba(255, 255, 255, 0.05);
             transform: translateY(-5px);
         }
 
         .product-image-container {
             width: 100%;
             aspect-ratio: 1 / 1;
-            background: #0a1209;
+            background: #0f131a;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -83,16 +83,16 @@
             letter-spacing: 0.1em;
             padding: 4px 10px;
             border-radius: 6px;
-            background: rgba(7, 8, 10, 0.8);
+            background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(4px);
-            color: var(--accent);
+            color: #67e8f9;
             text-transform: uppercase;
             font-weight: 900;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .text-glow {
-            text-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
         .video-thumbnail-container {
@@ -128,18 +128,18 @@
         .play-icon-bg {
             width: 50px;
             height: 50px;
-            background: var(--accent);
+            background: #22d3ee;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         .section-box {
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+            background: linear-gradient(180deg, rgba(34,211,238,0.03) 0%, transparent 100%);
             border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.03);
+            border: 1px solid rgba(34,211,238,0.03);
             padding: 40px;
         }
 
@@ -149,20 +149,20 @@
             gap: 12px;
             padding: 16px;
             border-radius: 16px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(34,211,238,0.03);
+            border: 1px solid rgba(34,211,238,0.05);
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .social-btn:hover {
-            background: rgba(34, 197, 94, 0.08);
-            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(34,211,238,0.35);
             transform: translateX(5px);
         }
 
         .footer-contact-card {
-            background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.06), transparent);
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.04), transparent);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
         }
@@ -175,7 +175,7 @@
             padding: 10px 0 30px 0;
             scroll-snap-type: x mandatory;
             scrollbar-width: thin;
-            scrollbar-color: #22c55e transparent;
+            scrollbar-color: #0891b2 transparent;
         }
 
         .gallery-scroll-container::-webkit-scrollbar {
@@ -183,7 +183,7 @@
         }
 
         .gallery-scroll-container::-webkit-scrollbar-thumb {
-            background: var(--accent);
+            background: #0891b2;
             border-radius: 10px;
         }
 
@@ -195,8 +195,8 @@
             scroll-snap-align: start;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: #0d1a0e;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: #1e2535;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease, border-color 0.3s ease;
@@ -204,7 +204,7 @@
 
         .testi-card:hover {
             transform: scale(1.02);
-            border-color: var(--accent);
+            border-color: rgba(255,255,255,0.35);
         }
 
         .testi-card img {
@@ -249,7 +249,7 @@
 
         /* Teknologi baris-2: di desktop hapus border-top */
         @media (min-width: 768px) {
-            .info-col-mid  { border-left:1px solid rgba(255,255,255,0.05)!important; border-right:1px solid rgba(255,255,255,0.05)!important; border-top:none!important; border-bottom:none!important; }
+            .info-col-mid  { border-left:1px solid rgba(34,211,238,0.05)!important; border-right:1px solid rgba(34,211,238,0.05)!important; border-top:none!important; border-bottom:none!important; }
             .info-col-first{ border-bottom:none!important; }
             .info-col-last { border-top:none!important; }
         }
@@ -261,13 +261,13 @@
     <nav class="fixed top-0 w-full z-50 glass-nav">
         <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-green-500 rounded flex items-center justify-center" style="box-shadow:0 0 10px rgba(34,197,94,0.6);">
+                <div class="w-6 h-6 bg-cyan-200 rounded flex items-center justify-center" style="box-shadow:0 0 10px rgba(34,211,238,0.25);">
                     <i class="fa-solid fa-gun text-black text-[10px]"></i>
                 </div>
-                <span class="font-extrabold uppercase tracking-tighter text-white text-sm">BAM<span class="text-green-500">MACRO RECOIL</span></span>
+                <span class="font-extrabold uppercase tracking-tighter text-white text-sm">BAM<span class="text-cyan-300">MACRO RECOIL</span></span>
             </div>
             <div class="flex gap-4 items-center">
-                <button onclick="openContact()" class="bg-white text-black px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-green-500 transition-all flex items-center gap-2">
+                <button onclick="openContact()" class="bg-white text-black px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-cyan-200 transition-all flex items-center gap-2">
                     <i class="fa-solid fa-headset"></i> Kontak Admin
                 </button>
             </div>
@@ -282,25 +282,25 @@
              1. INFO UPDATE & BERITA — PALING ATAS
              Cara tambah: edit NEWS_ITEMS di bagian script bawah
              ================================================================ -->
-        <section class="mb-6 pb-6" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+        <section class="mb-6 pb-6" style="border-bottom:1px solid rgba(34,211,238,0.07);">
 
             <!-- Header bar -->
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                         style="background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(22,163,74,0.1));border:1px solid rgba(34,197,94,0.3);">
-                        <i class="fa-solid fa-newspaper text-green-400" style="font-size:13px;"></i>
+                         style="background:linear-gradient(135deg,rgba(34,211,238,0.07),rgba(34,211,238,0.04));border:1px solid rgba(34,211,238,0.25);">
+                        <i class="fa-solid fa-newspaper text-cyan-300" style="font-size:13px;"></i>
                     </div>
                     <div>
-                        <h2 class="text-sm font-black text-white uppercase italic tracking-tight leading-none">Info & <span class="text-green-400">Update</span></h2>
+                        <h2 class="text-sm font-black text-white uppercase italic tracking-tight leading-none">Info & <span class="text-cyan-300">Update</span></h2>
                         <p class="text-[7px] text-slate-500 uppercase tracking-widest mt-0.5">Pengumuman resmi · Berita terbaru</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full flex-shrink-0"
-                     style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);">
-                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"
-                          style="box-shadow:0 0 5px #22c55e;animation:pulse 2s infinite;"></span>
-                    <span class="text-[7.5px] font-black text-green-400 uppercase tracking-widest">Live</span>
+                     style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.20);">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-300 flex-shrink-0"
+                          style="box-shadow:0 0 5px #67e8f9;animation:pulse 2s infinite;"></span>
+                    <span class="text-[7.5px] font-black text-cyan-300 uppercase tracking-widest">Live</span>
                 </div>
             </div>
 
@@ -312,47 +312,47 @@
         <!-- ================================================================
              2. TEKNOLOGI & TIPE MACRO
              ================================================================ -->
-        <section class="mb-8 pb-8" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+        <section class="mb-8 pb-8" style="border-bottom:1px solid rgba(34,211,238,0.07);">
 
             <!-- Section label -->
             <div class="flex items-center gap-2 mb-4">
-                <div class="w-0.5 h-4 rounded-full flex-shrink-0" style="background:linear-gradient(to bottom,#22c55e,#16a34a);"></div>
+                <div class="w-0.5 h-4 rounded-full flex-shrink-0" style="background:linear-gradient(to bottom,#22d3ee,#0891b2);"></div>
                 <p class="text-[9px] font-black text-white uppercase tracking-[0.22em]">Teknologi & Tipe Macro</p>
-                <div class="flex-1 h-px" style="background:rgba(255,255,255,0.05);"></div>
+                <div class="flex-1 h-px" style="background:rgba(34,211,238,0.05);"></div>
             </div>
 
             <!-- Baris atas: 4 badge teknologi -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);">
-                        <i class="fa-solid fa-shield-halved text-green-400" style="font-size:13px;"></i>
+                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
+                        <i class="fa-solid fa-shield-halved text-cyan-300" style="font-size:13px;"></i>
                     </div>
                     <div>
                         <p class="text-[9px] font-black text-white uppercase leading-none">System Safe</p>
                         <p class="text-[7px] text-slate-500 mt-1">Tanpa injeksi kode</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);">
-                        <i class="fa-solid fa-computer-mouse text-green-400" style="font-size:13px;"></i>
+                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
+                        <i class="fa-solid fa-computer-mouse text-cyan-300" style="font-size:13px;"></i>
                     </div>
                     <div>
                         <p class="text-[9px] font-black text-white uppercase leading-none">Native Input</p>
                         <p class="text-[7px] text-slate-500 mt-1">Gerakan mouse asli OS</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);">
-                        <i class="fa-solid fa-bolt text-green-400" style="font-size:13px;"></i>
+                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
+                        <i class="fa-solid fa-bolt text-cyan-300" style="font-size:13px;"></i>
                     </div>
                     <div>
                         <p class="text-[9px] font-black text-white uppercase leading-none">Stable Engine</p>
                         <p class="text-[7px] text-slate-500 mt-1">Performa konsisten</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);">
-                        <i class="fa-solid fa-plug text-green-400" style="font-size:13px;"></i>
+                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
+                        <i class="fa-solid fa-plug text-cyan-300" style="font-size:13px;"></i>
                     </div>
                     <div>
                         <p class="text-[9px] font-black text-white uppercase leading-none">All Mouse</p>
@@ -365,77 +365,77 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
 
                 <!-- HOLD -->
-                <div class="rounded-xl overflow-hidden" style="background:rgba(34,197,94,0.03);border:1px solid rgba(34,197,94,0.12);">
+                <div class="rounded-xl overflow-hidden" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
                     <!-- Header strip -->
-                    <div class="flex items-center gap-2.5 px-4 py-2.5" style="background:rgba(34,197,94,0.07);border-bottom:1px solid rgba(34,197,94,0.1);">
-                        <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.2);">
-                            <i class="fa-solid fa-hand text-green-400" style="font-size:10px;"></i>
+                    <div class="flex items-center gap-2.5 px-4 py-2.5" style="background:rgba(34,211,238,0.04);border-bottom:1px solid rgba(34,211,238,0.05);">
+                        <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
+                            <i class="fa-solid fa-hand text-cyan-300" style="font-size:10px;"></i>
                         </div>
                         <p class="text-[10px] font-black text-white uppercase italic tracking-wide flex-1">Mode Hold</p>
-                        <span class="text-[6.5px] font-black px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#86efac;">TAHAN</span>
+                        <span class="text-[6.5px] font-black px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.25);color:#67e8f9;">TAHAN</span>
                     </div>
                     <!-- Body -->
                     <div class="px-4 py-3">
-                        <p class="text-[8px] text-slate-300 leading-relaxed mb-3">
-                            Tahan <span class="text-green-400 font-bold">klik kanan (RMB)</span> → macro aktif selama tombol ditekan. Lepas tombol → macro berhenti otomatis.
+                        <p class="text-[8px] text-cyan-300 leading-relaxed mb-3">
+                            Tahan <span class="text-cyan-300 font-bold">klik kanan (RMB)</span> → macro aktif selama tombol ditekan. Lepas tombol → macro berhenti otomatis.
                         </p>
                         <!-- Steps -->
                         <div class="space-y-1.5">
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22c55e;">1</div>
+                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">1</div>
                                 <span class="text-[7.5px] text-slate-400">Tahan tombol klik kanan mouse</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22c55e;">2</div>
+                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">2</div>
                                 <span class="text-[7.5px] text-slate-400">Macro recoil aktif secara otomatis</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22c55e;">3</div>
+                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">3</div>
                                 <span class="text-[7.5px] text-slate-400">Lepas tombol → macro berhenti</span>
                             </div>
                         </div>
                         <div class="flex gap-1.5 mt-3">
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.18);color:#86efac;">Presisi Tinggi</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.18);color:#86efac;">Auto Stop</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.18);color:#86efac;">Burst &amp; Spray</span>
+                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Presisi Tinggi</span>
+                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Auto Stop</span>
+                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Burst &amp; Spray</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- TOGGLE -->
-                <div class="rounded-xl overflow-hidden" style="background:rgba(34,197,94,0.03);border:1px solid rgba(34,197,94,0.12);">
+                <div class="rounded-xl overflow-hidden" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
                     <!-- Header strip -->
-                    <div class="flex items-center gap-2.5 px-4 py-2.5" style="background:rgba(34,197,94,0.07);border-bottom:1px solid rgba(34,197,94,0.1);">
-                        <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.2);">
-                            <i class="fa-solid fa-toggle-on text-green-400" style="font-size:10px;"></i>
+                    <div class="flex items-center gap-2.5 px-4 py-2.5" style="background:rgba(34,211,238,0.04);border-bottom:1px solid rgba(34,211,238,0.05);">
+                        <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
+                            <i class="fa-solid fa-toggle-on text-cyan-300" style="font-size:10px;"></i>
                         </div>
                         <p class="text-[10px] font-black text-white uppercase italic tracking-wide flex-1">Mode Toggle</p>
-                        <span class="text-[6.5px] font-black px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#86efac;">SEKALI KLIK</span>
+                        <span class="text-[6.5px] font-black px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.25);color:#67e8f9;">SEKALI KLIK</span>
                     </div>
                     <!-- Body -->
                     <div class="px-4 py-3">
-                        <p class="text-[8px] text-slate-300 leading-relaxed mb-3">
-                            Tekan <span class="text-green-400 font-bold">tombol sekali</span> → macro aktif. Tekan lagi → macro nonaktif. Cocok untuk spray panjang tanpa perlu tahan tombol.
+                        <p class="text-[8px] text-cyan-300 leading-relaxed mb-3">
+                            Tekan <span class="text-cyan-300 font-bold">tombol sekali</span> → macro aktif. Tekan lagi → macro nonaktif. Cocok untuk spray panjang tanpa perlu tahan tombol.
                         </p>
                         <!-- Steps -->
                         <div class="space-y-1.5">
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22c55e;">1</div>
+                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">1</div>
                                 <span class="text-[7.5px] text-slate-400">Klik tombol toggle sekali untuk ON</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22c55e;">2</div>
+                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">2</div>
                                 <span class="text-[7.5px] text-slate-400">Macro aktif terus meski tombol dilepas</span>
                             </div>
                             <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22c55e;">3</div>
+                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">3</div>
                                 <span class="text-[7.5px] text-slate-400">Klik lagi untuk OFF / nonaktifkan</span>
                             </div>
                         </div>
                         <div class="flex gap-1.5 mt-3">
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.18);color:#86efac;">Spray Panjang</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.18);color:#86efac;">1x Click On/Off</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.18);color:#86efac;">Hands Free</span>
+                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Spray Panjang</span>
+                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">1x Click On/Off</span>
+                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Hands Free</span>
                         </div>
                     </div>
                 </div>
@@ -444,7 +444,7 @@
         </section>
 
         <!-- PRODUCT GRID -->
-        <div class="mb-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+        <div class="mb-10 pb-10" style="border-bottom:1px solid rgba(34,211,238,0.07);">
             <h2 class="text-sm font-black text-white uppercase tracking-[0.4em] mb-2 flex items-center gap-4">
                 <span class="h-px bg-slate-700 flex-grow"></span>
                 Katalog Produk
@@ -453,26 +453,26 @@
             <!-- Legend Software vs Hardware -->
             <div class="flex items-center justify-center gap-6 mb-6">
                 <div class="flex items-center gap-2">
-                    <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-                    <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Software</span>
+                    <div class="w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
+                    <span class="text-[10px] font-bold text-cyan-300 uppercase tracking-widest">Software</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-                    <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Hardware (Unit-X)</span>
+                    <div class="w-2.5 h-2.5 rounded-full bg-cyan-300"></div>
+                    <span class="text-[10px] font-bold text-cyan-300 uppercase tracking-widest">Hardware (Unit-X)</span>
                 </div>
             </div>
             <div id="product-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </div>
 
         <!-- UPGRADE SKILL SECTION -->
-        <section id="contact-section" class="mb-8 pb-8" style="border-bottom:1px solid rgba(255,255,255,0.07);">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 rounded-2xl" style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.12);">
+        <section id="contact-section" class="mb-8 pb-8" style="border-bottom:1px solid rgba(34,211,238,0.07);">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 rounded-2xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
-                        <i class="fa-solid fa-headset text-green-400 text-xs"></i>
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
+                        <i class="fa-solid fa-headset text-cyan-300 text-xs"></i>
                     </div>
                     <div>
-                        <p class="text-[11px] font-black text-white uppercase italic">Siap untuk <span class="text-green-400">Upgrade Skill?</span></p>
+                        <p class="text-[11px] font-black text-white uppercase italic">Siap untuk <span class="text-cyan-300">Upgrade Skill?</span></p>
                         <p class="text-[8px] text-slate-400 mt-0.5">Hubungi admin untuk konsultasi & instalasi</p>
                     </div>
                 </div>
@@ -481,34 +481,34 @@
         </section>
 
         <!-- TESTIMONIALS SECTION -->
-        <section id="testimonials-section" class="mb-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+        <section id="testimonials-section" class="mb-10 pb-10" style="border-bottom:1px solid rgba(34,211,238,0.07);">
             <!-- Header -->
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-2" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);">
-                        <i class="fa-solid fa-star text-green-400 text-[9px]"></i>
-                        <span class="text-[9px] font-black text-green-400 uppercase tracking-widest">Verified Buyers</span>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-2" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.07);">
+                        <i class="fa-solid fa-star text-cyan-300 text-[9px]"></i>
+                        <span class="text-[9px] font-black text-cyan-300 uppercase tracking-widest">Verified Buyers</span>
                     </div>
-                    <h2 class="text-lg font-black text-white uppercase italic tracking-tight">Bukti Transaksi & <span class="text-green-400">Testimoni</span></h2>
+                    <h2 class="text-lg font-black text-white uppercase italic tracking-tight">Bukti Transaksi & <span class="text-cyan-300">Testimoni</span></h2>
                     <p class="text-[9px] text-slate-400 mt-1">Screenshot langsung dari pembeli nyata kami</p>
                 </div>
-                <button onclick="goTo('discord')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-black text-[9px] uppercase tracking-widest transition-all flex-shrink-0" style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#818cf8;" onmouseover="this.style.background='rgba(99,102,241,0.3)'" onmouseout="this.style.background='rgba(99,102,241,0.15)'">
+                <button onclick="goTo('discord')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-black text-[9px] uppercase tracking-widest transition-all flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.25);color:#22d3ee;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(34,211,238,0.05)'">
                     <i class="fa-brands fa-discord"></i> Lihat Lebih Banyak
                 </button>
             </div>
 
             <!-- Stats bar -->
             <div class="grid grid-cols-3 gap-3 mb-6">
-                <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <p class="text-xl font-black text-green-400">500+</p>
+                <div class="p-4 rounded-2xl text-center" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
+                    <p class="text-xl font-black text-cyan-300">500+</p>
                     <p class="text-[8px] text-slate-400 uppercase tracking-widest font-bold mt-1">Total Pembeli</p>
                 </div>
-                <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <p class="text-xl font-black text-green-400">4.9★</p>
+                <div class="p-4 rounded-2xl text-center" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
+                    <p class="text-xl font-black text-cyan-300">4.9★</p>
                     <p class="text-[8px] text-slate-400 uppercase tracking-widest font-bold mt-1">Rating</p>
                 </div>
-                <div class="p-4 rounded-2xl text-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                    <p class="text-xl font-black text-green-400">100%</p>
+                <div class="p-4 rounded-2xl text-center" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
+                    <p class="text-xl font-black text-cyan-300">100%</p>
                     <p class="text-[8px] text-slate-400 uppercase tracking-widest font-bold mt-1">Lifetime Access</p>
                 </div>
             </div>
@@ -519,7 +519,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-12 text-center mt-10" style="border-top:1px solid rgba(255,255,255,0.10);">
+    <footer class="py-12 text-center mt-10" style="border-top:1px solid rgba(34,211,238,0.18);">
         <p class="text-[8px] font-bold text-slate-700 tracking-[0.6em] uppercase">BAM MACRO RECOIL — NATIVE SYSTEM REPOSITORY</p>
     </footer>
 
@@ -530,7 +530,7 @@
     </div>
 
     <div id="contact-modal" class="fixed inset-0 z-[110] bg-black/95 hidden flex items-center justify-center p-6">
-        <div class="max-w-md w-full bg-[#0a120b] border border-white/10 rounded-3xl p-8 relative">
+        <div class="max-w-md w-full bg-[#1e2535] border border-white/10 rounded-3xl p-8 relative">
             <button onclick="closeContact()" class="absolute top-6 right-6 text-slate-500"><i class="fa-solid fa-xmark"></i></button>
             <h2 class="text-xl font-black text-white uppercase italic text-center mb-8">Hubungi Kami</h2>
             <div id="social-links-container" class="space-y-3"></div>
@@ -541,65 +541,65 @@
         <div class="max-w-xl w-full relative my-auto" style="animation: modalIn 0.3s ease;">
 
             <!-- Close -->
-            <button onclick="closeDetail()" class="absolute -top-3 -right-3 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12);" onmouseover="this.style.background='#22c55e'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+            <button onclick="closeDetail()" class="absolute -top-3 -right-3 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all" style="background:rgba(255,255,255,0.1);border:1px solid rgba(34,211,238,0.20);" onmouseover="this.style.background='rgba(34,211,238,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
                 <i class="fa-solid fa-xmark text-white text-xs"></i>
             </button>
 
-            <div style="background:#0a1209;border:1px solid rgba(34,197,94,0.18);border-radius:20px;overflow:hidden;">
+            <div style="background:#1e2535;border:1px solid rgba(34,211,238,0.18);border-radius:20px;overflow:hidden;">
 
                 <!-- ── HEADER ── -->
-                <div class="flex items-start justify-between px-4 pt-4 pb-3" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                <div class="flex items-start justify-between px-4 pt-4 pb-3" style="border-bottom:1px solid rgba(34,211,238,0.05);">
                     <div class="flex-1 min-w-0 pr-3">
-                        <span id="modal-tag" class="inline-block text-[7px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mb-1.5" style="background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);color:#22c55e;">TAG</span>
+                        <span id="modal-tag" class="inline-block text-[7px] font-black uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mb-1.5" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.25);color:#67e8f9;">TAG</span>
                         <h2 id="modal-title" class="text-[13px] font-black text-white uppercase italic leading-snug">TITLE</h2>
                     </div>
                     <div class="flex-shrink-0 text-right">
-                        <p id="modal-price" class="text-green-400 font-black text-sm italic leading-none">PRICE</p>
+                        <p id="modal-price" class="text-cyan-300 font-black text-sm italic leading-none">PRICE</p>
                         <div class="flex items-center justify-end gap-1 mt-1.5">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-400" style="box-shadow:0 0 4px #22c55e;"></span>
-                            <span class="text-[8px] font-black text-green-400 uppercase tracking-widest">Lifetime</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-300" style="box-shadow:0 0 4px #67e8f9;"></span>
+                            <span class="text-[8px] font-black text-cyan-300 uppercase tracking-widest">Lifetime</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- ── VIDEO SECTION (1 atau 2 video, otomatis menyesuaikan) ── -->
-                <div id="modal-video-wrapper" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                <div id="modal-video-wrapper" style="border-bottom:1px solid rgba(34,211,238,0.05);">
                     <!-- dirender oleh openDetail() -->
                 </div>
 
                 <!-- ── INFO PANEL ── -->
                 <!-- Mobile: 1 kolom stacked | Desktop: 3 kolom -->
-                <div class="grid grid-cols-1 md:grid-cols-3" style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                <div class="grid grid-cols-1 md:grid-cols-3" style="border-bottom:1px solid rgba(34,211,238,0.05);">
 
                     <!-- Deskripsi -->
-                    <div class="info-col-first p-4" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <div class="info-col-first p-4" style="border-bottom:1px solid rgba(34,211,238,0.04);">
                         <div class="flex items-center gap-2 mb-2">
-                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
-                                <i class="fa-solid fa-circle-info text-green-400" style="font-size:7px;"></i>
+                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
+                                <i class="fa-solid fa-circle-info text-cyan-300" style="font-size:7px;"></i>
                             </div>
-                            <span class="text-[7.5px] font-black text-green-400 uppercase tracking-[0.15em]">Deskripsi</span>
+                            <span class="text-[7.5px] font-black text-cyan-300 uppercase tracking-[0.15em]">Deskripsi</span>
                         </div>
-                        <p id="modal-desc" class="text-[8px] text-slate-300 leading-relaxed">-</p>
+                        <p id="modal-desc" class="text-[8px] text-cyan-300 leading-relaxed">-</p>
                     </div>
 
                     <!-- Spesifikasi -->
-                    <div class="info-col-mid p-4" style="border-top:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <div class="info-col-mid p-4" style="border-top:1px solid rgba(34,211,238,0.04);border-bottom:1px solid rgba(34,211,238,0.04);">
                         <div class="flex items-center gap-2 mb-2">
-                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
-                                <i class="fa-solid fa-microchip text-green-400" style="font-size:7px;"></i>
+                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
+                                <i class="fa-solid fa-microchip text-cyan-300" style="font-size:7px;"></i>
                             </div>
-                            <span class="text-[7.5px] font-black text-green-400 uppercase tracking-[0.15em]">Spesifikasi</span>
+                            <span class="text-[7.5px] font-black text-cyan-300 uppercase tracking-[0.15em]">Spesifikasi</span>
                         </div>
                         <ul id="modal-specs" class="space-y-1.5"></ul>
                     </div>
 
                     <!-- Cara Beli -->
-                    <div class="info-col-last p-4" style="border-top:1px solid rgba(255,255,255,0.04);">
+                    <div class="info-col-last p-4" style="border-top:1px solid rgba(34,211,238,0.04);">
                         <div class="flex items-center gap-2 mb-2">
-                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,197,94,0.15);">
-                                <i class="fa-solid fa-cart-shopping text-green-400" style="font-size:7px;"></i>
+                            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
+                                <i class="fa-solid fa-cart-shopping text-cyan-300" style="font-size:7px;"></i>
                             </div>
-                            <span class="text-[7.5px] font-black text-green-400 uppercase tracking-[0.15em]">Cara Beli</span>
+                            <span class="text-[7.5px] font-black text-cyan-300 uppercase tracking-[0.15em]">Cara Beli</span>
                         </div>
                         <ol id="modal-howto" class="space-y-1.5"></ol>
                     </div>
@@ -609,17 +609,17 @@
                 <div class="p-4 flex gap-2.5">
                     <button onclick="openContact()"
                             class="flex-1 py-3 rounded-xl font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-2 transition-all"
-                            style="background:linear-gradient(135deg,#22c55e,#16a34a);color:#000;box-shadow:0 4px 16px rgba(34,197,94,0.3);"
-                            onmouseover="this.style.boxShadow='0 4px 24px rgba(34,197,94,0.55)'"
-                            onmouseout="this.style.boxShadow='0 4px 16px rgba(34,197,94,0.3)'">
+                            style="background:linear-gradient(135deg,#67e8f9,#22d3ee);color:#000;box-shadow:0 4px 16px rgba(34,211,238,0.25);"
+                            onmouseover="this.style.boxShadow='0 4px 24px rgba(34,211,238,0.35)'"
+                            onmouseout="this.style.boxShadow='0 4px 16px rgba(34,211,238,0.25)'">
                         <i class="fa-solid fa-bolt"></i> Order Sekarang
                     </button>
                     <button onclick="goTo('whatsapp')"
                             class="w-12 rounded-xl flex items-center justify-center transition-all"
-                            style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);"
-                            onmouseover="this.style.background='rgba(34,197,94,0.15)';this.style.borderColor='rgba(34,197,94,0.4)'"
-                            onmouseout="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <i class="fa-brands fa-whatsapp text-green-400 text-base"></i>
+                            style="border:1px solid rgba(255,255,255,0.1);background:rgba(34,211,238,0.04);"
+                            onmouseover="this.style.background='rgba(34,211,238,0.07)';this.style.borderColor='rgba(34,211,238,0.25)'"
+                            onmouseout="this.style.background='rgba(34,211,238,0.04)';this.style.borderColor='rgba(255,255,255,0.1)'">
+                        <i class="fa-brands fa-whatsapp text-cyan-300 text-base"></i>
                     </button>
                 </div>
 
@@ -892,17 +892,17 @@
                     <div style="position:absolute;bottom:0;left:0;right:0;padding:10px 12px;pointer-events:none;">
                         <div style="display:flex;align-items:center;justify-content:space-between;">
                             <div style="display:flex;align-items:center;gap:5px;">
-                                <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;"></div>
+                                <div style="width:6px;height:6px;border-radius:50%;background:#22d3ee;box-shadow:0 0 6px #22d3ee;"></div>
                                 <span style="font-size:8px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:0.08em;">Verified</span>
                             </div>
                             <div style="display:flex;gap:2px;">
-                                ${'<i class="fa-solid fa-star" style="color:#22c55e;font-size:7px;"></i>'.repeat(5)}
+                                ${'<i class="fa-solid fa-star" style="color:#22d3ee;font-size:7px;"></i>'.repeat(5)}
                             </div>
                         </div>
                     </div>
                     <!-- Top zoom icon -->
                     <div style="position:absolute;top:10px;right:10px;width:26px;height:26px;background:rgba(0,0,0,0.6);border-radius:8px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(4px);">
-                        <i class="fa-solid fa-magnifying-glass-plus" style="color:#22c55e;font-size:9px;"></i>
+                        <i class="fa-solid fa-magnifying-glass-plus" style="color:#22d3ee;font-size:9px;"></i>
                     </div>
                 </div>
             `).join('');
@@ -929,10 +929,10 @@
             const list = document.getElementById('product-list');
             list.innerHTML = PRODUCTS.map(p => {
                 const isHW = p.tag.toLowerCase().includes('unit-x');
-                const accentColor  = isHW ? '#34d399' : '#22c55e';
-                const badgeBg      = isHW ? 'rgba(52,211,153,0.12)' : 'rgba(34,197,94,0.12)';
-                const badgeBorder  = isHW ? 'rgba(52,211,153,0.35)' : 'rgba(34,197,94,0.35)';
-                const cardBorder   = isHW ? 'rgba(52,211,153,0.15)' : 'rgba(255,255,255,0.05)';
+                const accentColor  = isHW ? '#22d3ee' : '#67e8f9';
+                const badgeBg      = isHW ? 'rgba(34,211,238,0.05)' : 'rgba(34,211,238,0.05)';
+                const badgeBorder  = isHW ? 'rgba(34,211,238,0.30)' : 'rgba(34,211,238,0.30)';
+                const cardBorder   = isHW ? 'rgba(34,211,238,0.20)' : 'rgba(34,211,238,0.05)';
                 const typeIcon     = isHW ? 'fa-microchip' : 'fa-code';
                 const typeLabel    = isHW ? 'Hardware' : 'Software';
                 return `
@@ -941,15 +941,15 @@
                     <div class="product-image-container">
                         <img src="${p.image}" alt="${p.name}">
                         <!-- Badge tipe — strip penuh di bawah gambar -->
-                        <div style="position:absolute;bottom:0;left:0;right:0;padding:4px 8px;display:flex;align-items:center;gap:4px;background:${isHW ? 'rgba(52,211,153,0.85)' : 'rgba(34,197,94,0.85)'};backdrop-filter:blur(4px);">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:4px 8px;display:flex;align-items:center;gap:4px;background:${isHW ? 'rgba(148,163,184,0.85)' : 'rgba(100,116,139,0.85)'};backdrop-filter:blur(4px);">
                             <i class="fa-solid ${typeIcon}" style="color:#000;font-size:7px;"></i>
                             <span style="color:#000;font-size:7px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;">${typeLabel}</span>
                         </div>
                     </div>
-                    <div class="p-3" style="border-top:1px solid ${isHW ? 'rgba(52,211,153,0.15)' : 'rgba(34,197,94,0.1)'};">
+                    <div class="p-3" style="border-top:1px solid ${isHW ? 'rgba(34,211,238,0.20)' : 'rgba(34,211,238,0.05)'};">
                         <h3 class="text-[8px] md:text-[10px] font-black text-white uppercase italic mb-0.5 leading-tight">${p.name}</h3>
                         <p class="text-[7px] md:text-[8px] text-slate-400 mb-2">${p.subtitle}</p>
-                        <div class="flex items-center justify-between pt-1.5" style="border-top:1px solid rgba(255,255,255,0.05);">
+                        <div class="flex items-center justify-between pt-1.5" style="border-top:1px solid rgba(34,211,238,0.05);">
                             <span class="font-black text-[7px] md:text-[8px] italic px-1.5 py-0.5 rounded-md" style="color:#000;background:${accentColor};letter-spacing:0.02em;">${p.price}</span>
                             <div class="w-5 h-5 rounded-full flex items-center justify-center transition-all group-hover:scale-110"
                                  style="border:1px solid ${accentColor};">
@@ -972,7 +972,7 @@
             ];
 
             footerContainer.innerHTML = links.map(l => `
-                <button onclick="goTo('${l.id}')" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/5 hover:border-green-500/50 transition-all">
+                <button onclick="goTo('${l.id}')" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-400/40 transition-all">
                     <i class="fa-brands ${l.icon} text-${l.color} text-sm"></i>
                     <span class="text-[8px] font-black text-white uppercase">${l.label}</span>
                 </button>
@@ -1013,7 +1013,7 @@
             function videoBlock(thumbSrc, label, clickFn, borderRight) {
                 return `
                 <div class="relative cursor-pointer group" onclick="${clickFn}"
-                     style="${borderRight ? 'border-right:1px solid rgba(255,255,255,0.05);' : ''}flex:1;min-width:0;">
+                     style="${borderRight ? 'border-right:1px solid rgba(34,211,238,0.05);' : ''}flex:1;min-width:0;">
                     <div style="position:relative;width:100%;padding-bottom:56.25%;overflow:hidden;background:#000;">
                         <img src="${thumbSrc}" alt="${label}"
                              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6;transition:opacity 0.25s;">
@@ -1051,7 +1051,7 @@
             } else {
                 // tidak ada video
                 wrapper.innerHTML = `<div style="padding:20px;text-align:center;">
-                    <p style="font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Tidak ada video tersedia</p>
+                    <p style="font-size:9px;color:#0891b2;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Tidak ada video tersedia</p>
                 </div>`;
             }
 
@@ -1062,8 +1062,8 @@
             const specsEl = document.getElementById('modal-specs');
             specsEl.innerHTML = (p.specs || []).map(s =>
                 `<li class="flex items-start gap-1.5">
-                    <i class="fa-solid fa-check text-green-400 text-[8px] mt-0.5 flex-shrink-0"></i>
-                    <span class="text-[8px] text-slate-300">${s}</span>
+                    <i class="fa-solid fa-check text-cyan-300 text-[8px] mt-0.5 flex-shrink-0"></i>
+                    <span class="text-[8px] text-cyan-300">${s}</span>
                  </li>`
             ).join('');
 
@@ -1071,8 +1071,8 @@
             const howtoEl = document.getElementById('modal-howto');
             howtoEl.innerHTML = (p.howto || []).map((h, i) =>
                 `<li class="flex items-start gap-1.5">
-                    <span class="text-[7px] font-black text-green-400 flex-shrink-0 mt-0.5">${i+1}.</span>
-                    <span class="text-[8px] text-slate-300">${h}</span>
+                    <span class="text-[7px] font-black text-cyan-300 flex-shrink-0 mt-0.5">${i+1}.</span>
+                    <span class="text-[8px] text-cyan-300">${h}</span>
                  </li>`
             ).join('');
 
@@ -1133,18 +1133,18 @@
             if (!container) return;
             const sorted = [...NEWS_ITEMS].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
             const tagColors = {
-                'Update':      { bg: 'rgba(34,197,94,0.12)',   border: 'rgba(34,197,94,0.35)',   color: '#22c55e',  icon: 'fa-arrow-up-right-dots' },
-                'Patch':       { bg: 'rgba(52,211,153,0.12)',  border: 'rgba(52,211,153,0.35)',  color: '#34d399',  icon: 'fa-wrench' },
-                'Info':        { bg: 'rgba(99,102,241,0.12)',  border: 'rgba(99,102,241,0.35)',  color: '#818cf8',  icon: 'fa-circle-info' },
-                'News':        { bg: 'rgba(251,191,36,0.12)',  border: 'rgba(251,191,36,0.35)',  color: '#fbbf24',  icon: 'fa-bell' },
-                'Promo':       { bg: 'rgba(251,191,36,0.12)',  border: 'rgba(251,191,36,0.35)',  color: '#fbbf24',  icon: 'fa-tag' },
-                'Coming Soon': { bg: 'rgba(148,163,184,0.08)', border: 'rgba(148,163,184,0.2)',  color: '#94a3b8',  icon: 'fa-clock' },
+                'Update':      { bg: 'rgba(34,211,238,0.05)',   border: 'rgba(34,211,238,0.30)',   color: '#67e8f9',  icon: 'fa-arrow-up-right-dots' },
+                'Patch':       { bg: 'rgba(34,211,238,0.05)',  border: 'rgba(34,211,238,0.30)',  color: '#22d3ee',  icon: 'fa-wrench' },
+                'Info':        { bg: 'rgba(34,211,238,0.05)', border: 'rgba(34,211,238,0.30)', color: '#22d3ee', icon: 'fa-circle-info' },
+                'News':        { bg: 'rgba(34,211,238,0.05)', border: 'rgba(34,211,238,0.30)', color: '#22d3ee', icon: 'fa-bell' },
+                'Promo':       { bg: 'rgba(34,211,238,0.05)', border: 'rgba(34,211,238,0.30)', color: '#22d3ee', icon: 'fa-tag' },
+                'Coming Soon': { bg: 'rgba(34,211,238,0.04)', border: 'rgba(34,211,238,0.20)', color: '#0891b2', icon: 'fa-clock' },
             };
             container.innerHTML = sorted.map(n => {
                 const tc = tagColors[n.tag] || tagColors['Info'];
                 const isPinned = n.pinned;
                 return `
-                <div style="position:relative;border-radius:14px;overflow:hidden;border:1px solid ${isPinned ? tc.color+'55' : 'rgba(255,255,255,0.07)'};background:${isPinned ? `linear-gradient(135deg,${tc.bg} 0%,rgba(0,0,0,0.3) 100%)` : 'rgba(0,0,0,0.2)'};">
+                <div style="position:relative;border-radius:14px;overflow:hidden;border:1px solid ${isPinned ? tc.color+'55' : 'rgba(34,211,238,0.07)'};background:${isPinned ? `linear-gradient(135deg,${tc.bg} 0%,rgba(0,0,0,0.3) 100%)` : 'rgba(0,0,0,0.2)'};">
                     ${isPinned ? `<div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:${tc.color};box-shadow:0 0 8px ${tc.color}88;"></div>` : ''}
                     <div style="padding:14px 16px ${isPinned ? '14px 16px' : '14px 16px'};${isPinned ? 'padding-left:20px;' : ''}">
                         <!-- Baris atas: tag + tanggal + pinned -->
@@ -1153,14 +1153,14 @@
                                 <span style="display:inline-flex;align-items:center;gap:5px;font-size:7.5px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;padding:3px 9px;border-radius:99px;background:${tc.bg};border:1px solid ${tc.border};color:${tc.color};">
                                     <i class="fa-solid ${tc.icon}" style="font-size:7px;"></i>${n.tag}
                                 </span>
-                                <span style="font-size:8px;color:#64748b;font-weight:700;">${n.date}</span>
+                                <span style="font-size:8px;color:#0891b2;font-weight:700;">${n.date}</span>
                             </div>
                             ${isPinned ? `<span style="display:inline-flex;align-items:center;gap:4px;font-size:7px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;padding:2px 8px;border-radius:99px;background:${tc.bg};border:1px solid ${tc.border};color:${tc.color};"><i class="fa-solid fa-thumbtack" style="font-size:6px;"></i>Pinned</span>` : ''}
                         </div>
                         <!-- Judul besar -->
                         <h4 style="font-size:${isPinned ? '13px' : '12px'};font-weight:900;color:#fff;text-transform:uppercase;font-style:italic;line-height:1.3;margin-bottom:6px;letter-spacing:0.02em;">${n.title}</h4>
                         <!-- Deskripsi jelas -->
-                        <p style="font-size:10px;color:#cbd5e1;line-height:1.6;">${n.desc}</p>
+                        <p style="font-size:10px;color:#67e8f9;line-height:1.6;">${n.desc}</p>
                     </div>
                 </div>`;
             }).join('');
