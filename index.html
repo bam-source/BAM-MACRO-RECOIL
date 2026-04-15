@@ -279,169 +279,103 @@
     <main class="max-w-6xl mx-auto px-3 md:px-6 pt-24">
 
         <!-- ================================================================
-             1. INFO UPDATE & BERITA — PALING ATAS
-             Cara tambah: edit NEWS_ITEMS di bagian script bawah
+             ACCORDION: Info Update + Teknologi
              ================================================================ -->
-        <section class="mb-6 pb-6" style="border-bottom:1px solid rgba(34,211,238,0.07);">
+        <div class="mb-8 pb-8 flex flex-col gap-2" style="border-bottom:1px solid rgba(34,211,238,0.07);">
 
-            <!-- Header bar -->
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                         style="background:linear-gradient(135deg,rgba(34,211,238,0.07),rgba(34,211,238,0.04));border:1px solid rgba(34,211,238,0.25);">
-                        <i class="fa-solid fa-newspaper text-cyan-300" style="font-size:13px;"></i>
+            <!-- ── Accordion 1: Info & Update ── -->
+            <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(34,211,238,0.10);">
+                <!-- Trigger bar -->
+                <button onclick="toggleAccordion('acc-news')" class="w-full flex items-center justify-between px-4 py-3 text-left" style="background:rgba(34,211,238,0.03);">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0" style="box-shadow:0 0 6px #22d3ee;animation:pulse 2s infinite;"></span>
+                        <i class="fa-solid fa-newspaper text-cyan-400" style="font-size:11px;"></i>
+                        <span class="text-[10px] font-black text-white uppercase tracking-widest">Info & Update</span>
+                        <span id="acc-news-badge" class="text-[7px] font-black px-2 py-0.5 rounded-full text-cyan-300" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.20);"></span>
                     </div>
-                    <div>
-                        <h2 class="text-sm font-black text-white uppercase italic tracking-tight leading-none">Info & <span class="text-cyan-300">Update</span></h2>
-                        <p class="text-[7px] text-slate-500 uppercase tracking-widest mt-0.5">Pengumuman resmi · Berita terbaru</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full flex-shrink-0"
-                     style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.20);">
-                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-300 flex-shrink-0"
-                          style="box-shadow:0 0 5px #67e8f9;animation:pulse 2s infinite;"></span>
-                    <span class="text-[7.5px] font-black text-cyan-300 uppercase tracking-widest">Live</span>
+                    <i id="acc-news-icon" class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300" style="font-size:10px;"></i>
+                </button>
+                <!-- Content -->
+                <div id="acc-news" style="display:none;border-top:1px solid rgba(34,211,238,0.06);">
+                    <div id="news-container" class="flex flex-col gap-2 p-3"></div>
                 </div>
             </div>
 
-            <!-- Cards: mobile 1 col, desktop 2 col -->
-            <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
-
-        </section>
-
-        <!-- ================================================================
-             2. TEKNOLOGI & TIPE MACRO
-             ================================================================ -->
-        <section class="mb-8 pb-8" style="border-bottom:1px solid rgba(34,211,238,0.07);">
-
-            <!-- Section label -->
-            <div class="flex items-center gap-2 mb-4">
-                <div class="w-0.5 h-4 rounded-full flex-shrink-0" style="background:linear-gradient(to bottom,#22d3ee,#0891b2);"></div>
-                <p class="text-[9px] font-black text-white uppercase tracking-[0.22em]">Teknologi & Tipe Macro</p>
-                <div class="flex-1 h-px" style="background:rgba(34,211,238,0.05);"></div>
+            <!-- ── Accordion 2: Teknologi & Tipe Macro ── -->
+            <div class="rounded-xl overflow-hidden" style="border:1px solid rgba(255,255,255,0.05);">
+                <!-- Trigger bar -->
+                <button onclick="toggleAccordion('acc-tech')" class="w-full flex items-center justify-between px-4 py-3 text-left" style="background:rgba(255,255,255,0.02);">
+                    <div class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-microchip text-slate-400" style="font-size:11px;"></i>
+                        <span class="text-[10px] font-black text-white uppercase tracking-widest">Teknologi & Tipe Macro</span>
+                        <span class="text-[7px] font-bold text-slate-500 uppercase tracking-widest hidden md:inline">System Safe · Native Input · Hold · Toggle</span>
+                    </div>
+                    <i id="acc-tech-icon" class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-300" style="font-size:10px;"></i>
+                </button>
+                <!-- Content -->
+                <div id="acc-tech" style="display:none;border-top:1px solid rgba(255,255,255,0.04);">
+                    <div class="p-4 grid grid-cols-2 md:grid-cols-4 gap-2 pb-2">
+                        <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-shield-halved text-cyan-400" style="font-size:12px;"></i>
+                            <div><p class="text-[8px] font-black text-white uppercase">System Safe</p><p class="text-[6.5px] text-slate-500 mt-0.5">Tanpa injeksi kode</p></div>
+                        </div>
+                        <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-computer-mouse text-cyan-400" style="font-size:12px;"></i>
+                            <div><p class="text-[8px] font-black text-white uppercase">Native Input</p><p class="text-[6.5px] text-slate-500 mt-0.5">Gerakan mouse asli OS</p></div>
+                        </div>
+                        <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-bolt text-cyan-400" style="font-size:12px;"></i>
+                            <div><p class="text-[8px] font-black text-white uppercase">Stable Engine</p><p class="text-[6.5px] text-slate-500 mt-0.5">Performa konsisten</p></div>
+                        </div>
+                        <div class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-plug text-cyan-400" style="font-size:12px;"></i>
+                            <div><p class="text-[8px] font-black text-white uppercase">All Mouse</p><p class="text-[6.5px] text-slate-500 mt-0.5">Semua perangkat</p></div>
+                        </div>
+                    </div>
+                    <div class="px-4 pb-4 grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <!-- HOLD -->
+                        <div class="rounded-xl overflow-hidden" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.07);">
+                            <div class="flex items-center gap-2 px-3 py-2" style="background:rgba(34,211,238,0.04);border-bottom:1px solid rgba(34,211,238,0.06);">
+                                <i class="fa-solid fa-hand text-cyan-400" style="font-size:9px;"></i>
+                                <p class="text-[9px] font-black text-white uppercase italic flex-1">Mode Hold</p>
+                                <span class="text-[6px] font-black px-1.5 py-0.5 rounded-full" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.20);color:#67e8f9;">TAHAN RMB</span>
+                            </div>
+                            <div class="px-3 py-2.5">
+                                <p class="text-[7.5px] text-slate-400 leading-relaxed">Tahan klik kanan → macro aktif. Lepas → berhenti otomatis. Cocok untuk burst &amp; spray presisi.</p>
+                            </div>
+                        </div>
+                        <!-- TOGGLE -->
+                        <div class="rounded-xl overflow-hidden" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.07);">
+                            <div class="flex items-center gap-2 px-3 py-2" style="background:rgba(34,211,238,0.04);border-bottom:1px solid rgba(34,211,238,0.06);">
+                                <i class="fa-solid fa-toggle-on text-cyan-400" style="font-size:9px;"></i>
+                                <p class="text-[9px] font-black text-white uppercase italic flex-1">Mode Toggle</p>
+                                <span class="text-[6px] font-black px-1.5 py-0.5 rounded-full" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.20);color:#67e8f9;">1x KLIK</span>
+                            </div>
+                            <div class="px-3 py-2.5">
+                                <p class="text-[7.5px] text-slate-400 leading-relaxed">Klik sekali → ON. Klik lagi → OFF. Hands-free untuk spray panjang tanpa tahan tombol.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Baris atas: 4 badge teknologi -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
-                        <i class="fa-solid fa-shield-halved text-cyan-300" style="font-size:13px;"></i>
-                    </div>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-none">System Safe</p>
-                        <p class="text-[7px] text-slate-500 mt-1">Tanpa injeksi kode</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
-                        <i class="fa-solid fa-computer-mouse text-cyan-300" style="font-size:13px;"></i>
-                    </div>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-none">Native Input</p>
-                        <p class="text-[7px] text-slate-500 mt-1">Gerakan mouse asli OS</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
-                        <i class="fa-solid fa-bolt text-cyan-300" style="font-size:13px;"></i>
-                    </div>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-none">Stable Engine</p>
-                        <p class="text-[7px] text-slate-500 mt-1">Performa konsisten</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-3 px-3 py-3 rounded-xl" style="background:rgba(34,211,238,0.02);border:1px solid rgba(255,255,255,0.06);">
-                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.05);border:1px solid rgba(34,211,238,0.07);">
-                        <i class="fa-solid fa-plug text-cyan-300" style="font-size:13px;"></i>
-                    </div>
-                    <div>
-                        <p class="text-[9px] font-black text-white uppercase leading-none">All Mouse</p>
-                        <p class="text-[7px] text-slate-500 mt-1">Semua perangkat</p>
-                    </div>
-                </div>
-            </div>
+        </div>
 
-            <!-- Baris bawah: 2 tipe macro side by side -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-
-                <!-- HOLD -->
-                <div class="rounded-xl overflow-hidden" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
-                    <!-- Header strip -->
-                    <div class="flex items-center gap-2.5 px-4 py-2.5" style="background:rgba(34,211,238,0.04);border-bottom:1px solid rgba(34,211,238,0.05);">
-                        <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
-                            <i class="fa-solid fa-hand text-cyan-300" style="font-size:10px;"></i>
-                        </div>
-                        <p class="text-[10px] font-black text-white uppercase italic tracking-wide flex-1">Mode Hold</p>
-                        <span class="text-[6.5px] font-black px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.25);color:#67e8f9;">TAHAN</span>
-                    </div>
-                    <!-- Body -->
-                    <div class="px-4 py-3">
-                        <p class="text-[8px] text-cyan-300 leading-relaxed mb-3">
-                            Tahan <span class="text-cyan-300 font-bold">klik kanan (RMB)</span> → macro aktif selama tombol ditekan. Lepas tombol → macro berhenti otomatis.
-                        </p>
-                        <!-- Steps -->
-                        <div class="space-y-1.5">
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">1</div>
-                                <span class="text-[7.5px] text-slate-400">Tahan tombol klik kanan mouse</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">2</div>
-                                <span class="text-[7.5px] text-slate-400">Macro recoil aktif secara otomatis</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">3</div>
-                                <span class="text-[7.5px] text-slate-400">Lepas tombol → macro berhenti</span>
-                            </div>
-                        </div>
-                        <div class="flex gap-1.5 mt-3">
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Presisi Tinggi</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Auto Stop</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Burst &amp; Spray</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TOGGLE -->
-                <div class="rounded-xl overflow-hidden" style="background:rgba(34,211,238,0.02);border:1px solid rgba(34,211,238,0.05);">
-                    <!-- Header strip -->
-                    <div class="flex items-center gap-2.5 px-4 py-2.5" style="background:rgba(34,211,238,0.04);border-bottom:1px solid rgba(34,211,238,0.05);">
-                        <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background:rgba(34,211,238,0.07);">
-                            <i class="fa-solid fa-toggle-on text-cyan-300" style="font-size:10px;"></i>
-                        </div>
-                        <p class="text-[10px] font-black text-white uppercase italic tracking-wide flex-1">Mode Toggle</p>
-                        <span class="text-[6.5px] font-black px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.25);color:#67e8f9;">SEKALI KLIK</span>
-                    </div>
-                    <!-- Body -->
-                    <div class="px-4 py-3">
-                        <p class="text-[8px] text-cyan-300 leading-relaxed mb-3">
-                            Tekan <span class="text-cyan-300 font-bold">tombol sekali</span> → macro aktif. Tekan lagi → macro nonaktif. Cocok untuk spray panjang tanpa perlu tahan tombol.
-                        </p>
-                        <!-- Steps -->
-                        <div class="space-y-1.5">
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">1</div>
-                                <span class="text-[7.5px] text-slate-400">Klik tombol toggle sekali untuk ON</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">2</div>
-                                <span class="text-[7.5px] text-slate-400">Macro aktif terus meski tombol dilepas</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 text-[7px] font-black text-black" style="background:#22d3ee;">3</div>
-                                <span class="text-[7.5px] text-slate-400">Klik lagi untuk OFF / nonaktifkan</span>
-                            </div>
-                        </div>
-                        <div class="flex gap-1.5 mt-3">
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Spray Panjang</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">1x Click On/Off</span>
-                            <span class="text-[6.5px] font-bold px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);color:#67e8f9;">Hands Free</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
+        <script>
+        function toggleAccordion(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+            const isOpen = el.style.display !== 'none';
+            el.style.display = isOpen ? 'none' : 'block';
+            if (icon) icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+        // Auto-buka Info Update saat berita ada
+        function openNewsAccordion() {
+            const el = document.getElementById('acc-news');
+            const icon = document.getElementById('acc-news-icon');
+            if (el) { el.style.display = 'block'; if (icon) icon.style.transform = 'rotate(180deg)'; }
+        }
+        </script>
 
         <!-- PRODUCT GRID -->
         <div class="mb-10 pb-10" style="border-bottom:1px solid rgba(34,211,238,0.07);">
@@ -1132,6 +1066,9 @@
             const container = document.getElementById('news-container');
             if (!container) return;
             const sorted = [...NEWS_ITEMS].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+            const badge = document.getElementById('acc-news-badge');
+            if (badge && sorted.length > 0) badge.textContent = sorted.length + ' baru';
+            if (sorted.length > 0) openNewsAccordion();
             const tagColors = {
                 'Update':      { bg: 'rgba(34,211,238,0.05)',   border: 'rgba(34,211,238,0.30)',   color: '#67e8f9',  icon: 'fa-arrow-up-right-dots' },
                 'Patch':       { bg: 'rgba(34,211,238,0.05)',  border: 'rgba(34,211,238,0.30)',  color: '#22d3ee',  icon: 'fa-wrench' },
