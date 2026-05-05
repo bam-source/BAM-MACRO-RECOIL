@@ -2011,7 +2011,12 @@
             const container = document.getElementById('testi-scroll-container');
             container.innerHTML = TESTIMONIAL_IMAGES.map(url => `
                 <div class="testi-card" onclick="openLightbox('${url}')">
-                    <img src="${url}" alt="Testimonial" loading="lazy" onerror="this.parentElement.style.display='none'">
+                    <img src="${url}" alt="Testimonial" loading="lazy"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="testi-placeholder" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:#1a1010;">
+                        <i class="fa-solid fa-image" style="color:var(--red-dim);font-size:28px;"></i>
+                        <span style="font-family:'Rajdhani',sans-serif;font-weight:600;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-dim);">Testimoni</span>
+                    </div>
                     <div class="testi-overlay"></div>
                     <div class="testi-info">
                         <div class="testi-verified">
