@@ -714,9 +714,9 @@
         .testi-scroll::-webkit-scrollbar-thumb { background: var(--red-dim); border-radius: 10px; }
 
         .testi-card {
-            min-width: 160px;
-            max-width: 160px;
-            aspect-ratio: 9 / 16;
+            min-width: 220px;
+            max-width: 220px;
+            height: 190px;
             flex-shrink: 0;
             scroll-snap-align: start;
             border-radius: 12px;
@@ -725,7 +725,6 @@
             position: relative;
             cursor: pointer;
             transition: all 0.25s ease;
-            background: #0f0b0b;
         }
 
         .testi-card:hover {
@@ -736,9 +735,8 @@
         .testi-card img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center;
-            background: #0f0b0b;
+            object-fit: cover;
+            object-position: top;
         }
 
         .testi-overlay {
@@ -1829,7 +1827,7 @@
             "https://cdn.discordapp.com/attachments/1398773494724034580/1485197055524732980/IMG_6190.png?ex=69c0fd0b&is=69bfab8b&hm=d54d7f47a4689ab4deab0da54edc8c67d213e0fbfcc6cffdd02ee168a7d8a173&",
             "https://cdn.discordapp.com/attachments/1415047580718465035/1485266851939487824/IMG_6191.png?ex=69c13e0c&is=69bfec8c&hm=1c9b5a5d240acf5861b847472812812244979ed44fff428491bbbb715cd574dd&",
             "https://cdn.discordapp.com/attachments/1415047580718465035/1486250419264032788/IMG_6198.png?ex=69c4d211&is=69c38091&hm=c634949d34e6e354a8f1886074d63708ae568de725f2ac115f37b44073de3600&",
-            "https://cdn.discordapp.com/attachments/1415047580718465035/1486285527899443291/IMG_6201.png?ex=69c4f2c3&is=69c3a143&hm=e0eccf16721f06cd28031edae3441094c17ffe9954979de9f9f140549d6d247b&",
+            "https://cdn.discordapp.com/attachments/1415047580718465035/1486285527899443291/IMG_6201.png?ex=69c4f2c3&is=69c3a143&hm=e0eccf16721f06cd28031edae3441094c17ffe9954979de9f9f140549d6d247b&"
         ];
 
         // ══════════════════════════════════════════
@@ -2007,6 +2005,8 @@
         // ══════════════════════════════════════════
         // RENDER TESTIMONIALS
         // ══════════════════════════════════════════
+        const STAR_HTML = '<i class="fa-solid fa-star" style="color:var(--red-bright);font-size:7px;"></i>'.repeat(5);
+
         function renderTestimonials() {
             const container = document.getElementById('testi-scroll-container');
             container.innerHTML = TESTIMONIAL_IMAGES.map(url => `
@@ -2018,9 +2018,7 @@
                             <div class="testi-verified-dot"></div>
                             <span>Verified</span>
                         </div>
-                        <div class="testi-stars">
-                            ${'<i class="fa-solid fa-star" style="color:var(--red-bright);font-size:7px;"></i>'.repeat(5)}
-                        </div>
+                        <div class="testi-stars">${STAR_HTML}</div>
                     </div>
                     <div class="testi-zoom"><i class="fa-solid fa-magnifying-glass-plus" style="color:var(--red-bright);font-size:9px;"></i></div>
                 </div>
