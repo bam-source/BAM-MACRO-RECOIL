@@ -1042,63 +1042,79 @@ function extractRowsFromSheet(raw, fileName=''){
 }
 
 // ─── SYNC ─────────────────────────────────────────────────────────────────────
-async function getRepoDefaultBranch(){
-  try{
-    const repoRes=await fetch(`https://api.github.com/repos/${GH.user}/${GH.repo}?v=${Date.now()}`, {cache:'no-store'});
-    if(repoRes.ok){
-      const repo=await repoRes.json();
-      return repo.default_branch || 'main';
-    }
-  }catch(e){ console.warn('Gagal membaca default branch', e); }
-  return 'main';
-}
-
 function makeRawGitHubUrl(path, branch='main'){
   return `https://raw.githubusercontent.com/${GH.user}/${GH.repo}/${encodeURIComponent(branch)}/${normalizeGitHubContentPath(path)}`;
 }
 
-async function listReportFilesFromContentsApi(baseApi, folderPath){
-  const api=`${baseApi}/${normalizeGitHubContentPath(folderPath)}?v=${Date.now()}`;
-  const res=await fetch(api, {cache:'no-store'});
-  if(!res.ok){
-    const txt=await res.text().catch(()=>String(res.status));
-    throw new Error(`Contents API ${res.status}: ${txt.slice(0,160)}`);
+function getCandidateReportFiles(folderPath){
+  const cleanFolder=String(folderPath||'linknet/DATA MASTER').replace(/^\/+|\/+$/g,'');
+  const monthAliases=[
+    ['Januari'],
+    ['Febuari','Februari'],
+    ['Maret'],
+    ['April'],
+    ['Mei'],
+    ['Juni'],
+    ['Juli'],
+    ['Agustus'],
+    ['September'],
+    ['Oktober'],
+    ['November'],
+    ['Desember']
+  ];
+  const extensions=['csv','xlsx','xls'];
+  const currentYear=new Date().getFullYear();
+  const startYear=2024;
+  const endYear=Math.max(currentYear+2, 2028);
+  const files=[];
+  for(let year=startYear; year<=endYear; year++){
+    for(const aliases of monthAliases){
+      for(const monthName of aliases){
+        for(const ext of extensions){
+          const name=`${monthName}_${year}.${ext}`;
+          const path=`${cleanFolder}/${name}`;
+          files.push({
+            name,
+            path,
+            sha:path,
+            download_url:makeRawGitHubUrl(path, 'main')
+          });
+        }
+      }
+    }
   }
-  const contents=await res.json();
-  return (Array.isArray(contents)?contents:[])
-    .filter(f=>f && f.type==='file' && /\.(xlsx?|csv)$/i.test(f.name));
+  return files;
 }
 
-async function listReportFilesFromGitTree(folderPath){
-  const branch=await getRepoDefaultBranch();
-  const treeUrl=`https://api.github.com/repos/${GH.user}/${GH.repo}/git/trees/${encodeURIComponent(branch)}?recursive=1&v=${Date.now()}`;
-  const treeRes=await fetch(treeUrl, {cache:'no-store'});
-  if(!treeRes.ok){
-    const txt=await treeRes.text().catch(()=>String(treeRes.status));
-    throw new Error(`Tree API ${treeRes.status}: ${txt.slice(0,160)}`);
-  }
-  const data=await treeRes.json();
-  const prefix=String(folderPath||'DATA MASTER').replace(/^\/+|\/+$/g,'') + '/';
-  return (data.tree||[])
-    .filter(item=>item && item.type==='blob' && item.path && item.path.startsWith(prefix) && /\.(xlsx?|csv)$/i.test(item.path))
-    .map(item=>({
-      name:item.path.split('/').pop(),
-      path:item.path,
-      sha:item.sha,
-      download_url:makeRawGitHubUrl(item.path, branch)
-    }));
-}
-
-async function listReportFiles(baseApi){
-  const folderPath=String(GH.path || 'DATA MASTER').trim() || 'DATA MASTER';
+async function rawFileExists(file){
+  const url=`${file.download_url}?v=${Date.now()}`;
   try{
-    return await listReportFilesFromContentsApi(baseApi, folderPath);
-  }catch(contentsErr){
-    console.warn('Contents API gagal, mencoba Git tree:', contentsErr);
-    const files=await listReportFilesFromGitTree(folderPath);
-    if(files.length) return files;
-    throw new Error(`Folder tidak ditemukan atau kosong: ${folderPath}`);
+    const head=await fetch(url, {method:'HEAD', cache:'no-store'});
+    if(head.ok) return true;
+    if(head.status !== 405 && head.status !== 403) return false;
+  }catch(e){
+    // Beberapa host/CDN tidak mengizinkan HEAD. Lanjut cek GET ringan.
   }
+  try{
+    const res=await fetch(url, {cache:'no-store'});
+    return res.ok;
+  }catch(e){
+    return false;
+  }
+}
+
+async function listReportFiles(){
+  const folderPath=String(GH.path || 'linknet/DATA MASTER').trim() || 'linknet/DATA MASTER';
+  const candidates=getCandidateReportFiles(folderPath);
+  const found=[];
+  setSyncStatus(`🔎 Mencari file standar di <b>${folderPath}</b> tanpa GitHub API...`, 'green');
+  for(const file of candidates){
+    if(await rawFileExists(file)) found.push(file);
+  }
+  if(!found.length){
+    throw new Error(`Tidak ada file standar ditemukan di ${folderPath}. Pastikan nama file seperti Juni_2026.csv atau Juni_2026.xlsx`);
+  }
+  return found;
 }
 
 async function syncFromGitHub() {
@@ -1108,14 +1124,9 @@ async function syncFromGitHub() {
   const folderPath=String(GH.path || 'DATA MASTER').trim() || 'DATA MASTER';
   setSyncStatus(`🔄 Membaca folder data <b>${folderPath}</b>...`, 'green');
   try {
-    const baseApi=`https://api.github.com/repos/${GH.user}/${GH.repo}/contents`;
-    const komisiRes=await fetch(`${baseApi}/komisi.json?v=${Date.now()}`, {cache:'no-store'});
-    if(komisiRes.ok){
-      const komisiFile=await komisiRes.json();
-      await loadKomisiJson(komisiFile.download_url);
-    }
+    try { await loadKomisiJson(); } catch(e) { console.warn('Gagal memuat komisi lokal', e); }
 
-    const reportFiles=await listReportFiles(baseApi);
+    const reportFiles=await listReportFiles();
     const newR=[];
     const failed=[];
 
