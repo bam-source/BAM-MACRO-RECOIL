@@ -110,7 +110,7 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
             price: "Rp 100.000",
             tag: "Mod Game",
             status: "active",
-            image: "https://img.game8.co/4254957/fecdacf927960197e4b7257f781c378f.jpeg",
+            image: "https://wallpapercave.com/wp/wp15744646.jpg",
             videoUrl: "https://www.tiktok.com/@project_bam/video/7650983011600715028?is_from_webapp=1&sender_device=pc",
             videoId: "-",
             video1Label: "-",
