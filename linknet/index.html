@@ -1107,7 +1107,7 @@ async function listReportFiles(){
   const folderPath=String(GH.path || 'linknet/DATA MASTER').trim() || 'linknet/DATA MASTER';
   const candidates=getCandidateReportFiles(folderPath);
   const found=[];
-  setSyncStatus(`🔎 Mencari file standar di <b>${folderPath}</b> tanpa GitHub API...`, 'green');
+  setSyncStatus(`🔎 Mencari file di <b>${folderPath}</b> ...`, 'green');
   for(const file of candidates){
     if(await rawFileExists(file)) found.push(file);
   }
