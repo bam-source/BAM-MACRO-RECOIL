@@ -830,7 +830,12 @@ async function syncFromGitHub() {
       await loadKomisiJson(komisiFile.download_url);
     }
 
-    const api=`${baseApi}/${encodeURIComponent(GH.path||'DATA MASTER')}`;
+    const dataPath = String(GH.path || 'DATA MASTER')
+      .split('/')
+      .map(part => encodeURIComponent(part))
+      .join('/');
+
+    const api = `${baseApi}/${dataPath}`;
     const res=await fetch(api);
     if(!res.ok) throw new Error('Folder tidak ditemukan');
     const contents=await res.json();
