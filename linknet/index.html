@@ -739,13 +739,17 @@ const MN = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","
 let filteredRows=[], curPage=1;
 const PER_PAGE = 50;
 
+function isValidYearMonth(year, month){
+  return Number.isFinite(Number(year)) && Number.isFinite(Number(month)) && Number(month) >= 0 && Number(month) <= 11;
+}
+
 function getPeriodKey(year, month){
-  if(year===null||month===null||year===undefined||month===undefined) return '';
-  return `${year}-${String(month + 1).padStart(2,'0')}`;
+  if(!isValidYearMonth(year, month)) return '';
+  return `${Number(year)}-${String(Number(month) + 1).padStart(2,'0')}`;
 }
 
 function getRowTimestamp(row){
-  if(row.year!==null&&row.month!==null){
+  if(isValidYearMonth(row.year,row.month)){
     const raw=String(row.date||'').trim();
     const parts=raw.split(/[-/]/).map(v=>parseInt(v,10));
     if(parts.length>=3 && parts.every(v=>!Number.isNaN(v))){
@@ -783,7 +787,7 @@ function formatTimeValue(raw){
 }
 
 function getReportPeriod(report){
-  const datedRows=(report.rows||[]).filter(row=>row.year!==null&&row.month!==null);
+  const datedRows=(report.rows||[]).filter(row=>isValidYearMonth(row.year,row.month));
   if(datedRows.length){
     return datedRows.reduce((best,row)=>{
       const current=(row.year*100)+(row.month+1);
@@ -908,6 +912,13 @@ function parsePeriodFromFileName(name){
   const base = String(name || '').replace(/\.[^.]+$/,'');
   const parts = base.split(/[_\-\s]+/).filter(Boolean);
   let month = null, year = null;
+  const compact = base.toLowerCase();
+  const compactMatch = compact.match(/(jan|feb|mar|apr|mei|may|jun|jul|agu|aug|sep|okt|oct|nov|des|dec)[a-z]*\D*(20\d{2}|\d{2})/);
+  if(compactMatch){
+    month = parseMonthToken(compactMatch[1]);
+    year = parseInt(compactMatch[2],10);
+    if(year < 100) year += 2000;
+  }
   for(const part of parts){
     const m = parseMonthToken(part);
     if(m !== null) month = m;
@@ -948,9 +959,13 @@ function parseDateValue(value, fallbackName=''){
     }
   }
   if(year !== null && year < 100) year += 2000;
-  if(!Number.isFinite(year)) year = fallback.year ?? null;
-  if(!Number.isFinite(month)) month = fallback.month ?? null;
-  return {label:raw, year, month};
+  if(!Number.isFinite(Number(year))) year = fallback.year ?? null;
+  if(!Number.isFinite(Number(month)) || Number(month) < 0 || Number(month) > 11) month = fallback.month ?? null;
+  if(!isValidYearMonth(year, month)){
+    year = fallback.year ?? null;
+    month = fallback.month ?? null;
+  }
+  return {label:raw, year: year === null ? null : Number(year), month: month === null ? null : Number(month)};
 }
 
 function rowHasMeaning(row){
@@ -1167,7 +1182,7 @@ function updateUI(){
     tRev+=row.price;
     const{sComm,stComm,fNet}=calcComm(row);
     tS+=sComm;tSt+=stComm;tN+=fNet;
-    if(row.year!==null&&row.month!==null){
+    if(isValidYearMonth(row.year,row.month)){
       if(!tree[row.year])tree[row.year]={};
       if(!tree[row.year][row.month])tree[row.year][row.month]={net:0,sTotal:0,stTotal:0,sellers:{}};
       const m=tree[row.year][row.month];
@@ -1197,7 +1212,7 @@ function updateDashboardHero(all, tRev, tS, tSt, tN){
   const datedRows = all.filter(r => r.year !== null && r.month !== null);
   const sortedPeriods = [...new Set(datedRows.map(r => getPeriodKey(r.year, r.month)))].sort((a,b)=>a.localeCompare(b));
   const latestPeriod = sortedPeriods.length ? sortedPeriods[sortedPeriods.length - 1] : '';
-  const latestLabel = latestPeriod ? `${MN[parseInt(latestPeriod.split('-')[1], 10) - 1]} ${latestPeriod.split('-')[0]}` : 'Belum ada data';
+  const latestLabel = latestPeriod ? `${MN[(parseInt(latestPeriod.split('-')[1], 10) - 1)] || 'Periode'} ${latestPeriod.split('-')[0]}` : 'Belum ada data';
   const monthTotals = state.reports.map(r => ({
     name: r.name.replace(/\.xlsx?$/i,''),
     total: r.rows.reduce((sum,row)=>sum+calcComm(row).fNet,0)
@@ -1294,7 +1309,7 @@ function renderRekap(tree){
         return`<div class="month-row">
           <button class="month-trigger" onclick="this.parentElement.classList.toggle('active')">
             <div class="month-title">
-              <span class="month-name">${MN[m]}</span>
+              <span class="month-name">${MN[Number(m)] || 'Periode'}</span>
               <div class="month-summary">
                 <div class="month-kpi owner"><span>Owner</span><b>${masked('Rp '+fmt(Math.round(d.net)))}</b></div>
                 <div class="month-kpi seller"><span>Penjual</span><b>${masked('Rp '+fmt(Math.round(d.sTotal)))}</b></div>
@@ -1550,7 +1565,7 @@ function printSeller(year,mi,sellerName){
   if(!hasAdminAccess())return;
   const data=state.currentTree[year][mi];
   if(!data?.sellers[sellerName])return;
-  const sd=data.sellers[sellerName], mn=MN[mi];
+  const sd=data.sellers[sellerName], mn=MN[Number(mi)] || 'Periode';
   let tS=0,tC=0;
   const txs=[...sd.transactions].sort((a,b)=>getRowTimestamp(a)-getRowTimestamp(b));
   txs.forEach(t=>{tS+=t.price;tC+=t.sCommRow;});
@@ -1570,7 +1585,7 @@ function printStaff(year,mi){
   if(!hasAdminAccess())return;
   const data=state.currentTree[year][mi];
   if(!data)return;
-  const mn=MN[mi], sels=Object.keys(data.sellers).sort();
+  const mn=MN[Number(mi)] || 'Periode', sels=Object.keys(data.sellers).sort();
   let total=0; sels.forEach(n=>total+=data.sellers[n].stComm);
   runPrint(`<div class="print-container">
     <div class="print-header"><div class="print-header-left"><h1>LINK.NET</h1></div><div class="print-header-right"><p><b>REKAP STAFF</b></p><p>Periode: ${mn} ${year}</p></div></div>
