@@ -818,193 +818,338 @@ window.onload = async () => {
 };
 
 // ─── SYNC ─────────────────────────────────────────────────────────────────────
-function encodeGitHubPath(path){
+function ensureSyncStatusBox(){
+  let box=document.getElementById('sync-status-box');
+  if(box) return box;
+  const target=document.querySelector('#tab-dashboard .hero-panel') || document.querySelector('#tab-dashboard');
+  box=document.createElement('div');
+  box.id='sync-status-box';
+  box.className='notice notice-green';
+  box.style.marginTop='16px';
+  box.style.display='none';
+  if(target && target.parentNode){
+    target.parentNode.insertBefore(box, target.nextSibling);
+  }
+  return box;
+}
+
+function setSyncStatus(message, type='green'){
+  const box=ensureSyncStatusBox();
+  if(!box) return;
+  box.className=`notice notice-${type==='error'?'amber':'green'}`;
+  box.style.display='flex';
+  box.innerHTML=message;
+}
+
+function normalizeGitHubContentPath(path){
   return String(path || 'DATA MASTER')
     .split('/')
+    .filter(part => part !== '')
     .map(part => encodeURIComponent(part))
     .join('/');
 }
 
-function parseNumberValue(value){
-  if(value===null||value===undefined||value==='') return 0;
-  if(typeof value==='number') return value;
-  const cleaned=String(value)
-    .replace(/Rp/gi,'')
-    .replace(/\s/g,'')
-    .replace(/\./g,'')
-    .replace(/,/g,'.');
-  const num=parseFloat(cleaned);
+function normalizeHeaderName(value){
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[^a-z0-9]/g, '');
+}
+
+function findColumnIndex(headers, aliases){
+  const normHeaders = headers.map(normalizeHeaderName);
+  for(const alias of aliases){
+    const needle = normalizeHeaderName(alias);
+    const idx = normHeaders.findIndex(h => h === needle || h.includes(needle));
+    if(idx >= 0) return idx;
+  }
+  return -1;
+}
+
+function parseMoneyValue(value){
+  if(value === null || value === undefined || value === '') return 0;
+  if(typeof value === 'number') return value;
+  let str = String(value).trim();
+  str = str.replace(/rp/ig,'').replace(/\s+/g,'');
+  if(str.includes(',') && str.includes('.')){
+    str = str.replace(/\./g,'').replace(',', '.');
+  }else if(str.includes(',') && !str.includes('.')){
+    str = str.replace(',', '.');
+  }else{
+    str = str.replace(/[^\d.-]/g,'');
+  }
+  const num = parseFloat(str);
   return Number.isFinite(num) ? num : 0;
 }
 
-function monthIndexFromText(value){
-  const key=String(value||'').toLowerCase().trim();
-  const map={
-    jan:0,januari:0,january:0,
-    feb:1,februari:1,febuari:1,february:1,
-    mar:2,maret:2,march:2,
-    apr:3,april:3,
-    mei:4,may:4,
-    jun:5,juni:5,june:5,
-    jul:6,juli:6,july:6,
-    agu:7,agt:7,agustus:7,aug:7,august:7,
-    sep:8,september:8,
-    okt:9,oct:9,oktober:9,october:9,
-    nov:10,november:10,
-    des:11,dec:11,desember:11,december:11
-  };
-  return Object.prototype.hasOwnProperty.call(map,key) ? map[key] : null;
+const MONTH_LOOKUP = {
+  jan:0,januari:0,january:0,
+  feb:1,februari:1,febuari:1,february:1,
+  mar:2,maret:2,march:2,
+  apr:3,april:3,
+  mei:4,may:4,
+  jun:5,juni:5,june:5,
+  jul:6,juli:6,july:6,
+  agu:7,agustus:7,aug:7,august:7,
+  sep:8,september:8,
+  okt:9,oktober:9,oct:9,october:9,
+  nov:10,november:10,
+  des:11,desember:11,dec:11,december:11
+};
+
+function parseMonthToken(value){
+  const key = String(value || '').trim().toLowerCase().replace(/[^a-z]/g,'');
+  if(Object.prototype.hasOwnProperty.call(MONTH_LOOKUP, key)) return MONTH_LOOKUP[key];
+  return null;
 }
 
-function periodFromFileName(name){
-  const base=String(name||'').replace(/\.[^.]+$/,'');
-  const parts=base.split(/[_\-\s]+/).filter(Boolean);
-  let month=null, year=null;
+function parsePeriodFromFileName(name){
+  const base = String(name || '').replace(/\.[^.]+$/,'');
+  const parts = base.split(/[_\-\s]+/).filter(Boolean);
+  let month = null, year = null;
   for(const part of parts){
-    const m=monthIndexFromText(part);
-    if(m!==null) month=m;
-    const y=String(part).match(/^(20\d{2}|\d{2})$/);
+    const m = parseMonthToken(part);
+    if(m !== null) month = m;
+    const y = String(part).match(/^(20\d{2}|\d{2})$/);
     if(y){
-      year=parseInt(y[1],10);
-      if(year<100) year+=2000;
+      year = parseInt(y[1],10);
+      if(year < 100) year += 2000;
     }
   }
-  return {year:Number.isInteger(year)?year:null, month:Number.isInteger(month)?month:null};
+  return {year, month};
 }
 
-function parseDateInfo(raw, fallbackPeriod){
-  let year=null, month=null, display=raw;
-  if(typeof raw==='number'){
-    const d=new Date((raw-25569)*86400*1000);
-    if(!Number.isNaN(d.getTime())){
-      year=d.getFullYear();
-      month=d.getMonth();
-      display=`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
-    }
-  }else if(typeof raw==='string'){
-    const str=raw.trim();
-    const pts=str.split(/[-/]/).map(v=>v.trim()).filter(Boolean);
-    if(pts.length>=3){
-      const firstMonth=monthIndexFromText(pts[0]);
-      if(firstMonth!==null){
-        month=firstMonth;
-        year=parseInt(pts[2],10);
-      }else if(/^\d{4}$/.test(pts[0])){
-        year=parseInt(pts[0],10);
-        month=parseInt(pts[1],10)-1;
-      }else{
-        year=parseInt(pts[2],10);
-        month=parseInt(pts[1],10)-1;
-      }
-    }
+function parseDateValue(value, fallbackName=''){
+  const fallback = parsePeriodFromFileName(fallbackName);
+  if(typeof value === 'number' && Number.isFinite(value)){
+    const d = new Date((value-25569)*86400*1000);
+    return {
+      label:`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`,
+      year:d.getFullYear(),
+      month:d.getMonth()
+    };
   }
-  if(!Number.isInteger(year) && fallbackPeriod && Number.isInteger(fallbackPeriod.year)) year=fallbackPeriod.year;
-  if(!Number.isInteger(month) && fallbackPeriod && Number.isInteger(fallbackPeriod.month)) month=fallbackPeriod.month;
-  if(!Number.isInteger(year) || !Number.isInteger(month) || month<0 || month>11){
-    year=null;
-    month=null;
-  }
-  return {date:display, year, month};
-}
-
-function parseCsvLine(line){
-  const out=[];
-  let cur='', quoted=false;
-  for(let i=0;i<line.length;i++){
-    const ch=line[i];
-    if(ch==='"'){
-      if(quoted && line[i+1]==='"') { cur+='"'; i++; }
-      else quoted=!quoted;
-    }else if(ch===',' && !quoted){
-      out.push(cur);
-      cur='';
+  const raw = String(value || '').trim();
+  if(!raw) return {label:raw, year:fallback.year ?? null, month:fallback.month ?? null};
+  const parts = raw.split(/[-/.\s]+/).filter(Boolean);
+  let year = null, month = null, day = null;
+  if(parts.length >= 3){
+    const firstMonth = parseMonthToken(parts[0]);
+    const secondMonth = parseMonthToken(parts[1]);
+    if(firstMonth !== null){
+      month = firstMonth; day = parseInt(parts[1],10); year = parseInt(parts[2],10);
+    }else if(secondMonth !== null){
+      day = parseInt(parts[0],10); month = secondMonth; year = parseInt(parts[2],10);
+    }else if(String(parts[0]).length === 4){
+      year = parseInt(parts[0],10); month = parseInt(parts[1],10)-1; day = parseInt(parts[2],10);
     }else{
-      cur+=ch;
+      day = parseInt(parts[0],10); month = parseInt(parts[1],10)-1; year = parseInt(parts[2],10);
     }
   }
-  out.push(cur);
-  return out.map(v=>v.trim());
+  if(year !== null && year < 100) year += 2000;
+  if(!Number.isFinite(year)) year = fallback.year ?? null;
+  if(!Number.isFinite(month)) month = fallback.month ?? null;
+  return {label:raw, year, month};
 }
 
-function csvTextToObjects(text){
-  const lines=String(text||'').split(/\r?\n/).filter(line=>line.trim()!=='');
-  const headerIndex=lines.findIndex(line=>{
-    const cells=parseCsvLine(line).map(v=>v.toLowerCase());
-    return cells.includes('date') && cells.includes('time') && cells.includes('username');
+function rowHasMeaning(row){
+  return row.some(cell => String(cell ?? '').trim() !== '');
+}
+
+function getCell(row, index){
+  return index >= 0 ? row[index] : '';
+}
+
+function rowsFromAoa(aoa, fileName=''){
+  if(!Array.isArray(aoa)) return [];
+  const headerRowIndex = aoa.findIndex(row => {
+    const normalized = (row || []).map(normalizeHeaderName);
+    return normalized.includes('date') &&
+           (normalized.includes('username') || normalized.includes('kodevoucher') || normalized.includes('vouchercode')) &&
+           (normalized.includes('profile') || normalized.includes('paket') || normalized.includes('package'));
   });
-  if(headerIndex<0) return [];
-  const headers=parseCsvLine(lines[headerIndex]);
-  return lines.slice(headerIndex+1).map(line=>{
-    const cells=parseCsvLine(line);
-    const obj={};
-    headers.forEach((h,i)=>{ obj[h]=cells[i]??''; });
-    return obj;
-  }).filter(row=>Object.values(row).some(v=>String(v||'').trim()!==''));
+  if(headerRowIndex < 0) throw new Error('Header Date/Username/Profile tidak ditemukan');
+  const headers = aoa[headerRowIndex] || [];
+  const idxDate = findColumnIndex(headers, ['Date','Tanggal']);
+  const idxTime = findColumnIndex(headers, ['Time','Waktu']);
+  const idxUser = findColumnIndex(headers, ['Username','KodeVoucher','VoucherCode','Voucher']);
+  const idxProfile = findColumnIndex(headers, ['Profile','Paket','Package']);
+  const idxComment = findColumnIndex(headers, ['Comment','Keterangan','Note']);
+  const idxPrice = findColumnIndex(headers, ['Price','Harga']);
+  return aoa.slice(headerRowIndex + 1)
+    .filter(row => rowHasMeaning(row || []))
+    .map(row => {
+      const prof = String(getCell(row, idxProfile) || '').trim();
+      let dp = prof, ds = 'Admin';
+      if(prof.includes('-')){
+        const pts = prof.split('-');
+        dp = pts[0].trim();
+        ds = pts.slice(1).join('-').trim();
+      }
+      const parsedDate = parseDateValue(getCell(row, idxDate), fileName);
+      return {
+        date: parsedDate.label,
+        time: formatTimeValue(getCell(row, idxTime)),
+        voucherCode: String(getCell(row, idxUser) || '').trim(),
+        note: String(getCell(row, idxComment) || '').trim(),
+        year: parsedDate.year,
+        month: parsedDate.month,
+        sellerRaw: ds,
+        pkgRaw: dp,
+        price: parseMoneyValue(getCell(row, idxPrice))
+      };
+    })
+    .filter(r => r.voucherCode || r.pkgRaw || r.price || r.date);
 }
 
-function normalizeReportRows(raw, fileName){
-  const fallbackPeriod=periodFromFileName(fileName);
-  return (raw||[]).map(r=>{
-    let prof=String(r.Profile||r.Paket||'').trim(), dp=prof, ds='Admin';
+async function parseReportFile(file){
+  const fileRes = await fetch(`${file.download_url}${file.download_url.includes('?')?'&':'?'}v=${Date.now()}`, {cache:'no-store'});
+  if(!fileRes.ok) throw new Error(`HTTP ${fileRes.status}`);
+  const ext = String(file.name || '').split('.').pop().toLowerCase();
+  let wb;
+  if(ext === 'csv'){
+    const text = await fileRes.text();
+    wb = XLSX.read(text, {type:'string', raw:false});
+  }else{
+    const ab = await fileRes.arrayBuffer();
+    wb = XLSX.read(new Uint8Array(ab), {type:'array', raw:false});
+  }
+  if(!wb.SheetNames || wb.SheetNames.length===0) throw new Error('Sheet kosong');
+  const sheet = wb.Sheets[wb.SheetNames[0]];
+  const aoa = XLSX.utils.sheet_to_json(sheet, {header:1, defval:'', raw:false});
+  return rowsFromAoa(aoa, file.name);
+}
+
+function extractRowsFromSheet(raw, fileName=''){
+  if(Array.isArray(raw) && raw.length && Array.isArray(raw[0])) return rowsFromAoa(raw, fileName);
+  return raw.map(r=>{
+    let prof=String(r.Profile||r.Paket||r.Package||'').trim(), dp=prof, ds='Admin';
     if(prof.includes('-')){const pts=prof.split('-');dp=pts[0].trim();ds=pts.slice(1).join('-').trim();}
-    const parsedDate=parseDateInfo(r.Date, fallbackPeriod);
+    const parsedDate=parseDateValue(r.Date||r.Tanggal||'', fileName);
     return{
-      date:parsedDate.date,
+      date:parsedDate.label,
       time:formatTimeValue(r.Time||r.Waktu||''),
-      voucherCode:String(r.Username||r.KodeVoucher||r.VoucherCode||'').trim(),
-      note:String(r.Comment||r.Keterangan||'').trim(),
+      voucherCode:String(r.Username||r.KodeVoucher||r.VoucherCode||r.Voucher||'').trim(),
+      note:String(r.Comment||r.Keterangan||r.Note||'').trim(),
       year:parsedDate.year,
       month:parsedDate.month,
       sellerRaw:ds,
       pkgRaw:dp,
-      price:parseNumberValue(r.Price||r.Harga||0)
+      price:parseMoneyValue(r.Price||r.Harga||0)
     };
-  }).filter(row=>row.pkgRaw||row.sellerRaw||row.voucherCode||row.price);
+  }).filter(r=>r.voucherCode || r.pkgRaw || r.price || r.date);
+}
+
+// ─── SYNC ─────────────────────────────────────────────────────────────────────
+function makeRawGitHubUrl(path, branch='main'){
+  return `https://raw.githubusercontent.com/${GH.user}/${GH.repo}/${encodeURIComponent(branch)}/${normalizeGitHubContentPath(path)}`;
+}
+
+function getCandidateReportFiles(folderPath){
+  const cleanFolder=String(folderPath||'linknet/DATA MASTER').replace(/^\/+|\/+$/g,'');
+  const monthAliases=[
+    ['Januari'],
+    ['Febuari','Februari'],
+    ['Maret'],
+    ['April'],
+    ['Mei'],
+    ['Juni'],
+    ['Juli'],
+    ['Agustus'],
+    ['September'],
+    ['Oktober'],
+    ['November'],
+    ['Desember']
+  ];
+  const extensions=['csv','xlsx','xls'];
+  const currentYear=new Date().getFullYear();
+  const startYear=2024;
+  const endYear=Math.max(currentYear+2, 2028);
+  const files=[];
+  for(let year=startYear; year<=endYear; year++){
+    for(const aliases of monthAliases){
+      for(const monthName of aliases){
+        for(const ext of extensions){
+          const name=`${monthName}_${year}.${ext}`;
+          const path=`${cleanFolder}/${name}`;
+          files.push({
+            name,
+            path,
+            sha:path,
+            download_url:makeRawGitHubUrl(path, 'main')
+          });
+        }
+      }
+    }
+  }
+  return files;
+}
+
+async function rawFileExists(file){
+  const url=`${file.download_url}?v=${Date.now()}`;
+  try{
+    const head=await fetch(url, {method:'HEAD', cache:'no-store'});
+    if(head.ok) return true;
+    if(head.status !== 405 && head.status !== 403) return false;
+  }catch(e){
+    // Beberapa host/CDN tidak mengizinkan HEAD. Lanjut cek GET ringan.
+  }
+  try{
+    const res=await fetch(url, {cache:'no-store'});
+    return res.ok;
+  }catch(e){
+    return false;
+  }
+}
+
+async function listReportFiles(){
+  const folderPath=String(GH.path || 'linknet/DATA MASTER').trim() || 'linknet/DATA MASTER';
+  const candidates=getCandidateReportFiles(folderPath);
+  const found=[];
+  setSyncStatus(`🔎 Mencari file standar di <b>${folderPath}</b> tanpa GitHub API...`, 'green');
+  for(const file of candidates){
+    if(await rawFileExists(file)) found.push(file);
+  }
+  if(!found.length){
+    throw new Error(`Tidak ada file standar ditemukan di ${folderPath}. Pastikan nama file seperti Juni_2026.csv atau Juni_2026.xlsx`);
+  }
+  return found;
 }
 
 async function syncFromGitHub() {
   if(!GH.user||!GH.repo) return;
   if(state.isSyncing) return;
   state.isSyncing=true; toggleSyncBtn(true);
+  const folderPath=String(GH.path || 'DATA MASTER').trim() || 'DATA MASTER';
+  setSyncStatus(`🔄 Membaca folder data <b>${folderPath}</b>...`, 'green');
   try {
-    const baseApi=`https://api.github.com/repos/${GH.user}/${GH.repo}/contents`;
-    const komisiRes=await fetch(`${baseApi}/komisi.json`);
-    if(komisiRes.ok){
-      const komisiFile=await komisiRes.json();
-      await loadKomisiJson(komisiFile.download_url);
-    }
+    try { await loadKomisiJson(); } catch(e) { console.warn('Gagal memuat komisi lokal', e); }
 
-    const api=`${baseApi}/${encodeGitHubPath(GH.path||'DATA MASTER')}`;
-    const res=await fetch(api);
-    if(!res.ok) throw new Error(`Folder tidak ditemukan: ${GH.path||'DATA MASTER'}`);
-    const contents=await res.json();
-    const reportFiles=contents.filter(f=>/\.(xlsx|xls|csv)$/i.test(f.name));
+    const reportFiles=await listReportFiles();
     const newR=[];
     const failed=[];
+
     for(const file of reportFiles){
       try{
-        let raw=[];
-        if(/\.csv$/i.test(file.name)){
-          const text=await (await fetch(file.download_url)).text();
-          raw=csvTextToObjects(text);
-        }else{
-          const ab=await (await fetch(file.download_url)).arrayBuffer();
-          const wb=XLSX.read(new Uint8Array(ab),{type:'array'});
-          raw=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
-        }
-        const rows=normalizeReportRows(raw,file.name);
-        newR.push({id:file.sha,name:file.name,rows});
-      }catch(fileErr){
-        console.error(`Gagal membaca ${file.name}`, fileErr);
-        failed.push(file.name);
+        const rows=await parseReportFile(file);
+        newR.push({id:file.sha||file.name,name:file.name,rows});
+      }catch(err){
+        console.error('Gagal membaca file:', file.name, err);
+        failed.push(`${file.name} (${err.message||err})`);
       }
     }
+
     state.reports=sortReportsByPeriod(newR);
     saveData(); updateUI();
-    if(failed.length){
-      console.warn('File gagal dibaca:', failed.join(', '));
-    }
-  } catch(e){console.error(e);}
+    const totalRows=newR.reduce((s,r)=>s+(r.rows?r.rows.length:0),0);
+    const okMsg=`✅ Folder <b>${folderPath}</b> terbaca. File ditemukan: <b>${reportFiles.length}</b>, berhasil dibaca: <b>${newR.length}</b>, transaksi: <b>${totalRows}</b>`;
+    const failMsg=failed.length?`<br>⚠️ File gagal dibaca: ${failed.map(n=>`<code>${n}</code>`).join(', ')}`:'';
+    setSyncStatus(okMsg+failMsg, failed.length?'error':'green');
+  } catch(e){
+    console.error(e);
+    setSyncStatus(`⚠️ Gagal membaca data: <b>${e.message||e}</b><br><small>Repo: ${GH.user}/${GH.repo} · Folder: ${folderPath}</small>`, 'error');
+  }
   finally{state.isSyncing=false;toggleSyncBtn(false);}
 }
 
