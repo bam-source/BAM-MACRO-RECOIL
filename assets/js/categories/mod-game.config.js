@@ -104,14 +104,14 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
             specs: ["Tested Versi Crack (Belum Tested Versi Original)"]
         },
         {
-            id: "sleeping-dogs-subtitle",
-            name: "Sleeping Dogs",
+            id: "sos-gb-subtitle",
+            name: "SOS - Grand Bazaar",
             subtitle: "Subtitle Indonesia",
-            price: "soon",
+            price: "Rp 100.000",
             tag: "Mod Game",
-            status: "Comingsoon",
-            image: "https://wallpapercave.com/wp/wp2389090.jpg",
-            videoUrl: "",
+            status: "active",
+            image: "https://img.game8.co/4254957/fecdacf927960197e4b7257f781c378f.jpeg",
+            videoUrl: "https://www.tiktok.com/@project_bam/video/7650983011600715028?is_from_webapp=1&sender_device=pc",
             videoId: "-",
             video1Label: "-",
             videoUrl2: "-",
@@ -119,10 +119,10 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
             video2Label: "-",
             description: "-",
             details: [
-                "-",
-                "-"
+                "Project mod game SOS Grand Bazaar",
+                "Order dan detail file dikonfirmasi langsung melalui admin."
             ],
-            specs: ["-"]
+            specs: ["Tested Versi Crack (Belum Tested Versi Original)"]
         }
     ]
 };
