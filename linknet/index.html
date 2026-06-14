@@ -1042,11 +1042,71 @@ function extractRowsFromSheet(raw, fileName=''){
 }
 
 // ─── SYNC ─────────────────────────────────────────────────────────────────────
+async function getRepoDefaultBranch(){
+  try{
+    const repoRes=await fetch(`https://api.github.com/repos/${GH.user}/${GH.repo}?v=${Date.now()}`, {cache:'no-store'});
+    if(repoRes.ok){
+      const repo=await repoRes.json();
+      return repo.default_branch || 'main';
+    }
+  }catch(e){ console.warn('Gagal membaca default branch', e); }
+  return 'main';
+}
+
+function makeRawGitHubUrl(path, branch='main'){
+  return `https://raw.githubusercontent.com/${GH.user}/${GH.repo}/${encodeURIComponent(branch)}/${normalizeGitHubContentPath(path)}`;
+}
+
+async function listReportFilesFromContentsApi(baseApi, folderPath){
+  const api=`${baseApi}/${normalizeGitHubContentPath(folderPath)}?v=${Date.now()}`;
+  const res=await fetch(api, {cache:'no-store'});
+  if(!res.ok){
+    const txt=await res.text().catch(()=>String(res.status));
+    throw new Error(`Contents API ${res.status}: ${txt.slice(0,160)}`);
+  }
+  const contents=await res.json();
+  return (Array.isArray(contents)?contents:[])
+    .filter(f=>f && f.type==='file' && /\.(xlsx?|csv)$/i.test(f.name));
+}
+
+async function listReportFilesFromGitTree(folderPath){
+  const branch=await getRepoDefaultBranch();
+  const treeUrl=`https://api.github.com/repos/${GH.user}/${GH.repo}/git/trees/${encodeURIComponent(branch)}?recursive=1&v=${Date.now()}`;
+  const treeRes=await fetch(treeUrl, {cache:'no-store'});
+  if(!treeRes.ok){
+    const txt=await treeRes.text().catch(()=>String(treeRes.status));
+    throw new Error(`Tree API ${treeRes.status}: ${txt.slice(0,160)}`);
+  }
+  const data=await treeRes.json();
+  const prefix=String(folderPath||'DATA MASTER').replace(/^\/+|\/+$/g,'') + '/';
+  return (data.tree||[])
+    .filter(item=>item && item.type==='blob' && item.path && item.path.startsWith(prefix) && /\.(xlsx?|csv)$/i.test(item.path))
+    .map(item=>({
+      name:item.path.split('/').pop(),
+      path:item.path,
+      sha:item.sha,
+      download_url:makeRawGitHubUrl(item.path, branch)
+    }));
+}
+
+async function listReportFiles(baseApi){
+  const folderPath=String(GH.path || 'DATA MASTER').trim() || 'DATA MASTER';
+  try{
+    return await listReportFilesFromContentsApi(baseApi, folderPath);
+  }catch(contentsErr){
+    console.warn('Contents API gagal, mencoba Git tree:', contentsErr);
+    const files=await listReportFilesFromGitTree(folderPath);
+    if(files.length) return files;
+    throw new Error(`Folder tidak ditemukan atau kosong: ${folderPath}`);
+  }
+}
+
 async function syncFromGitHub() {
   if(!GH.user||!GH.repo) return;
   if(state.isSyncing) return;
   state.isSyncing=true; toggleSyncBtn(true);
-  setSyncStatus('🔄 Membaca folder data...', 'green');
+  const folderPath=String(GH.path || 'DATA MASTER').trim() || 'DATA MASTER';
+  setSyncStatus(`🔄 Membaca folder data <b>${folderPath}</b>...`, 'green');
   try {
     const baseApi=`https://api.github.com/repos/${GH.user}/${GH.repo}/contents`;
     const komisiRes=await fetch(`${baseApi}/komisi.json?v=${Date.now()}`, {cache:'no-store'});
@@ -1055,33 +1115,29 @@ async function syncFromGitHub() {
       await loadKomisiJson(komisiFile.download_url);
     }
 
-    const api=`${baseApi}/${normalizeGitHubContentPath(GH.path || 'DATA MASTER')}?v=${Date.now()}`;
-    const res=await fetch(api, {cache:'no-store'});
-    if(!res.ok) throw new Error(`Folder tidak ditemukan: ${GH.path || 'DATA MASTER'}`);
-    const contents=await res.json();
-    const reportFiles=(Array.isArray(contents)?contents:[]).filter(f=>/\.(xlsx?|csv)$/i.test(f.name));
+    const reportFiles=await listReportFiles(baseApi);
     const newR=[];
     const failed=[];
 
     for(const file of reportFiles){
       try{
         const rows=await parseReportFile(file);
-        newR.push({id:file.sha,name:file.name,rows});
+        newR.push({id:file.sha||file.name,name:file.name,rows});
       }catch(err){
         console.error('Gagal membaca file:', file.name, err);
-        failed.push(file.name);
+        failed.push(`${file.name} (${err.message||err})`);
       }
     }
 
     state.reports=sortReportsByPeriod(newR);
     saveData(); updateUI();
     const totalRows=newR.reduce((s,r)=>s+(r.rows?r.rows.length:0),0);
-    const okMsg=`✅ Folder <b>${GH.path}</b> terbaca. File ditemukan: <b>${reportFiles.length}</b>, berhasil dibaca: <b>${newR.length}</b>, transaksi: <b>${totalRows}</b>`;
+    const okMsg=`✅ Folder <b>${folderPath}</b> terbaca. File ditemukan: <b>${reportFiles.length}</b>, berhasil dibaca: <b>${newR.length}</b>, transaksi: <b>${totalRows}</b>`;
     const failMsg=failed.length?`<br>⚠️ File gagal dibaca: ${failed.map(n=>`<code>${n}</code>`).join(', ')}`:'';
     setSyncStatus(okMsg+failMsg, failed.length?'error':'green');
   } catch(e){
     console.error(e);
-    setSyncStatus(`⚠️ Gagal membaca data: <b>${e.message||e}</b>`, 'error');
+    setSyncStatus(`⚠️ Gagal membaca data: <b>${e.message||e}</b><br><small>Repo: ${GH.user}/${GH.repo} · Folder: ${folderPath}</small>`, 'error');
   }
   finally{state.isSyncing=false;toggleSyncBtn(false);}
 }
