@@ -12,7 +12,7 @@ window.BAM_CONFIG = {
     whatsapp: "https://api.whatsapp.com/send/?phone=6289697523717",
     tiktok:   "https://www.tiktok.com/@project_bam",
     youtube:  "https://www.youtube.com/@project_bam_yt",
-    discord:  "https://discord.com/invite/zpuM9PRSdQ"
+    discord:  "https://discord.gg/Eh4DuRRAWk"
   },
   socialLinks: [
     { id: "whatsapp", icon: "fa-whatsapp", label: "WhatsApp", color: "#25d366" },
