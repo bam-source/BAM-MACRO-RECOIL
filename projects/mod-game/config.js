@@ -122,7 +122,7 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
             id: "sos-gb-subtitle",
             name: "SOS - Grand Bazaar",
             subtitle: "Subtitle Indonesia",
-            price: "Rp 100.000",
+            price: "Rp 50.000",
             tag: "Mod Game",
             status: "active",
             image: "https://tse3.mm.bing.net/th/id/OIP.9kEg1-sa9rHnnvDCUFujKQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
