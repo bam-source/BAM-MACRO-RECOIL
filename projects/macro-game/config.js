@@ -46,7 +46,7 @@ window.BAM_CATEGORIES["macro-recoil"] = {
     news: [
       { title: "Request Game Ready !!!", date: " ", tag: " ", description: "silahkan hubungi admin jika request macro game", pinned: false },
       { title: "Info Update !!!", date: " ", tag: " ", description: "join discord untuk info update!", pinned: false },
-      { title: "Info Macro !!!", date: " ", tag: " ", description: "ini hanya macro mouse bukan cheat game!", pinned: false }
+      { title: "Info Youtube !!!", date: " ", tag: " ", description: "cek playlist youtube untuk video update", pinned: false }
     ]
   },
   cta: {
