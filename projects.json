@@ -1,0 +1,26 @@
+[
+  {
+    "id": "macro-game",
+    "name": "Project Macro Game",
+    "label": "MACRO GAME",
+    "path": "/projects/macro-game/index.html",
+    "icon": "fa-crosshairs",
+    "description": "macro game dengan akses lifetime."
+  },
+  {
+    "id": "mod-game",
+    "name": "Project Mod Game",
+    "label": "MOD GAME",
+    "path": "/projects/mod-game/index.html",
+    "icon": "fa-screwdriver-wrench",
+    "description": "mod game siap order dan konsultasi admin."
+  },
+  {
+    "id": "linknet",
+    "name": "LINK.NET",
+    "label": "LINKNET",
+    "path": "/projects/linknet/index.html",
+    "icon": "fa-chart-simple",
+    "description": "Dashboard analitik data"
+  }
+]

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAM PROJECT</title>
+    <link rel="icon" type="image/png" href="assets/Logo_BAM_Transparant.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,700;0,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="site-nav" class="site-nav"></nav>
+
+    <main class="page">
+        <section class="home-hero">
+            <div class="hero-content">
+                <h1>BAM <span>PROJECT</span></h1>
+                <div class="home-actions">
+                    <a class="btn-primary" href="#produk"><i class="fa-solid fa-box-open"></i> Lihat Produk</a>
+                    <button class="btn-ghost" type="button" data-open-contact>Hubungi Admin</button>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="produk" class="section">
+            <div class="section-header" style="text-align:center;flex-direction:column;align-items:center;">
+                <div>
+                    <span class="section-tag">Katalog</span>
+                    <h2 class="section-title">Project</h2>
+                </div>
+            </div>
+            <div id="project-list" class="project-list"></div>
+        </section>
+
+        <section id="testimoni" class="section testi-combo">
+            <div class="testimonial-head">
+                <div>
+                    <div class="verified-pill"><i class="fa-solid fa-star"></i> Verified Buyers</div>
+                    <h2 class="testimonial-title">Bukti Transaksi & <span class="text-red">Testimoni</span></h2>
+                    <p class="testimonial-sub">Screenshot langsung dari pembeli nyata kami</p>
+                </div>
+                <button class="testimonial-more" type="button" data-social="discord">
+                    <i class="fa-brands fa-discord"></i> Lihat Lebih Banyak
+                </button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Total Pembeli</div></div>
+                <div class="stat-card"><div class="stat-num">4.9★</div><div class="stat-label">Rating</div></div>
+                <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Support Admin</div></div>
+            </div>
+            <div id="testi-scroll-container" class="testi-scroll"></div>
+        </section>
+    </main>
+
+    <footer>BAM PROJECT</footer>
+    <div id="global-modals"></div>
+
+    <script src="config.js"></script>
+    <script src="common.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>
