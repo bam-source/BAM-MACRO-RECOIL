@@ -75,28 +75,6 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
     },
     products: [
         {
-            id: "it-takes-two-subtitle",
-            name: "It Takes Two",
-            subtitle: "Subtitle Indonesia",
-            price: "Rp 25.000",
-            tag: "Mod Game",
-            status: "active",
-            image: "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/02/It-Takes-Two-Trailer.jpg",
-            videoUrl: "https://www.tiktok.com/@project_bam/video/7648379354874973461?is_from_webapp=1&sender_device=pc&web_id=7533798724528473617",
-            videoId: "-",
-            video1Label: "it takes two",
-            videoUrl2: "",
-            videoId2: "-",
-            video2Label: "-",
-            description: "Subtitle Indonesia",
-            versions: ["CRACK"],
-            details: [
-                "Project mod game untuk It Takes Two.",
-                "Order dan detail file dikonfirmasi langsung melalui admin."
-            ],
-            specs: ["Tested Versi Crack (Belum Tested Versi Original)"]
-        },
-        {
             id: "watch-dogs-subtitle",
             name: "Watch Dogs",
             subtitle: "Subtitle Indonesia",
@@ -158,6 +136,28 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
             description: "-",
             details: [
                 "Project mod game SOS Grand Bazaar",
+                "Order dan detail file dikonfirmasi langsung melalui admin."
+            ],
+            specs: ["Tested Versi Crack (Belum Tested Versi Original)"]
+        },
+        {
+            id: "it-takes-two-subtitle",
+            name: "It Takes Two",
+            subtitle: "Subtitle Indonesia",
+            price: "Rp 25.000",
+            tag: "Mod Game",
+            status: "active",
+            image: "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2021/02/It-Takes-Two-Trailer.jpg",
+            videoUrl: "https://www.tiktok.com/@project_bam/video/7648379354874973461?is_from_webapp=1&sender_device=pc&web_id=7533798724528473617",
+            videoId: "-",
+            video1Label: "it takes two",
+            videoUrl2: "",
+            videoId2: "-",
+            video2Label: "-",
+            description: "Subtitle Indonesia",
+            versions: ["CRACK"],
+            details: [
+                "Project mod game untuk It Takes Two.",
                 "Order dan detail file dikonfirmasi langsung melalui admin."
             ],
             specs: ["Tested Versi Crack (Belum Tested Versi Original)"]
