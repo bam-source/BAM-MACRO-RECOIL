@@ -125,7 +125,7 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
             price: "Rp 50.000",
             tag: "Mod Game",
             status: "active",
-            image: "https://tse3.mm.bing.net/th/id/OIP.9kEg1-sa9rHnnvDCUFujKQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+            image: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/storyofseasonsgrandbazaar/2x1_StoryOfSeasonsGrandBazaar_image1600w.jpg",
             videoUrl: "https://www.tiktok.com/@project_bam/video/7650983011600715028?is_from_webapp=1&sender_device=pc",
             videoId: "-",
             video1Label: "SOS-Grand Bazaar",
