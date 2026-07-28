@@ -75,6 +75,28 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
     },
     products: [
         {
+            id: "mytimeatportia-subtitle",
+            name: "My Time At Portia",
+            subtitle: "Subtitle Indonesia",
+            price: "Rp CoomingSoon",
+            tag: "Mod Game",
+            status: "CoomingSoon",
+            image: "https://cdn.staticneo.com/ew/5/5a/My-time-at-portia-grid-large.jpg",
+            videoUrl: "",
+            videoId: "",
+            video1Label: "",
+            videoUrl2: "",
+            videoId2: "",
+            video2Label: "",
+            description: " ",
+            versions: ["STEAM"],
+            details: [
+                "Project mod game untuk Watch Dogs",
+                "Order dan detail file dikonfirmasi langsung melalui admin."
+            ],
+            specs: ["Tested Versi STEAM (belum tested versi crack)"]
+        },
+        {
             id: "watch-dogs-subtitle",
             name: "Watch Dogs",
             subtitle: "Subtitle Indonesia",
