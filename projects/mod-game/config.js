@@ -91,7 +91,7 @@ window.BAM_CATEGORIES["mod-game-indonesia"] = {
             description: " ",
             versions: ["STEAM"],
             details: [
-                "Project mod game untuk Watch Dogs",
+                "Project mod game untuk My Time At Portia",
                 "Order dan detail file dikonfirmasi langsung melalui admin."
             ],
             specs: ["Tested Versi STEAM (belum tested versi crack)"]
