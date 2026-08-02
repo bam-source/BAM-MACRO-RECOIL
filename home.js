@@ -18,18 +18,26 @@
   // PROJECT CARDS — Render dari data /projects.json
   // ============================================================
 
-  function renderProjectCard(project) {
+  function renderProjectCard(project, index) {
     const label = project.label || project.name;
+    const badge = project.path === "-" ? "SOON" : "OPEN";
     return `
       <a class="project-card" href="${project.path}">
-        <div class="project-icon">
-          <i class="fa-solid ${project.icon}"></i>
+        <div class="project-card-top">
+          <span class="project-num">${String(index + 1).padStart(2, "0")}</span>
+          ${project.image ? `<img class="project-card-img" src="${project.image}" alt="${window.BAM.escapeHtml(label)}" loading="lazy">` : ""}
+          <div class="project-icon">
+            <i class="fa-solid ${project.icon}"></i>
+          </div>
         </div>
         <div class="project-body">
           <div class="project-name">${window.BAM.escapeHtml(label)}</div>
           <div class="project-desc">${window.BAM.escapeHtml(project.description || "")}</div>
         </div>
-        <span class="project-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        <div class="project-foot">
+          <span class="project-pill">${badge}</span>
+          <span class="project-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+        </div>
       </a>
     `;
   }
@@ -39,7 +47,7 @@
     if (!target) return;
     target.innerHTML = projects
       .filter(p => p.id)
-      .map(p => renderProjectCard(p))
+      .map((p, index) => renderProjectCard(p, index))
       .join("");
   }
 

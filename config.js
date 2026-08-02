@@ -16,7 +16,7 @@ window.BAM_CONFIG = {
     whatsapp: "https://api.whatsapp.com/send/?phone=6289697523717",
     tiktok:   "https://www.tiktok.com/@project_bam",
     youtube:  "https://www.youtube.com/@project_bam_yt",
-    discord:  "https://discord.gg/Eh4DuRRAWk"
+    discord:  "https://discord.gg/rRAAYrYwPq"
   },
 
   // Tampilan ikon sosial
@@ -26,6 +26,15 @@ window.BAM_CONFIG = {
     { id: "tiktok",   icon: "fa-tiktok",   label: "TikTok",   color: "#111827" },
     { id: "youtube",  icon: "fa-youtube",  label: "YouTube",  color: "#ff0000" }
   ],
+
+  // Navigasi global — dipakai otomatis di semua halaman (homepage & project)
+  nav: {
+    logoHref: "/index.html",
+    links: [
+      { label: "Home", href: "/index.html" }
+    ],
+    cta: { label: "Kontak Admin" }
+  },
 
   // Sumber data testimoni dari GitHub
   testimonialSource: {

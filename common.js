@@ -1,8 +1,7 @@
 // ============================================================
-// COMMON.JS — Fungsi Bersama untuk Semua Halaman
+// COMMON.JS — Fungsi Bersama (Shared) untuk Semua Halaman
 // Berisi: navbar, modal, testimoni, utility
-// Semua fungsi terisolasi — tidak ada dependency eksternal
-// selain window.BAM_CONFIG dan window.BAM_CATEGORIES.
+// Dipakai oleh homepage & semua halaman project.
 // ============================================================
 
 (function () {
@@ -114,63 +113,50 @@
       const res = await fetch("/projects.json");
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const list = await res.json();
-
-      // Gabung dengan data BAM_CATEGORIES (data spesifik project dari config.js masing-masing)
-      _cachedProjects = list
-        .filter(p => p.id)
-        .map(project => ({
-          ...project,
-          ...(window.BAM_CATEGORIES?.[project.id] || {})
-        }));
-
+      _cachedProjects = list.filter(p => p.id);
       return _cachedProjects;
     } catch (err) {
-      console.warn("Gagal fetch /projects.json, fallback ke config.categories:", err);
-      // Fallback: baca dari config.categories jika ada
-      const fallback = (config.categories || []).filter(c => c.id);
-      _cachedProjects = fallback;
+      console.warn("Gagal fetch /projects.json:", err);
+      _cachedProjects = (config.categories || []).filter(c => c.id);
       return _cachedProjects;
     }
-  }
-
-  /**
-   * getCategory(id) — Ambil satu project berdasarkan id
-   */
-  function getCategory(id) {
-    return window.BAM_CATEGORIES?.[id] || null;
-  }
-
-  /**
-   * getAllProducts() — Kumpulkan semua produk dari semua project
-   */
-  async function getAllProducts() {
-    const cats = await getCategories();
-    return cats.flatMap(cat =>
-      (cat.products || []).map(product => ({ ...product, category: cat }))
-    );
   }
 
   // ============================================================
   // NAVBAR — Render navigasi utama
   // ============================================================
 
-  function renderNav(activeId = "") {
+  function renderNav() {
     const nav = document.getElementById("site-nav");
     if (!nav) return;
+    const cfg = config.nav || {};
+    const normalizePath = p => {
+      const s = p.replace(/\/+$/, "") || "/";
+      return s === "/index.html" ? "/" : s;
+    };
+    const currentPath = normalizePath(location.pathname);
+    const links = (cfg.links || []).map(link => {
+      const href = link.href || "#";
+      const linkPath = normalizePath(new URL(href, location.href).pathname);
+      const isActive = linkPath === currentPath;
+      return `<a href="${href}" class="nav-link${isActive ? " is-active" : ""}" data-close-nav>${escapeHtml(link.label)}</a>`;
+    }).join("");
+    const cta = cfg.cta ? `
+      <button class="nav-cta" type="button" data-open-contact>
+        <i class="fa-solid fa-headset"></i> ${escapeHtml(cfg.cta.label || "Kontak Admin")}
+      </button>` : "";
     nav.className = "site-nav";
     nav.innerHTML = `
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo" data-close-nav>
+        <a href="${cfg.logoHref || "index.html"}" class="nav-logo" data-close-nav>
           <span class="logo-text">BAM<span>PROJECT</span></span>
         </a>
         <button class="nav-menu-btn" type="button" data-nav-toggle aria-label="Buka menu navigasi">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div class="nav-links">
-          <a href="index.html" class="nav-link${!activeId ? " is-active" : ""}" data-close-nav>Home</a>
-          <button class="nav-cta" type="button" data-open-contact>
-            <i class="fa-solid fa-headset"></i> Kontak Admin
-          </button>
+          ${links}
+          ${cta}
         </div>
       </div>
     `;
@@ -183,6 +169,7 @@
   function renderGlobalModals() {
     const mount = document.getElementById("global-modals");
     if (!mount) return;
+    const isHome = !document.body.dataset.categoryId;
     mount.innerHTML = `
       <div id="contact-modal" class="modal-overlay" data-modal-overlay="contact">
         <div class="contact-box">
@@ -191,9 +178,10 @@
           <div class="contact-list" id="contact-list"></div>
         </div>
       </div>
+      ${isHome ? `
       <div id="lightbox" class="lightbox">
         <img id="lightbox-img" src="" alt="Testimoni Preview">
-      </div>
+      </div>` : ""}
     `;
     renderContactList();
   }
@@ -347,8 +335,8 @@
   // INIT
   // ============================================================
 
-  function initCommon(activeId = "") {
-    renderNav(activeId);
+  function initCommon() {
+    renderNav();
     renderGlobalModals();
     bindCommonEvents();
   }
@@ -364,9 +352,7 @@
     normalizeVideo,
     videoThumb,
     youtubeThumb,
-    getCategory,
     getCategories,       // async — returns Promise
-    getAllProducts,       // async — returns Promise
     renderNav,
     renderSocialPills,
     renderTestimonials,
