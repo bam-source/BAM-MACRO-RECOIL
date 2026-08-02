@@ -465,13 +465,28 @@
   async function loadProducts() {
     const manifest = await loadJson("./product.json");
     const entries = Array.isArray(manifest) ? manifest.map(item => item.file || item.id) : (manifest.files || []);
-    const items = await Promise.all(entries.map(entry => {
+    const items = await Promise.all(entries.map(async entry => {
       const file = typeof entry === "string" ? entry : entry.file;
-      if (!file) return Promise.resolve(null);
-      return loadJson(file).catch(err => {
+      if (!file) return null;
+      try {
+        const product = await loadJson(file);
+        // Pre-resolve local image paths relative to the product file
+        const productFileDir = file.substring(0, file.lastIndexOf('/'));
+        if (product.image && product.image.startsWith('./')) {
+          product.image = `${productFileDir}/${product.image.substring(2)}`;
+        }
+        if (product.previews) {
+          product.previews.forEach(preview => {
+            if (preview.type === 'image' && preview.src && preview.src.startsWith('./')) {
+              preview.src = `${productFileDir}/${preview.src.substring(2)}`;
+            }
+          });
+        }
+        return product;
+      } catch (err) {
         console.warn(`Gagal memuat produk ${file}:`, err);
         return null;
-      });
+      }
     }));
     return items.filter(Boolean);
   }
