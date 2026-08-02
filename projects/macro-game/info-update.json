@@ -23,7 +23,7 @@
   //  • Gambar: { "type": "image", "src": "URL atau file lokal ./img/previews/...", "label": "..." }
   // ─────────────────────────────────────
   "videos": [
-    { "src": "V2Mdcht_h5c", "label": "[UPDATE] PUBG PRO v2.0" },{ "src": "", "label": "Gangnam Style" },
+    { "src": "V2Mdcht_h5c", "label": "[UPDATE] PUBG PRO v2.0" },
     { "src": "", "label": "Despacito" },
     { "src": "", "label": "Shape of You" },
     { "type": "image", "src": "", "label": "Update Macro (Gambar URL)" },

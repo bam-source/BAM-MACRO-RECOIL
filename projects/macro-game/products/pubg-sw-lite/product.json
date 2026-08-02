@@ -20,9 +20,7 @@
   "previews": [
     { "src": "YoyGEKerbjc", "label": "Demo [Lite] Mode Hold" },
     { "src": "n7DOgW1gn5w", "label": "Demo [Lite] Mode Toggle" },
-    { "type": "image", "src": "", "label": "Screenshot 1" },
-    { "type": "image", "src": "", "label": "Screenshot 2" },
-    { "type": "image", "src": "", "label": "Screenshot 3" }
+    { "type": "image", "src": "", "label": "" }
   ],
 
   // ── DETAIL & SPESIFIKASI ──

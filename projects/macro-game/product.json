@@ -6,7 +6,7 @@
 {
   "files": [
     { "file": "products/pubg-sw-lite/product.json" },
-    { "file": "products/pubg-sw-pro/product.json" },
-    { "file": "products/coming-soon-hw/product.json" }
+    { "file": "products/pubg-sw-pro/product.json" }
+
   ]
 }
