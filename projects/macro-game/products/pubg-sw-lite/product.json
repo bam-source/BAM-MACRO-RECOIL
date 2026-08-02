@@ -1,0 +1,36 @@
+// ══════════════════════════════════════
+//  CONFIG PRODUK — PUBG Lite
+//  1 file = 1 produk.
+//  Gambar lokal: relatif ke folder ini,
+//  letakkan di ./img/previews/...
+// ══════════════════════════════════════
+{
+  // ── INFO DASAR ──
+  "id": "pubg-sw-lite",
+  "name": "PUBG: BATTLEGROUNDS",
+  "subtitle": "",
+  "price": "Rp 100.000",
+  "tag": "PUBG (Software)",
+  "status": "active",
+  "labelTopLeft": "Lite",
+  "labelBottomRight": "HOLD & TOGGLE",
+
+  // ── MEDIA ──
+  "image": "https://i.pinimg.com/736x/61/ea/a4/61eaa4a1801d6e37cfebbd8b0ead302d.jpg",
+  "previews": [
+    { "src": "YoyGEKerbjc", "label": "Demo [Lite] Mode Hold" },
+    { "src": "n7DOgW1gn5w", "label": "Demo [Lite] Mode Toggle" },
+    { "type": "image", "src": "", "label": "Screenshot 1" },
+    { "type": "image", "src": "", "label": "Screenshot 2" },
+    { "type": "image", "src": "", "label": "Screenshot 3" }
+  ],
+
+  // ── DETAIL & SPESIFIKASI ──
+  "description": " ",
+  "details": [
+    "versi lite hanya aktive ketika ads / scope",
+    "fitur terbatas, semi-manual, tapi tetap aman dan powerfull",
+    "support semua jenis mouse"
+  ],
+  "specs": ["STEAM VERSION"]
+}

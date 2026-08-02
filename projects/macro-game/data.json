@@ -1,0 +1,23 @@
+{
+  // ─────────────────────────────────────
+  //  CONFIG KATEGORI
+  //  data.json = meta kategori (hero & tampilan)
+  // ─────────────────────────────────────
+
+  "name": "Project Macro Game",
+  "productThumbnail": "image",
+
+  // ─────────────────────────────────────
+  //  HERO — banner atas halaman project
+  // ─────────────────────────────────────
+  "hero": {
+    "eyebrow": "Kategori",
+    "title": ["Project", "Macro", "Game"],
+    "description": "",
+    "stats": [
+      { "value": "500+", "label": "Total Pembeli" },
+      { "value": "4.9★", "label": "Rating" },
+      { "value": "100%", "label": "Lifetime Access" }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+// ══════════════════════════════════════
+//  MANIFEST PRODUK — Daftar produk & urutan tampil
+//  Tiap entri menunjuk ke config produk
+//  (1 produk = 1 folder = 1 file product.json)
+// ══════════════════════════════════════
+{
+  "files": [
+    { "file": "products/pubg-sw-lite/product.json" },
+    { "file": "products/pubg-sw-pro/product.json" },
+    { "file": "products/coming-soon-hw/product.json" }
+  ]
+}

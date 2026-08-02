@@ -1,0 +1,36 @@
+// ══════════════════════════════════════
+//  CONFIG PRODUK — PUBG Pro
+//  1 file = 1 produk.
+//  Gambar lokal: relatif ke folder ini,
+//  letakkan di ./img/previews/...
+// ══════════════════════════════════════
+{
+  // ── INFO DASAR ──
+  "id": "pubg-sw-pro",
+  "name": "PUBG: BATTLEGROUNDS",
+  "subtitle": "",
+  "price": "Rp 150.000",
+  "tag": "PUBG (Software)",
+  "status": "active",
+  "labelTopLeft": "Pro",
+  "labelBottomRight": "HOLD & TOGGLE",
+
+  // ── MEDIA ──
+  "image": "https://i.pinimg.com/1200x/e7/c0/09/e7c0098977711822d32d7b2fec333805.jpg",
+  "previews": [
+    { "src": "yCeOoyfk2Rk", "label": "Demo [Pro] Mode Hold" },
+    { "src": "KuPa3mpymDo", "label": "Demo [Pro] Mode Toggle" },
+    { "type": "image", "src": "", "label": "Screenshot 1" },
+    { "type": "image", "src": "", "label": "Screenshot 2" },
+    { "type": "image", "src": "", "label": "Screenshot 3" }
+  ],
+
+  // ── DETAIL & SPESIFIKASI ──
+  "description": " ",
+  "details": [
+    "fitur recoil untuk mode ads dan hipfire",
+    "fitur otomatis, scan senjata preset, powerfull dan yg pasti aman",
+    "support semua jenis mouse"
+  ],
+  "specs": ["STEAM VERSION"]
+}
