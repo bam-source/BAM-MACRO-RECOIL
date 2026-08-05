@@ -20,9 +20,12 @@
 
   function renderProjectCard(project, index) {
     const label = project.label || project.name;
+    const isLink = Boolean(project.url);
     const badge = project.path === "-" ? "SOON" : "OPEN";
+    const href = isLink ? project.url : project.path;
+    const target = isLink ? ' target="_blank" rel="noopener"' : "";
     return `
-      <a class="project-card" href="${project.path}">
+      <a class="project-card" href="${href}"${target}>
         <div class="project-card-top">
           <span class="project-num">${String(index + 1).padStart(2, "0")}</span>
           ${project.image ? `<img class="project-card-img" src="${project.image}" alt="${window.BAM.escapeHtml(label)}" loading="lazy">` : ""}

@@ -5,7 +5,7 @@
     "label": "MACRO GAME",
     "path": "/projects/macro-game/index.html",
     "icon": "fa-crosshairs",
-    "image": "https://i.pinimg.com/736x/bd/06/30/bd0630aa1b2dc4f514bb1fe7fc66bdb7.jpg",
+    "image": "https://i.pinimg.com/736x/5e/8e/9c/5e8e9c0237368051e34e90ca94c648cd.jpg",
     "description": "fokus pada presisi dan kontrol."
   },
   {
@@ -14,16 +14,17 @@
     "label": "MOD GAME",
     "path": "/projects/mod-game/index.html",
     "icon": "fa-screwdriver-wrench",
-    "image": "https://i.pinimg.com/1200x/3e/f9/d1/3ef9d12dbeef9011c27d246335989aa9.jpg",
+    "image": "https://i.pinimg.com/736x/5e/8e/9c/5e8e9c0237368051e34e90ca94c648cd.jpg",
     "description": "fokus bahasa dan kenyamanan memahami game."
   },
   {
-    "id": "project-coomingsoon",
-    "name": "CoomingSoon",
-    "label": "COOMINGSOON",
-    "path": "-",
-    "icon": "fa-hourglass-half",
-    "image": "https://i.pinimg.com/736x/0a/5a/e4/0a5ae470ef7abd535ef48b8359890c8e.jpg",
-    "description": ""
+    "id": "linknetvoucher",
+    "name": "LINK.NET - VOUCHER",
+    "label": "Linknet Dashboard",
+    "path": "",
+    "url": "https://script.google.com/macros/s/AKfycbxjYvGP2bJZX7z3ZvF5inXpgbPARglMDsmPo-gORGIOSc8pcA3llQkZAGFnD7wX7ec/exec",
+    "icon": "fa-flag",
+    "image": "https://i.pinimg.com/736x/5e/8e/9c/5e8e9c0237368051e34e90ca94c648cd.jpg",
+    "description": "Katalog resmi LinkNet Dashboard"
   }
 ]

@@ -1,5 +1,5 @@
 // ============================================================
-// BAM PROJECT — Konfigurasi Global
+// BAM DIGITAL — Konfigurasi Global
 // File ini hanya berisi data global yang dibutuhkan semua halaman.
 // Daftar project dibaca dari /projects.json (fetch async).
 // ============================================================
@@ -7,7 +7,7 @@
 window.BAM_CONFIG = {
   // Brand
   brand: {
-    name: "BAM PROJECT",
+    name: "BAM DIGITAL",
     logo: "/assets/Logo_BAM_Transparant.png"
   },
 

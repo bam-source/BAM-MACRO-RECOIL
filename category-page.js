@@ -308,12 +308,18 @@
     const media = item.type === "image"
       ? `<img src="${window.BAM.escapeHtml(item.src)}" alt="${window.BAM.escapeHtml(item.label)}" loading="lazy">
          <span class="preview-badge img-center">${window.BAM.escapeHtml(typeBadge)}</span>`
-      : `<img src="${window.BAM.escapeHtml(item.thumbnail)}" alt="${window.BAM.escapeHtml(item.label)}" loading="lazy">
-         <span class="preview-play">
-           <span class="preview-badge">${window.BAM.escapeHtml(typeBadge)}</span>
-           <i class="fa-solid fa-circle-play"></i>
-         </span>`;
-    
+      : item.video?.platform === "youtube"
+        ? `<img src="${window.BAM.escapeHtml(item.thumbnail)}" alt="${window.BAM.escapeHtml(item.label)}" loading="lazy">
+           <span class="preview-play" data-preview-play>
+             <span class="preview-badge">${window.BAM.escapeHtml(typeBadge)}</span>
+             <i class="fa-solid fa-circle-play"></i>
+           </span>`
+        : `<img src="${window.BAM.escapeHtml(item.thumbnail)}" alt="${window.BAM.escapeHtml(item.label)}" loading="lazy">
+           <span class="preview-play">
+             <span class="preview-badge">${window.BAM.escapeHtml(typeBadge)}</span>
+             <i class="fa-solid fa-circle-play"></i>
+           </span>`;
+
     const nav = previews.length > 1
       ? `
         <button class="preview-nav prev" type="button" data-preview-prev aria-label="Sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
@@ -327,6 +333,24 @@
         ${nav}
         <span class="preview-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
       </div>`;
+  }
+
+  function playPreviewVideo() {
+    const item = previews[previewIndex];
+    if (!item || item.type !== "video" || !item.video?.youtubeId) return;
+    const wrap = document.getElementById("preview-stage-wrap");
+    if (!wrap) return;
+    const stage = wrap.querySelector(".preview-stage");
+    if (!stage) return;
+    if (stage.querySelector("iframe")) return;
+    stage.querySelectorAll("img, .preview-play, .preview-badge.img-center").forEach(node => node.remove());
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube.com/embed/${item.video.youtubeId}?autoplay=1&rel=0`;
+    iframe.title = window.BAM.escapeHtml(item.label);
+    iframe.frameBorder = "0";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+    stage.appendChild(iframe);
   }
 
   function openMediaImage(src, alt = "") {
@@ -451,6 +475,7 @@
       if (previewNext) { stepPreview(1); return; }
       const previewPrev = event.target.closest("[data-preview-prev]");
       if (previewPrev) { stepPreview(-1); return; }
+      if (event.target.closest("[data-preview-play]")) { playPreviewVideo(); return; }
       if (event.target.closest("[data-preview-zoom]")) { openPreviewFull(); return; }
       if (event.target.closest("[data-preview-lightbox-close]")) { closePreviewLightbox(); return; }
       if (event.target.id === "preview-lightbox") { closePreviewLightbox(); return; }

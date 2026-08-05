@@ -149,7 +149,7 @@
     nav.innerHTML = `
       <div class="nav-inner">
         <a href="${cfg.logoHref || "index.html"}" class="nav-logo" data-close-nav>
-          <span class="logo-text">BAM<span>PROJECT</span></span>
+          <span class="logo-text">BAM<span>DIGITAL</span></span>
         </a>
         <button class="nav-menu-btn" type="button" data-nav-toggle aria-label="Buka menu navigasi">
           <i class="fa-solid fa-bars"></i>
