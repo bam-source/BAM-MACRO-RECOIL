@@ -28,12 +28,33 @@
     "description": "Katalog resmi LinkNet Dashboard"
   },
   {
-    "id": "coomingsoon",
-    "name": "FREE SLOT PROJECT",
-    "label": "soon",
+    "id": "freeslot1",
+    "name": "slot1",
+    "label": "PROJECT SLOT 1",
     "path": "",
     "url": "",
-    "icon": "fa-flag",
+    "icon": "fa-users",
+    "image": "",
+    "description": "Free Slot Project !!!"
+  },
+    {
+    "id": "freeslot2",
+    "name": "slot2",
+    "label": "PROJECT SLOT 2",
+    "path": "",
+    "url": "",
+    "icon": "fa-users",
+    "image": "",
+    "description": "Free Slot Project !!!"
+  },
+    },
+    {
+    "id": "freeslot3",
+    "name": "slot3",
+    "label": "PROJECT SLOT 3",
+    "path": "",
+    "url": "",
+    "icon": "fa-users",
     "image": "",
     "description": "Free Slot Project !!!"
   }
