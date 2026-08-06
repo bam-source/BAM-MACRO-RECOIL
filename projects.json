@@ -13,7 +13,7 @@
     "name": "Project Mod Game",
     "label": "MOD GAME",
     "path": "/projects/mod-game/index.html",
-    "icon": "fa-screwdriver-wrench",
+    "icon": "fa-simplybuilt",
     "image": "/assets/GK_modgame.jpg",
     "description": "fokus bahasa dan kenyamanan memahami game."
   },
@@ -24,7 +24,7 @@
     "path": "",
     "url": "https://script.google.com/macros/s/AKfycbxjYvGP2bJZX7z3ZvF5inXpgbPARglMDsmPo-gORGIOSc8pcA3llQkZAGFnD7wX7ec/exec",
     "icon": "fa-flag",
-    "image": "https://i.pinimg.com/736x/89/05/0a/89050a1d4e3e042f287c20c747bf0b1e.jpg",
+    "image": "/assets/GK_linknetvoucher.jpg",
     "description": "Katalog resmi LinkNet Dashboard"
   },
   {
