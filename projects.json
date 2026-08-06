@@ -37,7 +37,7 @@
     "image": "",
     "description": "Free Slot Project !!!"
   },
-    {
+  {
     "id": "freeslot2",
     "name": "slot2",
     "label": "PROJECT SLOT 2",
@@ -47,8 +47,7 @@
     "image": "",
     "description": "Free Slot Project !!!"
   },
-    },
-    {
+  {
     "id": "freeslot3",
     "name": "slot3",
     "label": "PROJECT SLOT 3",
