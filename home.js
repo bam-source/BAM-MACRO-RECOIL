@@ -11,7 +11,26 @@
   // ============================================================
 
   function renderHero() {
-    // Hero statis — cukup title + tombol
+    const chars = ["0", "1", "0x", "&", "#", "<", ">", "/", "A", "F", "9", "7"];
+    const colors = ["var(--yellow)", "var(--coral)", "var(--navy)", "var(--mint)", "var(--black)"];
+    const sides = ["hero-deco-left", "hero-deco-right"];
+    sides.forEach((id, sideIndex) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      let html = "";
+      for (let i = 0; i < 17; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const size = 18 + Math.floor(Math.random() * 34);
+        const top = Math.random() * 95;
+        const left = sideIndex === 0 ? Math.random() * 90 : 10 + Math.random() * 90;
+        const delay = (Math.random() * 8).toFixed(2);
+        const duration = (8 + Math.random() * 6).toFixed(2);
+        const opacity = (0.35 + Math.random() * 0.3).toFixed(2);
+        html += `<span style="font-size:${size}px;top:${top.toFixed(1)}%;left:${left.toFixed(1)}%;color:${color};opacity:${opacity};animation-delay:${delay}s;animation-duration:${duration}s;">${char}</span>`;
+      }
+      el.innerHTML = html;
+    });
   }
 
   // ============================================================
