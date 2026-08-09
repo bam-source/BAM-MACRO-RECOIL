@@ -5,7 +5,7 @@
     "label": "MACRO GAME",
     "path": "/projects/macro-game/index.html",
     "icon": "fa-crosshairs",
-    "image": "/assets/GK_macrorecoil.png",
+    "image": "/assets/GK_macrorecoil.jpg",
     "description": "fokus pada presisi dan kontrol."
   },
   {
@@ -14,7 +14,7 @@
     "label": "TRANSLATION GAME",
     "path": "/projects/translation-game/index.html",
     "icon": "fa-cloud-download",
-    "image": "/assets/GK_translationgame.png",
+    "image": "/assets/GK_translationgame.jpg",
     "description": "project mengubah text game menjadi bahasa indonesia"
   },
   {
@@ -24,7 +24,7 @@
     "path": "",
     "url": "https://script.google.com/macros/s/AKfycbxjYvGP2bJZX7z3ZvF5inXpgbPARglMDsmPo-gORGIOSc8pcA3llQkZAGFnD7wX7ec/exec",
     "icon": "fa-flag",
-    "image": "/assets/linknetdashboard.png",
+    "image": "/assets/linknetdashboard.jpg",
     "description": "Dashboard Link.Net Official"
   },
   {
@@ -33,7 +33,7 @@
     "label": "TEMPLATE HOTSPOT",
     "path": "/projects/template-hotspot-mikrotik/index.html",
     "icon": "fa-wifi",
-    "image": "/assets/loginpagemikrotik.png",
+    "image": "/assets/loginpagemikrotik.jpg",
     "description": "login page Mikrotik dan template Hotspot."
   },
   {
@@ -43,7 +43,7 @@
     "path": "",
     "url": "_blank",
     "icon": "fa-users",
-    "image": "/assets/freeslot.png",
+    "image": "/assets/freeslot.jpg",
     "description": "Free Slot Project !!!"
   }
 ]

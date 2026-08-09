@@ -269,12 +269,15 @@
         return;
       }
 
+      // Acak urutan agar variatif
+      images.sort(() => Math.random() - 0.5);
+
       const stars = '<i class="fa-solid fa-star" style="color:var(--red-bright);font-size:7px;"></i>'.repeat(5);
       container.innerHTML = images.map(file => {
-        const proxied = "https://images.weserv.nl/?url=" + encodeURIComponent(file.download_url);
+        const proxied = "https://images.weserv.nl/?url=" + encodeURIComponent(file.download_url) + "&w=440&h=380&fit=cover";
         return `
           <div class="testi-card" data-lightbox="${proxied}">
-            <img src="${proxied}" alt="Testimoni" loading="lazy">
+            <img src="${proxied}" alt="Testimoni" loading="lazy" decoding="async">
             <div class="testi-overlay"></div>
             <div class="testi-info">
               <div class="testi-verified"><div class="testi-verified-dot"></div><span>Verified</span></div>

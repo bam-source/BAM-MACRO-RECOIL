@@ -234,15 +234,21 @@
   function renderProducts(category) {
     const target = document.getElementById("product-list");
     if (!target) return;
+    const optimizeThumb = src => {
+      if (!src) return src;
+      if (!/^https?:\/\//i.test(src)) return src;
+      if (/img\.youtube\.com/i.test(src)) return src;
+      return "https://images.weserv.nl/?url=" + encodeURIComponent(src) + "&w=800&h=600&fit=cover";
+    };
     const getProductThumb = product => {
-      if (category.productThumbnail === "image") return product.image;
+      if (category.productThumbnail === "image") return optimizeThumb(product.image);
       const firstVideo = (product.previews || []).find(item => item.type !== "image") || (product.videos || [])[0];
-      return window.BAM.videoThumb(firstVideo?.src, product.image);
+      return optimizeThumb(window.BAM.videoThumb(firstVideo?.src, product.image));
     };
     target.innerHTML = (category.products || []).map(product => `
       <button class="product-card" type="button" data-product-id="${window.BAM.escapeHtml(product.id)}">
         <div class="product-media">
-          <img src="${getProductThumb(product)}" alt="${window.BAM.escapeHtml(product.name)}" loading="lazy">
+          <img src="${getProductThumb(product)}" alt="${window.BAM.escapeHtml(product.name)}" loading="lazy" decoding="async">
           ${product.labelTopLeft ? `<span class="product-label tl">${window.BAM.escapeHtml(product.labelTopLeft)}</span>` : ""}
           ${product.labelBottomRight ? `<span class="product-label br">${window.BAM.escapeHtml(product.labelBottomRight)}</span>` : ""}
         </div>
