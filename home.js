@@ -55,6 +55,28 @@
   }
 
   // ============================================================
+  // CTA — render tombol & sosial dari config
+  // ============================================================
+
+  function renderCTA() {
+    const whatsapp = document.getElementById("cta-whatsapp");
+    if (whatsapp) {
+      const url = window.BAM.config.social?.whatsapp;
+      if (url) whatsapp.href = url;
+    }
+    const container = document.getElementById("cta-socials");
+    if (!container) return;
+    const links = window.BAM.config.socialLinks || [];
+    container.innerHTML = links.map(item => {
+      const url = window.BAM.config.social?.[item.id];
+      if (!url) return "";
+      return `<a class="social-pill" href="${window.BAM.escapeHtml(url)}" target="_blank" rel="noopener" aria-label="${window.BAM.escapeHtml(item.label)}">
+        <i class="fa-brands ${item.icon}" style="color:${item.color};"></i> ${window.BAM.escapeHtml(item.label)}
+      </a>`;
+    }).join("");
+  }
+
+  // ============================================================
   // INIT
   // ============================================================
 
@@ -66,6 +88,7 @@
     window.BAM.initCommon("");
     renderHero();
     renderProjectList(projects);
+    renderCTA();
     await window.BAM.renderTestimonials();
   }
 

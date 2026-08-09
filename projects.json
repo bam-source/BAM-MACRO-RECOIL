@@ -45,15 +45,5 @@
     "icon": "fa-users",
     "image": "/assets/freeslot.png",
     "description": "Free Slot Project !!!"
-  },
-  {
-    "id": "freeslot2",
-    "name": "slot2",
-    "label": "PROJECT SLOT 2",
-    "path": "",
-    "url": "_blank",
-    "icon": "fa-users",
-    "image": "/assets/freeslot.png",
-    "description": "Free Slot Project !!!"
   }
 ]
