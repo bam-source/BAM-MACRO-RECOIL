@@ -9,13 +9,13 @@
     "description": "fokus pada presisi dan kontrol."
   },
   {
-    "id": "mod-game",
-    "name": "Project Mod Game",
-    "label": "MOD GAME",
-    "path": "/projects/mod-game/index.html",
+    "id": "translation-game",
+    "name": "Project Translation Game",
+    "label": "TRANSLATION GAME",
+    "path": "/projects/translation-game/index.html",
     "icon": "fa-cloud-download",
-    "image": "/assets/GK_modgame.jpg",
-    "description": "fokus bahasa dan kenyamanan memahami game."
+    "image": "/assets/GK_translationgame.png",
+    "description": "project mengubah text game menjadi bahasa indonesia"
   },
   {
     "id": "linknetvoucher",
@@ -24,17 +24,26 @@
     "path": "",
     "url": "https://script.google.com/macros/s/AKfycbxjYvGP2bJZX7z3ZvF5inXpgbPARglMDsmPo-gORGIOSc8pcA3llQkZAGFnD7wX7ec/exec",
     "icon": "fa-flag",
-    "image": "/assets/GK_linknetvoucher.jpg",
+    "image": "/assets/linknetdashboard.png",
     "description": "Dashboard Link.Net Official"
+  },
+  {
+    "id": "template-hotspot-mikrotik",
+    "name": "Project Template Hotspot Mikrotik",
+    "label": "TEMPLATE HOTSPOT",
+    "path": "/projects/template-hotspot-mikrotik/index.html",
+    "icon": "fa-wifi",
+    "image": "/assets/loginpagemikrotik.png",
+    "description": "login page Mikrotik dan template Hotspot."
   },
   {
     "id": "freeslot1",
     "name": "slot1",
     "label": "PROJECT SLOT 1",
     "path": "",
-    "url": "-",
+    "url": "_blank",
     "icon": "fa-users",
-    "image": "https://i.pinimg.com/736x/24/0c/e6/240ce63c00b34a62a6b4af5bdb99360a.jpg",
+    "image": "/assets/freeslot.png",
     "description": "Free Slot Project !!!"
   },
   {
@@ -42,19 +51,9 @@
     "name": "slot2",
     "label": "PROJECT SLOT 2",
     "path": "",
-    "url": "-",
+    "url": "_blank",
     "icon": "fa-users",
-    "image": "https://i.pinimg.com/736x/24/0c/e6/240ce63c00b34a62a6b4af5bdb99360a.jpg",
-    "description": "Free Slot Project !!!"
-  },
-  {
-    "id": "freeslot3",
-    "name": "slot3",
-    "label": "PROJECT SLOT 3",
-    "path": "",
-    "url": "-",
-    "icon": "fa-users",
-    "image": "https://i.pinimg.com/736x/24/0c/e6/240ce63c00b34a62a6b4af5bdb99360a.jpg",
+    "image": "/assets/freeslot.png",
     "description": "Free Slot Project !!!"
   }
 ]

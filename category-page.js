@@ -407,6 +407,15 @@
     }
   }
 
+  function renderProductLink(product) {
+    const linkUrl = (product.link || "").trim();
+    if (!/^https?:\/\//i.test(linkUrl)) return "";
+    return `
+      <a class="modal-link" href="${window.BAM.escapeHtml(linkUrl)}" target="_blank" rel="noopener">
+        ${window.BAM.escapeHtml(product.linkText || "Klik Saya")} <i class="fa-solid fa-arrow-up-right-from-square"></i>
+      </a>`;
+  }
+
   function openProduct(productId) {
     const product = (currentCategory.products || []).find(item => item.id === productId);
     if (!product) return;
@@ -441,6 +450,7 @@
           ${details.map(item => `<li><i class="fa-solid fa-check"></i><span>${window.BAM.escapeHtml(item)}</span></li>`).join("")}
           ${specs.map(item => `<li><i class="fa-solid fa-circle-check"></i><span>${window.BAM.escapeHtml(item)}</span></li>`).join("")}
         </ul>
+        ${renderProductLink(product)}
         <div class="modal-actions">
           <button class="btn-primary" type="button" data-open-contact><i class="fa-solid fa-headset"></i> Kontak Admin</button>
         </div>

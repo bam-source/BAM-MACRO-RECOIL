@@ -1,0 +1,23 @@
+{
+  // ─────────────────────────────────────
+  //  CONFIG KATEGORI
+  //  data.json = meta kategori (hero & tampilan)
+  // ─────────────────────────────────────
+
+  "name": "Project Template Hotspot Mikrotik",
+  "productThumbnail": "image",
+
+  // ─────────────────────────────────────
+  //  HERO — banner atas halaman project
+  // ─────────────────────────────────────
+  "hero": {
+    "eyebrow": "Kategori",
+    "title": ["Template Hotspot", "Mikrotik"],
+    "description": "",
+    "stats": [
+      { "value": "auto", "label": "Total Produk" },
+      { "value": "MIKROTIK", "label": "Kategori" },
+      { "value": "Admin", "label": "Support" }
+    ]
+  }
+}

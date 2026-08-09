@@ -1,0 +1,23 @@
+{
+  // ─────────────────────────────────────
+  //  CONFIG KATEGORI
+  //  data.json = meta kategori (hero & tampilan)
+  // ─────────────────────────────────────
+
+  "name": "Project Translation Game",
+  "productThumbnail": "image",
+
+  // ─────────────────────────────────────
+  //  HERO — banner atas halaman project
+  // ─────────────────────────────────────
+  "hero": {
+    "eyebrow": "Kategori",
+    "title": ["Project", "Translation Game"],
+    "description": "",
+    "stats": [
+      { "value": "auto", "label": "Total Produk" },
+      { "value": "MOD", "label": "Kategori" },
+      { "value": "Admin", "label": "Support" }
+    ]
+  }
+}

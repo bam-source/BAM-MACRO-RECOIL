@@ -1,0 +1,29 @@
+{
+  // ─────────────────────────────────────
+  //  CONFIG INFO UPDATE
+  //  Berita + video panel sisi kanan halaman
+  // ─────────────────────────────────────
+
+  "badge": "TEMPLATE HOTSPOT MIKROTIK",
+
+  // ─────────────────────────────────────
+  //  BERITA — panel "Info & Update"
+  //  pinned: true = tampil paling atas
+  // ─────────────────────────────────────
+  "news": [
+    { "title": "Template Hotspot Ready !!!", "date": " ", "tag": " ", "description": "template login page Hotspot Mikrotik siap order. Cocok untuk wifi publik, hotel, warnet, dan cafe.", "pinned": false },
+    { "title": "Request Desain Template", "date": " ", "tag": " ", "description": "bisa request desain login page sesuai keinginan, silahkan hubungi admin.", "pinned": false }
+  ],
+
+  // ─────────────────────────────────────
+  //  VIDEO — panel "Video Update"
+  //  Bisa multi item, campur video & gambar.
+  //  • Video : { "src": "YouTube ID / URL penuh (YT, TikTok, IG)", "label": "..." }
+  //  • Gambar: { "type": "image", "src": "URL atau file lokal ./img/previews/...", "label": "..." }
+  // ─────────────────────────────────────
+  "videos": [
+    { "src": "", "label": "" },
+    { "type": "image", "src": "./img/previews/neobrutalism1.PNG", "label": "Neo Brutalism" },
+    { "type": "image", "src": "./img/previews/neodark1.PNG", "label": "Neo Dark" }
+  ]
+}

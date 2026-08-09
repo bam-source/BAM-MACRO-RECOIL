@@ -1,0 +1,35 @@
+// ══════════════════════════════════════
+//  CONFIG PRODUK — Neo-Brutalism
+//  1 file = 1 produk.
+//  Gambar lokal: relatif ke folder ini,
+//  letakkan di ./img/previews/... (bisa juga ./img/...)
+// ══════════════════════════════════════
+{
+  // ── INFO DASAR ──
+  "id": "neo-brutalism",
+  "name": "Neo-Brutalism",
+  "subtitle": "",
+  "price": "free",
+  "tag": "Mikrotik Template",
+  "status": "active",
+  "labelTopLeft": "HOTSPOT LOGIN",
+  "labelBottomRight": "",
+  "versions": ["MIKROTIK v7"],
+  "link": "https://drive.google.com/file/d/1iTZ9MWgNPmRjDku6d6rULJ8G3MvKaqcV/view?usp=sharing",
+  "linkText": "Download Google Drive",
+
+  // ── MEDIA ──
+  "image": "./img/neobrutalism1.PNG",
+  "previews": [
+    { "type": "image", "src": "./img/neobrutalism1.PNG", "label": "Tampilan 1" },
+    { "type": "image", "src": "./img/neobrutalism2.PNG", "label": "Tampilan 2" },
+    { "type": "image", "src": "./img/neobrutalism3.PNG", "label": "Tampilan 3" }
+  ],
+
+  // ── DETAIL & SPESIFIKASI ──
+  "description": "-",
+  "details": [
+    "Tested mikrotik versi v7"
+  ],
+  "specs": ["Template login page Hotspot Mikrotik 100% desain"]
+}

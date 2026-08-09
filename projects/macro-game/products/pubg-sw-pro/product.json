@@ -14,6 +14,8 @@
   "status": "active",
   "labelTopLeft": "Pro",
   "labelBottomRight": "HOLD & TOGGLE",
+  "link": "",
+  "linkText": "Klik Saya",
 
   // ── MEDIA ──
   "image": "https://i.pinimg.com/1200x/e7/c0/09/e7c0098977711822d32d7b2fec333805.jpg",
