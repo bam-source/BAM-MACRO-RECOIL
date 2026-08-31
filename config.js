@@ -16,7 +16,7 @@ window.BAM_CONFIG = {
     whatsapp: "https://api.whatsapp.com/send/?phone=6289697523717",
     tiktok:   "https://www.tiktok.com/@bam.digital",
     youtube:  "https://www.youtube.com/@project_bam_yt",
-    discord:  "https://discord.gg/rRAAYrYwPq"
+    discord:  "https://discord.gg/WczuVTnhqn"
   },
 
   // Tampilan ikon sosial
